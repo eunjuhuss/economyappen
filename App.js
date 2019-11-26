@@ -11,6 +11,8 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import ApiKeys from './src/js/constants/ApiKeys';
 import * as firebase from 'firebase';
+import { Provider } from 'react-redux';
+import { store } from './src/js/redux/app-redux';
 
 import AppNavigator from './src/js/navigation/AppNavigator';
 
@@ -20,15 +22,24 @@ export default class App extends React.Component {
 
     this.state = {
       isLoadingComplete: false,
+      isAuthenticationReady: false,
+      isAuthenticated: false
     };
 
     if(!firebase.apps.length) { 
       firebase.initializeApp(ApiKeys.FirebaseConfig); 
-    }    
+    }
+    firebase.auth().onAuthStateChanged(this.onAuthStateChanged);    
   }
 
+  onAuthStateChanged = (user) => {
+    this.setState({isAuthenticationReady: true});
+    this.setState({isAuthenticated: !!user});
+  }
+
+
   render() {    
-    if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
+    if ((!this.state.isLoadingComplete || !this.state.isAuthenticationReady) && !this.props.skipLoadingScreen) {
       return (
         <AppLoading
           startAsync={this.loadResourcesAsync}
@@ -38,10 +49,12 @@ export default class App extends React.Component {
       );
     } else {
       return (
-        <View style={styles.container}>
-          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          <AppNavigator />
-        </View>
+        <Provider store={store}>
+          <View style={styles.container}>
+            {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+            <AppNavigator />
+          </View>
+        </Provider>
     );
   }
 }
