@@ -11,60 +11,79 @@ import {
   TextInput
 } from 'react-native';
 import * as firebase from 'firebase';
-import { connect } from 'react-redux';
-import { setUserName, watchUserData } from './../redux/app-redux';
+import { styles } from '../../styles/LoginScreenStyles';
+// import { connect } from 'react-redux';
+// import { setUserName, watchUserData } from './../redux/app-redux';
 
-const mapStateToProps = (state) => {
-  return {
-    name: state.name,
-    userData: state.userData
-  };
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     name: state.name,
+//     userData: state.userData
+//   };
+// }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setUserName: (text) => { dispatch(setUserName(text)) },
-    watchUserData: () => { dispatch(watchUserData())},
-  };
-}
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     setUserName: (text) => { dispatch(setUserName(text)) },
+//     watchUserData: () => { dispatch(watchUserData())},
+//   };
+// }
 
-class LoginScreen extends React.Component {
+export default class LoginScreen extends React.Component {
   constructor(props){
 
   super(props);
-  this.state = {
-    name: this.props.name
-  }
-  this.props.watchUserData();
+  // this.state = {
+  //   name: this.props.name
+  // }
+  // this.props.watchUserData();
 }
   render() {
 
-    onSignOut = () => {
-      firebase.auth().signOut();
-    }
+    // onSignOut = () => {
+    //   firebase.auth().signOut();
+    // }
 
-    login = () => {
-      this.props.setUserName(this.state.name);
-    }
+    // login = () => {
+    //   this.props.setUserName(this.state.name);
+    // }
 
     return (
       <View style={styles.container}>
         <ScrollView
-          style={styles.container}
           contentContainerStyle={styles.contentContainer}>
-            <TouchableOpacity title="SignOut" onPress={()=>onSignOut()} />
-            <Text>{this.props.name}</Text>
-
-            <TextInput 
-              style={{borderWidth:1, width: 200, height: 40}}
-              value={this.state.name}
-              onChangeText={(text)=> { this.setState({name: text})}}/>
-            <TouchableOpacity
-              style={styles.button} 
-              title="Name" 
-              onPress={()=>login()} 
+            <Text style={styles.labelText}>
+              Username:
+            </Text>
+            <TextInput
+              style={styles.input}
+              placeholder='Username'
             />
-            <Text>{this.props.userData.name}</Text>
+
+            <Text style={styles.labelText}>
+              Password:
+            </Text>
+            <TextInput
+              style={styles.input}
+              placeholder='Password'
+            />
+
+           
+            <TouchableOpacity
+              style={styles.loginButton}
+              onPress={()=>onSignOut()} 
+            >
+                <Text style={styles.buttonText}>Login</Text>
+            </TouchableOpacity>
+            <TextInput 
+             
+              // onChangeText={(text)=> { this.setState({name: text})}}
+              />
+            <TouchableOpacity
+            
+              // onPress={()=>login()} 
+            />
+            {/* <Text>{this.props.userData.name}</Text> */}
          
         </ScrollView>
       </View>
@@ -76,19 +95,5 @@ LoginScreen.navigationOptions = {
   title: 'Login',
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  contentContainer: {
-    paddingTop: 30,
-  },
-  button: {
-    width: 80,
-    height: 20,
-    backgroundColor: 'yellow'
-  }
-});
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
+// export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
