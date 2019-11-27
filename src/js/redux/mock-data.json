@@ -1,0 +1,44 @@
+{
+  "Users": [{
+    "userId": "1",
+    "userName": "eunjuhuss",
+    "password": "",
+    "profilePicture": "",
+    "following": true,
+    "Datas": [{
+      "dataId": "1",
+      "date": "2019-01-01",
+      "category": "food",
+      "description": "buy food",      
+      "income": 100,
+      "expenses": 100,
+      "total": 100      
+    },
+    {
+      "dataId": "2",
+      "date": "2019-01-01",
+      "category": "food",
+      "description": "buy food",
+      "income": 100,
+      "expenses": 100,
+      "total": 100      
+    }]
+  },
+  {
+    "userId": "2",
+    "userName": "kallehuss",
+    "password": "tikka",
+    "profilePicture": "",
+    "following": true,
+    "Datas": {
+      "dataId": "1",
+      "date": "2019-01-01",
+      "category": "food",
+      "description": "buy food",
+      "income": 100,
+      "expenses": 100,
+      "total": 100      
+    }
+  }
+]
+}
