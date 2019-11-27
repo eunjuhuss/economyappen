@@ -48,6 +48,10 @@ export default class LoginScreen extends React.Component {
     //   this.props.setUserName(this.state.name);
     // }
 
+    onPressLogin=()=>{
+      this.props.navigation.navigate('Feed');
+    }
+
     return (
       <View style={styles.container}>
         <ScrollView
@@ -68,15 +72,14 @@ export default class LoginScreen extends React.Component {
               placeholder='Password'
             />
 
-           
             <TouchableOpacity
               style={styles.loginButton}
-              onPress={()=>onSignOut()} 
+              onPress={() => onPressLogin()} 
             >
                 <Text style={styles.buttonText}>Login</Text>
             </TouchableOpacity>
             <TextInput 
-             
+
               // onChangeText={(text)=> { this.setState({name: text})}}
               />
             <TouchableOpacity
@@ -84,7 +87,6 @@ export default class LoginScreen extends React.Component {
               // onPress={()=>login()} 
             />
             {/* <Text>{this.props.userData.name}</Text> */}
-         
         </ScrollView>
       </View>
     );
@@ -92,7 +94,7 @@ export default class LoginScreen extends React.Component {
 }
 
 LoginScreen.navigationOptions = {
-  title: 'Login',
+  header: null,
 };
 
 
