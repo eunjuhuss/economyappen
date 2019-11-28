@@ -1,14 +1,13 @@
-import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import {
-  Image,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-  Text,
-  TextInput
+    Image,
+    Platform,
+    ScrollView,
+    StyleSheet,
+    TouchableOpacity,
+    View,
+    Text,
+    TextInput
 } from 'react-native';
 import * as firebase from 'firebase';
 import { styles } from '../../styles/LoginScreenStyles';
@@ -30,71 +29,71 @@ import { styles } from '../../styles/LoginScreenStyles';
 // }
 
 export default class LoginScreen extends React.Component {
-  constructor(props){
+    constructor(props) {
 
-  super(props);
-  // this.state = {
-  //   name: this.props.name
-  // }
-  // this.props.watchUserData();
-}
-  render() {
-
-    // onSignOut = () => {
-    //   firebase.auth().signOut();
-    // }
-
-    // login = () => {
-    //   this.props.setUserName(this.state.name);
-    // }
-
-    onPressLogin=()=>{
-      this.props.navigation.navigate('Feed');
+        super(props);
+        // this.state = {
+        //   name: this.props.name
+        // }
+        // this.props.watchUserData();
     }
+    render() {
 
-    return (
-      <View style={styles.container}>
-        <ScrollView
-          contentContainerStyle={styles.contentContainer}>
-            <Text style={styles.labelText}>
-              Username:
+        // onSignOut = () => {
+        //   firebase.auth().signOut();
+        // }
+
+        // login = () => {
+        //   this.props.setUserName(this.state.name);
+        // }
+
+        onPressLogin = () => {
+            this.props.navigation.navigate('Feed');
+        }
+
+        return (
+            <View style={styles.container}>
+                <ScrollView
+                    contentContainerStyle={styles.contentContainer}>
+                    <Text style={styles.labelText}>
+                        Username:
             </Text>
-            <TextInput
-              style={styles.input}
-              placeholder='Username'
-            />
+                    <TextInput
+                        style={styles.input}
+                        placeholder='Username'
+                    />
 
-            <Text style={styles.labelText}>
-              Password:
+                    <Text style={styles.labelText}>
+                        Password:
             </Text>
-            <TextInput
-              style={styles.input}
-              placeholder='Password'
-            />
+                    <TextInput
+                        style={styles.input}
+                        placeholder='Password'
+                    />
 
-            <TouchableOpacity
-              style={styles.loginButton}
-              onPress={() => onPressLogin()} 
-            >
-                <Text style={styles.buttonText}>Login</Text>
-            </TouchableOpacity>
-            <TextInput 
+                    <TouchableOpacity
+                        style={styles.loginButton}
+                        onPress={() => onPressLogin()}
+                    >
+                        <Text style={styles.buttonText}>Login</Text>
+                    </TouchableOpacity>
+                    <TextInput
 
-              // onChangeText={(text)=> { this.setState({name: text})}}
-              />
-            <TouchableOpacity
-            
-              // onPress={()=>login()} 
-            />
-            {/* <Text>{this.props.userData.name}</Text> */}
-        </ScrollView>
-      </View>
-    );
-  }
+                    // onChangeText={(text)=> { this.setState({name: text})}}
+                    />
+                    <TouchableOpacity
+
+                    // onPress={()=>login()} 
+                    />
+                    {/* <Text>{this.props.userData.name}</Text> */}
+                </ScrollView>
+            </View>
+        );
+    }
 }
 
 LoginScreen.navigationOptions = {
-  header: null,
+    header: null,
 };
 
 
