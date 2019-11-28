@@ -12,7 +12,10 @@ import { Ionicons } from '@expo/vector-icons';
 import ApiKeys from './src/js/constants/ApiKeys';
 import * as firebase from 'firebase';
 import { Provider } from 'react-redux';
-import { store } from './src/js/redux/app-redux';
+// import { store } from './src/js/redux/app-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import rootReducer from './src/js/redux/store/reducers/rootReducer';
+import thunk from 'redux-thunk';
 
 import AppNavigator from './src/js/navigation/AppNavigator';
 
@@ -39,6 +42,7 @@ export default class App extends React.Component {
 
 
     render() {
+        const store = createStore(rootReducer, compose(applyMiddleware(thunk)));
         if ((!this.state.isLoadingComplete || !this.state.isAuthenticationReady) && !this.props.skipLoadingScreen) {
             return (
                 <AppLoading
