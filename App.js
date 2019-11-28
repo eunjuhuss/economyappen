@@ -9,7 +9,7 @@ import {
     View
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import ApiKeys from './src/js/constants/ApiKeys';
+import ApiKeys from './src/js/constants/Firebase';
 import * as firebase from 'firebase';
 import { Provider } from 'react-redux';
 // import { store } from './src/js/redux/app-redux';

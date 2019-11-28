@@ -25,10 +25,16 @@ const initState = {
 const economyListReducer = (state = initState, action) => {
   switch (action.type) {
     case 'CREATE_ECONOMY_LIST':
-      console.log('created economy', action.economyList)
+      console.log('created economy', action.economyList);
+      return state;
+      case 'CREATE_LIST_ERROR':
+      console.log('create economy error', action.err);
+      return state;
+      default:
+ return state
   }
 
-  return state
+ 
 }
 
 export default economyListReducer;
