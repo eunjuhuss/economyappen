@@ -23,6 +23,11 @@ const initState = {
 }
 
 const economyListReducer = (state = initState, action) => {
+  // switch (action.type) {
+  //   case 'CREATE_ECONOMY_LIST':
+  //     console.log('created economy', action.economyList)
+  // }
+
   return state
 }
 

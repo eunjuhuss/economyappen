@@ -57,20 +57,18 @@ export default class LoginScreen extends React.Component {
                     contentContainerStyle={styles.contentContainer}>
                     <Text style={styles.labelText}>
                         Username:
-            </Text>
+                    </Text>
                     <TextInput
                         style={styles.input}
                         placeholder='Username'
                     />
-
                     <Text style={styles.labelText}>
                         Password:
-            </Text>
+                    </Text>
                     <TextInput
                         style={styles.input}
                         placeholder='Password'
                     />
-
                     <TouchableOpacity
                         style={styles.loginButton}
                         onPress={() => onPressLogin()}

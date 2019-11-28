@@ -8,17 +8,25 @@ import {
   Text,
   View,
 } from 'react-native';
+import EconomyList from './../components/EconomyList';
+import { connect } from 'react-redux';
 
-export default function FeedScreen() {
-  return (
-    <View style={styles.container}>
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}>
-       
-      </ScrollView>
-    </View>
-  );
+class FeedScreen extends React.Component {
+  render() {
+    console.log(this.props.economyList);
+
+  const { economyList } = this.props;
+    return (
+      <View style={styles.container}>
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer}>
+            <EconomyList economyList={economyList}/>
+        
+        </ScrollView>
+      </View>
+    );
+  }
 }
 
 FeedScreen.navigationOptions = {
@@ -34,3 +42,11 @@ const styles = StyleSheet.create({
     paddingTop: 30,
   }
 });
+
+const mapStateToProps = (state) => {
+  return {
+    economyList: state.economyList.economyList
+  }
+}
+
+export default connect(mapStateToProps)(FeedScreen);

@@ -1,12 +1,75 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet, Text, TextInput } from 'react-native';
+import { createEconomyList } from '../redux/store/actions/economyActions';
+import { connect } from 'react-redux';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-export default function AddScreen() {
-  return (
-    <ScrollView style={styles.container}>
-    </ScrollView>
-  );
+class AddScreen extends React.Component {
+  constructor(props){
+    super(props)
+      this.state={
+        date: '',
+        category: ''
+      }
+    }
+
+  onsubmit = () => {
+    const {date, category } = this.state;
+      this.props.createEconomyList({date, category})
+    }
+
+
+  render(){
+
+ 
+
+    handleDate = text => {
+      this.setState({
+        date: text
+      })
+    }
+
+      handleCategory = text => {
+      this.setState({
+        category: text
+      })
+    }
+
+    return (
+      <ScrollView style={styles.container}>
+        <Text style={styles.labelText}>
+          date:
+        </Text>
+        <TextInput
+          style={styles.input}
+          placeholder='date'
+          onChangeText = {this.handleDate}
+        />
+        <Text style={styles.labelText}>
+          category:
+        </Text>
+        <TextInput
+          style={styles.input}
+          placeholder='category'
+          onChangeText = {this.handleCategory}
+        />
+        <TouchableOpacity onPress={()=>this.onsubmit()}>
+          <Text>
+            submit
+          </Text>
+        </TouchableOpacity>
+      </ScrollView>
+    );
+  }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createEconomyList: (economyList) => dispatch(createEconomyList(economyList))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(AddScreen)
 
 AddScreen.navigationOptions = {
   title: 'Add',
