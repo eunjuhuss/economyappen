@@ -10,6 +10,8 @@ import {
 } from 'react-native';
 import EconomyList from './../components/EconomyList';
 import { connect } from 'react-redux';
+// import { fireStoreConnect } from 'react-redux-firebase';
+// import { compose } from 'red'
 
 class FeedScreen extends React.Component {
   render() {
