@@ -13,28 +13,23 @@ class AddScreen extends React.Component {
       }
     }
 
-  onsubmit = () => {
-    const {date, category } = this.state;
-      this.props.createEconomyList({date, category})
-    }
+  onsubmit = () => {   
+    this.props.createEconomyList(this.state)
+  }
 
+  handleDate = text => {
+    this.setState({
+      date: text
+    })
+  }
 
+  handleCategory = text => {
+    this.setState({
+      category: text
+    })
+  }
+  
   render(){
-
- 
-
-    handleDate = text => {
-      this.setState({
-        date: text
-      })
-    }
-
-      handleCategory = text => {
-      this.setState({
-        category: text
-      })
-    }
-
     return (
       <ScrollView style={styles.container}>
         <Text style={styles.labelText}>
