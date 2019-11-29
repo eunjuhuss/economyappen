@@ -2,13 +2,13 @@ import * as firebase from 'firebase';
 import 'firebase/firestore';
 
 export const createEconomyList = (economyList) => 
-{  return (dispatch, getState, {getFirebase, getFirestore})=>{
+{  return (dispatch, getState )=>{
     //make async call ti database
-    const firestore = getFirestore();
-    firestore.collection('economyLists').add({
+   
+    firebase.firestore().collection('economyLists').add({
       ...economyList,
       date: new Date(),
-      category: 'dinner'
+      category: 'frukost'
     }).then(()=>{
       dispatch({ type: 'CREATE_ECONOMY_LIST', economyList});
     }).catch((err)=>{
@@ -16,3 +16,19 @@ export const createEconomyList = (economyList) =>
     })
   };
 };
+
+// export const createEconomyList = (economyList) => 
+// {  return (dispatch, getState, {getFirebase, getFirestore})=>{
+//     //make async call ti database
+//     const firestore = getFirestore();
+//     firestore.collection('economyLists').add({
+//       ...economyList,
+//       date: new Date(),
+//       category: 'frukost'
+//     }).then(()=>{
+//       dispatch({ type: 'CREATE_ECONOMY_LIST', economyList});
+//     }).catch((err)=>{
+//       dispatch({ type: 'CREAT_ECONOMY_ERROR', err});
+//     })
+//   };
+// };
