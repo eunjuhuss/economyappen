@@ -11,6 +11,7 @@ class AddScreen extends React.Component {
         date: '',
         category: ''
       }
+      
 
     }
 
