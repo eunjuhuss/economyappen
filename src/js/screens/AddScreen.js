@@ -16,7 +16,11 @@ class AddScreen extends React.Component {
     }
 
   onsubmit = () => {   
-    this.props.createEconomyList(this.state)
+    this.props.createEconomyList(this.state.date, this.state.category)
+    this.setState({
+      date:'',
+      category:''
+    })
   }
 
   handleDate = text => {
@@ -41,6 +45,7 @@ class AddScreen extends React.Component {
           style={styles.input}
           placeholder='date'
           onChangeText = {this.handleDate}
+          value={this.state.date}
         />
         <Text style={styles.labelText}>
           category:
@@ -49,6 +54,7 @@ class AddScreen extends React.Component {
           style={styles.input}
           placeholder='category'
           onChangeText = {this.handleCategory}
+          value={this.state.category}
         />
         <TouchableOpacity onPress={()=>this.onsubmit()}>
           <Text>
@@ -60,13 +66,13 @@ class AddScreen extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    createEconomyList: (economyList) => dispatch(createEconomyList(economyList))
-  }
-}
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     createEconomyList: (economyList) => dispatch(createEconomyList(economyList))
+//   }
+// }
 
-export default connect(null, mapDispatchToProps)(AddScreen)
+export default connect(null, {createEconomyList})(AddScreen)
 
 AddScreen.navigationOptions = {
   title: 'Add',
