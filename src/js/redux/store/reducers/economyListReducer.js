@@ -27,6 +27,8 @@ function economyListReducer (state = initState, action) {
     case 'CREATE_ECONOMY_LIST':
       console.log('created economy', action.payload);
       return state;
+         case 'CREATE_ECONOMY_LIST_FETCH':
+      return {...state, economyList:action.payload};
       default:
   return state
   }

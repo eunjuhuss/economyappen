@@ -6,9 +6,11 @@ import {
   StyleSheet,
   Text,
   View,
+  FlatList
 } from 'react-native';
 
 const EconomyList = ({economyList}) => {  
+   console.log('economyList', economyList);
   return (
     <View>
       <ScrollView>  
@@ -21,10 +23,26 @@ const EconomyList = ({economyList}) => {
                 </Text>
               )
           })}
+
+          {/* <FlatList data={this.props.economyList}
+                    keyExtractor={(item) => item.key}
+                    showsVerticalScrollIndicator={false}
+                    renderItem={({item})=> {
+                      return (
+                        <View style={styles.itemContainer}>
+                          <Text>
+                            {item.date}
+                            {item.category}
+                          </Text>
+                        </View>
+                      )
+                    }} /> */}
+
+                    {/* // }} */}
         </View>     
       </ScrollView>
     </View>
   );  
-}
+}                 
 
 export default EconomyList;

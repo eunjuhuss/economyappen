@@ -7,23 +7,42 @@ import {
   StyleSheet,
   Text,
   View,
+  FlatList
 } from 'react-native';
 import EconomyList from './../components/EconomyList';
+import { getEconomyList } from '../redux/store/actions/economyActions';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 // import { fireStoreConnect } from 'react-redux-firebase';
 // import { compose } from 'red'
 
 class FeedScreen extends React.Component {
+  componentDidMount(){
+  this.props.getEconomyList();
+  }
   render() {
-    console.log(this.props.economyList);
+    console.log('props.economyList', this.props.economyList);
 
-  const { economyList } = this.props;
+  const { economyList } = this.props.economyList;
     return (
       <View style={styles.container}>
         <ScrollView
           style={styles.container}
           contentContainerStyle={styles.contentContainer}>
-            <EconomyList economyList={economyList}/>
+            <FlatList data={this.props.economyList}
+                    keyExtractor={(item) => item.key}
+                    showsVerticalScrollIndicator={false}
+                    renderItem={({item})=> {
+                      return (
+                        <View style={styles.itemContainer}>
+                          <Text>
+                            {item.date}
+                            {item.category}
+                          </Text>
+                        </View>
+                      )
+                    }} /> 
+            
         
         </ScrollView>
       </View>
@@ -46,9 +65,17 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => {
-  return {
-    economyList: state.economyList.economyList
+
+  const economyList = _.map(state.economyList.economyList, (value, key)=> {
+     return {
+    ...value,
+    key:key
   }
+  })
+  return {
+    economyList
+  }
+ 
 }
 
-export default connect(mapStateToProps)(FeedScreen);
+export default connect(mapStateToProps, {getEconomyList})(FeedScreen);
