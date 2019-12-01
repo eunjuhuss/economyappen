@@ -22,10 +22,10 @@ class FeedScreen extends React.Component {
 
     return (
       <View style={styles.container}>
+
         <ScrollView
           contentContainerStyle={styles.contentContainer}>
-            <View 
-              style=    {styles.totalEconomyViewContainer}>
+            <View style={styles.totalEconomyViewContainer}>
               <Text style={styles.totalLabel}>TOTAL</Text>
               <Text style={styles.incomeLabel}>INCOME</Text> 
               <Text style={styles.expencesLabel}>EXPENCES</Text> 
@@ -35,7 +35,8 @@ class FeedScreen extends React.Component {
               />
             
         </ScrollView>
-      </View>
+        </View>
+   
     );
   }
 }

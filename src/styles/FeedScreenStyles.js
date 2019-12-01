@@ -9,21 +9,31 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.mainGreenColor,
     height: Dimensions.hp(100),
     
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    
+    borderColor: 'red',
+    borderWidth: 1
+    },
   contentContainer: {
     marginTop: 30,
     backgroundColor: Colors.mainBlackColor,
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+
+    borderColor: 'red',
+    borderWidth: 1
   },
   totalEconomyViewContainer: {
-    paddingTop: 40,
+    padding: 20,
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-around',
-    alignItems: 'center',
+    // alignItems: 'center',
+
+
+    borderColor: 'red',
+    borderWidth: 1
   },
   totalLabel: {
     color: Colors.mainWhiteColor,

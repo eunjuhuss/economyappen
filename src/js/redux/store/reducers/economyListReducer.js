@@ -1,25 +1,5 @@
 const initState = {
-  economyList: [
-    {
-      id: '1',
-      date: "2019-01-01",
-      category: "food",
-      description: "buy food",
-      income: 100,
-      expenses: 100,
-      total: 100    
-    },
-    {
-      id: '2',
-      date: "2019-01-02",
-      category: "food",
-      description: "buy food",
-      income: 100,
-      expenses: 100,
-      total: 100    
-    },
-    
-  ]
+  economyList: {}
 }
 
 function economyListReducer (state = initState, action) {
@@ -33,7 +13,6 @@ function economyListReducer (state = initState, action) {
   return state
   }
 
- 
 }
 
 export default economyListReducer;
