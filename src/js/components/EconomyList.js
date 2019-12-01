@@ -8,40 +8,27 @@ import {
   View,
   FlatList
 } from 'react-native';
+import { styles } from '../../styles/EconomyListsStyles';
 
-const EconomyList = ({economyList}) => {  
-   console.log('economyList', economyList);
+const EconomyList = ({listOfEconomy}) => {  
+
   return (
-    <View>
-      <ScrollView>  
-        <View>
-          { economyList && economyList.map(
-            economy=>{
-              return (
-                <Text key={economy.id}>
-                  {economy.category}
-                </Text>
-              )
-          })}
-
-          {/* <FlatList data={this.props.economyList}
-                    keyExtractor={(item) => item.key}
-                    showsVerticalScrollIndicator={false}
-                    renderItem={({item})=> {
-                      return (
-                        <View style={styles.itemContainer}>
-                          <Text>
-                            {item.date}
-                            {item.category}
-                          </Text>
-                        </View>
-                      )
-                    }} /> */}
-
-                    {/* // }} */}
-        </View>     
-      </ScrollView>
-    </View>
+      <FlatList 
+        data={listOfEconomy}
+        keyExtractor={(item) => item.key}
+        showsVerticalScrollIndicator={false}
+        renderItem={({item})=> {
+          return (
+            <View style={styles.itemContainer}>
+              <Text>
+                {item.date}
+                {item.category}
+              </Text>
+            </View>  
+          )
+        }} 
+      />    
+      
   );  
 }                 
 
