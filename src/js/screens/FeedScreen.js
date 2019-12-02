@@ -29,12 +29,11 @@ class FeedScreen extends React.Component {
               <Text style={styles.incomeLabel}>INCOME</Text> 
               <Text style={styles.expencesLabel}>EXPENCES</Text> 
             </View>     
-              <EconomyList 
-                listOfEconomy={this.props.economyList} 
-              />            
+            <EconomyList 
+              listOfEconomy={this.props.economyList} 
+            />            
         </ScrollView>
-        </View>
-   
+      </View>
     );
   }
 }

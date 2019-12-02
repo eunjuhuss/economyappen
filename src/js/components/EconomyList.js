@@ -46,7 +46,7 @@ const EconomyList = ({listOfEconomy}) => {
                 </Text>
               </View>
               <Text style={styles.incomeExpencesText}>
-                -100
+                {item.expences}
               </Text>
               <Text style={styles.currencyText}>
                 kr

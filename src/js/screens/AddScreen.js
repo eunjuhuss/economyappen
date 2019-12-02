@@ -3,56 +3,98 @@ import { ScrollView, StyleSheet, Text, TextInput } from 'react-native';
 import { createEconomyList } from '../redux/store/actions/economyActions';
 import { connect } from 'react-redux';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import AddinputList from '../components/AddInputList';
 
 class AddScreen extends React.Component {
   constructor(props){
     super(props)
-    this.state={
+    this.state = {
       date: '',
-      category: ''
+      category: '',
+      collected:'',
+      description: ''
     }  
   }
 
-  onsubmit = () => {   
-    this.props.createEconomyList(this.state.date, this.state.category)
+  onsubmit = () => { 
+    this.props.createEconomyList(
+      this.state.date, 
+      this.state.category, 
+      this.state.collected,
+      this.state.description,
+      this.state.expences
+    )
     this.setState({
       date:'',
-      category:''
+      category:'',
+      collected:'',
+      description: '',
+      expences: 0      
     })
   }
 
-  handleDate = text => {
+  handleDate = date => {
     this.setState({
-      date: text
+      date: date
     })
   }
 
-  handleCategory = text => {
+  handleCategory = category => {
     this.setState({
-      category: text
+      category: category
+    })
+  }
+
+  handleCollected = collected => {
+    this.setState({
+      collected: collected
+    })
+  }
+
+  handleDescription = description => {
+    this.setState({
+      description: description
+    })
+  }
+
+  handleExpences = expences => {
+    this.setState({
+      expences: expences
     })
   }
   
   render(){
     return (
       <ScrollView style={styles.container}>
-        <Text style={styles.labelText}>
-          date:
-        </Text>
-        <TextInput
-          style={styles.input}
-          placeholder='date'
-          onChangeText = {this.handleDate}
+        <AddinputList 
+          icon={'calendar'}
+          label={'date'}
           value={this.state.date}
+          onChangeText={this.handleDate}
         />
-        <Text style={styles.labelText}>
-          category:
-        </Text>
-        <TextInput
-          style={styles.input}
-          placeholder='category'
-          onChangeText = {this.handleCategory}
+        <AddinputList 
+          icon={'folder'}
+          label={'category'}
           value={this.state.category}
+          onChangeText={this.handleCategory}
+        />
+        <AddinputList 
+          icon={'options'}
+          label={'collected'}
+          value={this.state.collected}
+          onChangeText={this.handleCollected}
+        />
+        <AddinputList 
+          icon={'book'}
+          label={'description'}
+          value={this.state.description}
+          onChangeText={this.handleDescription}
+        />
+        <AddinputList 
+          icon={'switch'}
+          label={'income/expences'}
+          value={this.state.expences}
+          onChangeText={this.handleExpences}
         />
         <TouchableOpacity onPress={()=>this.onsubmit()}>
           <Text>
