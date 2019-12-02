@@ -7,9 +7,23 @@ import {
 } from 'react-native';
 
 export const styles = StyleSheet.create({
-  container: {
+  inputContainer: {
+    padding: 10,
     flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#fff',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
+  labelText: {
+    color: Colors.subGrayColor,
+    fontFamily: Fonts.headText
+  },
+  input: {
+    width: Dimensions.wp(50),
+    height: 50,
+    borderRadius: 5,
+    paddingLeft: 10,
+    backgroundColor: Colors.subGrayColor,
+    fontFamily: Fonts.subText
+
+  }
 });

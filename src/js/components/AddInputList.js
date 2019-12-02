@@ -5,7 +5,7 @@ import { styles } from '../../styles/AddInputListStyles';
 
 const AddInputList =({icon, label, value, onChangeText})=> {
   return (   
-    <View>
+    <View style={styles.inputContainer}>
       <Ionicons 
         size={26} 
         style={styles.categoryIcon} 
