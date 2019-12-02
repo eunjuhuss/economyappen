@@ -20,10 +20,7 @@ export const styles = StyleSheet.create({
   input: {
     width: Dimensions.wp(50),
     height: 50,
-    borderRadius: 5,
     paddingLeft: 10,
-    backgroundColor: Colors.subGrayColor,
     fontFamily: Fonts.subText
-
   }
 });

@@ -3,15 +3,11 @@ import {
   Platform
 } from 'react-native';
 import Colors from '../js/constants/Colors';
-import Dimensions from '../js/constants/Dimensions';
-import Fonts from '../js/constants/Fonts';
 
 export const styles = StyleSheet.create({
   iconContainer: {
     backgroundColor: Colors.mainWhiteColor,
-    width: Dimensions.wp(10),
     padding: 10,
-    margin: 10,
     width: 45,
     borderRadius: 15,
     borderColor: Colors.mainWhiteColor,
@@ -33,6 +29,6 @@ export const styles = StyleSheet.create({
   },
   icon: {
     fontSize: 30,
-    color: Colors.highlightRed
+    color: Colors.mainGreenColor
   }
 })
