@@ -27,7 +27,7 @@ class AddScreen extends React.Component {
     this.setState({
       date:'',
       category:'',
-      collected:'',
+      paymentMethod:'',
       description: '',
       expences: 0      
     })
@@ -45,9 +45,9 @@ class AddScreen extends React.Component {
     })
   }
 
-  handleCollected = collected => {
+  handleCollected = paymentMethod => {
     this.setState({
-      collected: collected
+      paymentMethod: paymentMethod
     })
   }
 
@@ -80,9 +80,9 @@ class AddScreen extends React.Component {
         />
         <AddinputList 
           icon={'options'}
-          label={'collected'}
-          value={this.state.collected}
-          onChangeText={this.handleCollected}
+          label={'paymentMethod'}
+          value={this.state.paymentMethod}
+          onChangeText={this.handlePaymentMethod}
         />
         <AddinputList 
           icon={'book'}

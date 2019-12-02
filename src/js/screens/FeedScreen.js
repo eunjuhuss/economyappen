@@ -14,12 +14,10 @@ import _ from 'lodash';
 
 class FeedScreen extends React.Component {
   componentDidMount(){
-  this.props.getEconomyList();
+    this.props.getEconomyList();
   }
 
   render() {
-    console.log('props.economyList', this.props.economyList);
-
     return (
       <View style={styles.container}>
         <ScrollView

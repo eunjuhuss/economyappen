@@ -19,7 +19,7 @@ const AddInputList =({icon, label, value, onChangeText})=> {
       <TextInput
         style={styles.input}
         placeholder={label}
-        onChangeText = {onChangeText}
+        onChangeText={onChangeText}
         value={value}
       />
     </View> 
