@@ -5,35 +5,20 @@ import Fonts from '../js/constants/Fonts';
 
 export const styles = StyleSheet.create({
   container: {
-    // paddingTop: Dimensions.hp(30),
     backgroundColor: Colors.mainGreenColor,
-    height: Dimensions.hp(100),
-    
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    
-    borderColor: 'red',
-    borderWidth: 1
+    height: Dimensions.hp(100)
     },
   contentContainer: {
     marginTop: 30,
     backgroundColor: Colors.mainBlackColor,
     borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
-
-    borderColor: 'red',
-    borderWidth: 1
+    borderTopRightRadius: 30
   },
   totalEconomyViewContainer: {
     padding: 20,
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    // alignItems: 'center',
-
-
-    borderColor: 'red',
-    borderWidth: 1
+    justifyContent: 'space-around'
   },
   totalLabel: {
     color: Colors.mainWhiteColor,
@@ -50,6 +35,4 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.headText,
     fontSize: 14
   }
-
-
 })

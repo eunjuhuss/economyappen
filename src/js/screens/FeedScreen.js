@@ -22,7 +22,6 @@ class FeedScreen extends React.Component {
 
     return (
       <View style={styles.container}>
-
         <ScrollView
           contentContainerStyle={styles.contentContainer}>
             <View style={styles.totalEconomyViewContainer}>
@@ -32,8 +31,7 @@ class FeedScreen extends React.Component {
             </View>     
               <EconomyList 
                 listOfEconomy={this.props.economyList} 
-              />
-            
+              />            
         </ScrollView>
         </View>
    
