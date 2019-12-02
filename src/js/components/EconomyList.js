@@ -9,7 +9,7 @@ import {
   FlatList
 } from 'react-native';
 import { styles } from '../../styles/EconomyListsStyles';
-import { Ionicons } from '@expo/vector-icons';
+import LabelIcon from '../components/LabelIcon';
 
 const EconomyList = ({listOfEconomy}) => {
   return (
@@ -29,14 +29,7 @@ const EconomyList = ({listOfEconomy}) => {
                 </Text>
                 <View style={styles.verticalLine} />
               </View>              
-              <View style={styles.iconContainer}> 
-                <Ionicons
-                  style={styles.categoryIcon}
-                  name={Platform.OS === 'ios' 
-                  ? 'ios-calendar' 
-                  : 'md-calendar'}
-                />
-              </View>
+              <LabelIcon type={'briefcase'}/>       
               <View style={styles.categoryContainer}>             
                 <Text style={styles.categoryText}>
                   {item.category}
