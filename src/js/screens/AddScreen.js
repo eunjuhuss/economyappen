@@ -7,13 +7,11 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 class AddScreen extends React.Component {
   constructor(props){
     super(props)
-      this.state={
-        date: '',
-        category: ''
-      }
-      
-
-    }
+    this.state={
+      date: '',
+      category: ''
+    }  
+  }
 
   onsubmit = () => {   
     this.props.createEconomyList(this.state.date, this.state.category)
