@@ -13,12 +13,13 @@ import AddinputList from '../components/AddInputList';
 import { styles } from '../../styles/AddScreenStyles';
 import CustomButton from '../components/CustomButton';
 import AddHeader from '../components/headers/AddHeader';
+import Calendar from '../components/Calendar';
 
 class AddScreen extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      date: '',
+      date: new Date().getDate(),
       category: '',
       collected:'',
       description: ''
@@ -81,11 +82,9 @@ class AddScreen extends React.Component {
           <Text style={styles.incomeLabel}>INCOME</Text> 
         </View>
         <View style={styles.addInputListContainer}>
-          <AddinputList 
-            icon={'calendar'}
-            label={'date'}
-            value={this.state.date}
-            onChangeText={this.handleDate}
+          <Calendar
+            date={this.state.date}
+            onDateChange={this.handleDate}
           />
           <AddinputList 
             icon={'folder'}
