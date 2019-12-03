@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import * as firebase from 'firebase';
 import { styles } from '../../styles/LoginScreenStyles';
+import CustomButton from '../components/CustomButton';
 // import { connect } from 'react-redux';
 // import { setUserName, watchUserData } from './../redux/app-redux';
 
@@ -37,6 +38,13 @@ export default class LoginScreen extends React.Component {
         // }
         // this.props.watchUserData();
     }
+
+      onPressLogin = () => {
+            this.props.navigation.navigate('Feed');
+        }
+
+
+
     render() {
 
         // onSignOut = () => {
@@ -47,10 +55,7 @@ export default class LoginScreen extends React.Component {
         //   this.props.setUserName(this.state.name);
         // }
 
-        onPressLogin = () => {
-            this.props.navigation.navigate('Feed');
-        }
-
+      
         return (
             <View style={styles.container}>
                 <ScrollView
@@ -69,12 +74,11 @@ export default class LoginScreen extends React.Component {
                         style={styles.input}
                         placeholder='Password'
                     />
-                    <TouchableOpacity
-                        style={styles.loginButton}
-                        onPress={() => onPressLogin()}
-                    >
-                        <Text style={styles.buttonText}>Login</Text>
-                    </TouchableOpacity>
+                    <CustomButton
+                        color={'black'}
+                        title='Login'
+                        onPress={()=>this.onPressLogin()}
+                    />
                     <TextInput
 
                     // onChangeText={(text)=> { this.setState({name: text})}}

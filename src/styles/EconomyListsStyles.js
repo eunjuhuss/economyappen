@@ -35,40 +35,6 @@ export const styles = StyleSheet.create({
     color: Colors.mainGreenColor,
     fontSize: 14
   },
-  iconContainer: {
-    backgroundColor: Colors.mainWhiteColor,
-    width: Dimensions.wp(10),
-    padding: 10,
-    margin: 10,
-    width: 45,
-    borderRadius: 15,
-    borderColor: Colors.mainWhiteColor,
-    borderWidth: 1,
-    ...Platform.select({
-      ios: {
-        shadowColor: '#000',
-        shadowRadius: 2,
-        shadowOffset: { 
-          width: 0, 
-          height: 2 
-        },
-        shadowOpacity: 0.16,
-      },
-      android: {
-        elevation: 4,
-      },
-    })
-  },
-  categoryContainer: {
-    width: Dimensions.wp(50),
-    flex: 1,
-    flexGrow: 1,
-    marginLeft: 20
-  },
-  categoryIcon: {   
-    fontSize: 30,
-    color: Colors.highlightRed
-  },
   categoryText: {   
     fontFamily: Fonts.headText,
     color: Colors.mainBlackColor

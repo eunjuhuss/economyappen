@@ -2,31 +2,31 @@ import { StyleSheet } from 'react-native';
 import Colors from '../js/constants/Colors';
 import Dimensions from '../js/constants/Dimensions';
 import Fonts from '../js/constants/Fonts';
-
+                    
 export const styles = StyleSheet.create({
-  container: {
-    paddingTop: Dimensions.hp(30),
+  singleInputContainer: {
+    padding: 10,
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: Colors.mainGreenColor
+    flexDirection: 'row',
+    // justifyContent: 'space-around'
   },
-  contentContainer: {
-    paddingTop: 30,
+  textAndinputContainer: {
+    padding: 10,
+    flexGrow: 1,
+    width: Dimensions.wp(70),
+
+    borderWidth: 2,
+    borderColor: 'red'
   },
   labelText: {
-    marginTop: 20,
-    marginBottom: 10,
     color: Colors.subGrayColor,
     fontFamily: Fonts.headText
   },
   input: {
-    width: Dimensions.wp(70),
     height: 50,
-    borderRadius: 5,
     paddingLeft: 10,
-    marginBottom: 10,
-    backgroundColor: Colors.mainWhiteColor,
-    fontFamily: Fonts.subText
+    fontFamily: Fonts.subText,
+    flexGrow: 1,
+    // width: Dimensions.wp(40),
   }
-})
+});

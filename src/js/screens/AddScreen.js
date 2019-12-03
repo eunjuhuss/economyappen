@@ -1,65 +1,123 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, TextInput } from 'react-native';
+import { 
+  ScrollView, 
+  StyleSheet, 
+  Text,
+  View,
+  TextInput 
+} from 'react-native';
 import { createEconomyList } from '../redux/store/actions/economyActions';
 import { connect } from 'react-redux';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import AddinputList from '../components/AddInputList';
+import { styles } from '../../styles/AddScreenStyles';
+import CustomButton from '../components/CustomButton';
 
 class AddScreen extends React.Component {
   constructor(props){
     super(props)
-    this.state={
+    this.state = {
       date: '',
-      category: ''
+      category: '',
+      collected:'',
+      description: ''
     }  
   }
 
-  onsubmit = () => {   
-    this.props.createEconomyList(this.state.date, this.state.category)
+  onsubmit = () => { 
+    this.props.createEconomyList(
+      this.state.date, 
+      this.state.category, 
+      this.state.collected,
+      this.state.description,
+      this.state.expences
+    )
     this.setState({
       date:'',
-      category:''
+      category:'',
+      paymentMethod:'',
+      description: '',
+      expences: 0      
     })
   }
 
-  handleDate = text => {
+  handleDate = date => {
     this.setState({
-      date: text
+      date: date
     })
   }
 
-  handleCategory = text => {
+  handleCategory = category => {
     this.setState({
-      category: text
+      category: category
+    })
+  }
+
+  handleCollected = paymentMethod => {
+    this.setState({
+      paymentMethod: paymentMethod
+    })
+  }
+
+  handleDescription = description => {
+    this.setState({
+      description: description
+    })
+  }
+
+  handleExpences = expences => {
+    this.setState({
+      expences: expences
     })
   }
   
   render(){
     return (
-      <ScrollView style={styles.container}>
-        <Text style={styles.labelText}>
-          date:
-        </Text>
-        <TextInput
-          style={styles.input}
-          placeholder='date'
-          onChangeText = {this.handleDate}
-          value={this.state.date}
-        />
-        <Text style={styles.labelText}>
-          category:
-        </Text>
-        <TextInput
-          style={styles.input}
-          placeholder='category'
-          onChangeText = {this.handleCategory}
-          value={this.state.category}
-        />
-        <TouchableOpacity onPress={()=>this.onsubmit()}>
-          <Text>
-            submit
-          </Text>
-        </TouchableOpacity>
+      <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.contentContainer}>
+        <View style={styles.titleHeaderContainer}>
+          <Text style={styles.expencesLabel}>EXPENCES</Text>
+          <Text style={styles.incomeLabel}>INCOME</Text> 
+        </View>
+        <View style={styles.addInputListContainer}>
+          <AddinputList 
+            icon={'calendar'}
+            label={'date'}
+            value={this.state.date}
+            onChangeText={this.handleDate}
+          />
+          <AddinputList 
+            icon={'folder'}
+            label={'category'}
+            value={this.state.category}
+            onChangeText={this.handleCategory}
+          />
+          <AddinputList 
+            icon={'options'}
+            label={'paymentMethod'}
+            value={this.state.paymentMethod}
+            onChangeText={this.handlePaymentMethod}
+          />
+          <AddinputList 
+            icon={'book'}
+            label={'description'}
+            value={this.state.description}
+            onChangeText={this.handleDescription}
+          />
+          <AddinputList 
+            icon={'switch'}
+            label={'income/expences'}
+            value={this.state.expences}
+            onChangeText={this.handleExpences}
+          />      
+          <CustomButton
+            color={'red'} 
+            title={'Submit'}
+            onPress={()=>this.onsubmit()}
+          />
+        </View>       
       </ScrollView>
+      </View>
     );
   }
 }
@@ -75,11 +133,3 @@ export default connect(null, {createEconomyList})(AddScreen)
 AddScreen.navigationOptions = {
   title: 'Add',
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#fff',
-  },
-});
