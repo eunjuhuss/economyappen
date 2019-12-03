@@ -1,23 +1,11 @@
 import React, { Component } from 'react';
-import { View, Platform } from 'react-native';
 import DatePicker from 'react-native-datepicker';
-import { Ionicons } from '@expo/vector-icons';
 import LabelIcon from '../components/LabelIcon';
 import Fonts from '../constants/Fonts';
 import Colors from '../constants/Colors';
 
-export default class Calendar extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      date:'2019-12-03'
-    }
-  }
-  render() {
-    const {
-      date,
-      onDateChange
-    } = this.props;
+const Calendar = ({date, onDateChange}) => {
+
     return (      
       <DatePicker
         iconComponent={
@@ -54,5 +42,7 @@ export default class Calendar extends React.Component {
         onDateChange={onDateChange}
       />      
     )
-  }
 }
+
+export default Calendar;
+
