@@ -9,7 +9,6 @@ export const styles = StyleSheet.create({
     height: Dimensions.hp(100)
     },
   contentContainer: {
-    marginTop: 30,
     backgroundColor: Colors.mainBlackColor,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30
