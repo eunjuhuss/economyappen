@@ -19,7 +19,7 @@ class AddScreen extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      date: '2019-05-15',
+      date: new Date().getDate(),
       category: '',
       collected:'',
       description: ''
