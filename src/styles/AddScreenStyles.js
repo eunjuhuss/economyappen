@@ -6,8 +6,8 @@ import Fonts from '../js/constants/Fonts';
 export const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.mainGreenColor,
-    height: Dimensions.hp(100)
-    },
+    flex: 1
+  },
   contentContainer: {
     marginTop: 30,
     backgroundColor: Colors.mainBlackColor,
@@ -29,7 +29,8 @@ export const styles = StyleSheet.create({
     backgroundColor:Colors.mainWhiteColor,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
-    height: Dimensions.hp(100)
+    flex: 1,
+    // height: Dimensions.hp(100)
   },
   incomeLabel: {
     color: Colors.mainGreenColor,

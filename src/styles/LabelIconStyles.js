@@ -6,9 +6,13 @@ import Colors from '../js/constants/Colors';
 
 export const styles = StyleSheet.create({
   iconContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+
     backgroundColor: Colors.mainWhiteColor,
-    padding: 10,
+    // padding: 10,
     width: 45,
+    height: 45,
     borderRadius: 15,
     borderColor: Colors.mainWhiteColor,
     borderWidth: 1,
@@ -29,6 +33,9 @@ export const styles = StyleSheet.create({
   },
   icon: {
     fontSize: 30,
-    color: Colors.mainGreenColor
+    color: Colors.mainGreenColor,
+    padding:10,
+    borderWidth: 2,
+    borderColor: 'red'
   }
 })

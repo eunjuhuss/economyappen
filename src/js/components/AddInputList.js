@@ -7,7 +7,7 @@ import {
 import { styles } from '../../styles/AddInputListStyles';
 import LabelIcon from '../components/LabelIcon';
 
-const BLUE = "#8CE1AD";
+const MAIN_GREEN = "#8CE1AD";
 const LIGHT_GRAY = "#8E8E8B";
 
 class AddInputList extends React.Component {
@@ -38,24 +38,26 @@ class AddInputList extends React.Component {
     } = this.props;
     const { isFocused } = this.state;
     return (    
-      <View style={styles.inputContainer}>
-        <LabelIcon type={icon}/> 
-        <Text style={styles.labelText}>
-          {label}
-        </Text>
-        <TextInput
-          style={styles.input}
-          placeholder={label}
-          onChangeText={onChangeText}
-          value={value}
-          underlineColorAndroid={
-            isFocused ? BLUE : LIGHT_GRAY
-          }
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          {...otherProps}
-        />
-      </View> 
+      <View style={styles.singleInputContainer}>
+        <LabelIcon type={icon}/>
+        {/* <View style={styles.textAndinputContainer}> */}
+          {/* <Text style={styles.labelText}>
+            {label}
+          </Text> */}
+          <TextInput
+            style={styles.input}
+            placeholder={label}
+            onChangeText={onChangeText}
+            value={value}
+            underlineColorAndroid={
+              isFocused ? MAIN_GREEN : LIGHT_GRAY
+            }
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            {...otherProps}
+          />
+        </View>
+      // </View> 
     )
   }
 }
