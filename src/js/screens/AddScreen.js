@@ -12,6 +12,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import AddinputList from '../components/AddInputList';
 import { styles } from '../../styles/AddScreenStyles';
 import CustomButton from '../components/CustomButton';
+import AddHeader from '../components/headers/AddHeader';
 
 class AddScreen extends React.Component {
   constructor(props){
@@ -127,9 +128,10 @@ class AddScreen extends React.Component {
 //     createEconomyList: (economyList) => dispatch(createEconomyList(economyList))
 //   }
 // }
+AddScreen.navigationOptions = {
+  header: <AddHeader />
+};
 
 export default connect(null, {createEconomyList})(AddScreen)
 
-AddScreen.navigationOptions = {
-  title: 'Add',
-};
+
