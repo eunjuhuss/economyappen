@@ -9,6 +9,7 @@ import {
 import EconomyList from './../components/EconomyList';
 import { styles } from '../../styles/FeedScreenStyles';
 import { getEconomyList } from '../redux/store/actions/economyActions';
+import FeedHeader from '../components/headers/FeedHeader';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
@@ -37,7 +38,7 @@ class FeedScreen extends React.Component {
 }
 
 FeedScreen.navigationOptions = {
-  title: 'Feed',
+  header: <FeedHeader />
 };
 
 const mapStateToProps = (state) => {
