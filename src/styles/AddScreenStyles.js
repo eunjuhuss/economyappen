@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     flex: 1,
-    // height: Dimensions.hp(100)
+    padding: 20
   },
   incomeLabel: {
     color: Colors.mainGreenColor,

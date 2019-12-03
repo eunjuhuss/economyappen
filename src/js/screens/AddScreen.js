@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import AddinputList from '../components/AddInputList';
 import { styles } from '../../styles/AddScreenStyles';
+import CustomButton from '../components/CustomButton';
 
 class AddScreen extends React.Component {
   constructor(props){
@@ -108,14 +109,13 @@ class AddScreen extends React.Component {
             label={'income/expences'}
             value={this.state.expences}
             onChangeText={this.handleExpences}
+          />      
+          <CustomButton
+            color={'red'} 
+            title={'Submit'}
+            onPress={()=>this.onsubmit()}
           />
-        </View>
-        <TouchableOpacity onPress={()=>this.onsubmit()}>
-          <Text>
-            submit
-          </Text>
-        </TouchableOpacity>
-        
+        </View>       
       </ScrollView>
       </View>
     );

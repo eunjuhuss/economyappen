@@ -34,8 +34,6 @@ export const styles = StyleSheet.create({
   icon: {
     fontSize: 30,
     color: Colors.mainGreenColor,
-    padding:10,
-    borderWidth: 2,
-    borderColor: 'red'
+    padding:10
   }
 })

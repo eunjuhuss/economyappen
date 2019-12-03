@@ -5,10 +5,10 @@ import {
 } from 'react-native';
 import { styles } from '../../styles/CustomButtonStyles';
 
-const CustomButton = ({onPress, title}) => {
+const CustomButton = ({onPress, title, color}) => {
   return(
     <TouchableOpacity
-      style={styles.CustomButton}
+      style={color === 'black' ? styles.blackCustomButton : styles.redCustomButton}
       onPress={onPress}
     >
       <Text style={styles.buttonText}>

@@ -38,6 +38,13 @@ export default class LoginScreen extends React.Component {
         // }
         // this.props.watchUserData();
     }
+
+      onPressLogin = () => {
+            this.props.navigation.navigate('Feed');
+        }
+
+
+
     render() {
 
         // onSignOut = () => {
@@ -48,10 +55,7 @@ export default class LoginScreen extends React.Component {
         //   this.props.setUserName(this.state.name);
         // }
 
-        onPressLogin = () => {
-            this.props.navigation.navigate('Feed');
-        }
-
+      
         return (
             <View style={styles.container}>
                 <ScrollView
@@ -71,6 +75,7 @@ export default class LoginScreen extends React.Component {
                         placeholder='Password'
                     />
                     <CustomButton
+                        color={'black'}
                         title='Login'
                         onPress={()=>this.onPressLogin()}
                     />
