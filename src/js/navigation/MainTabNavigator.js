@@ -7,6 +7,8 @@ import FeedScreen from '../screens/FeedScreen';
 import AddScreen from '../screens/AddScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import CategoryScreen from '../screens/CategoryScreen';
+import Fonts from '../constants/Fonts';
+import Colors from '../constants/Colors';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -106,8 +108,20 @@ const tabNavigator = createBottomTabNavigator({
   AddStack,
   CategoryStack,
   ProfileStack,
+}, 
+{
+  tabBarOptions: {
+    style: {
+      backgroundColor: Colors.mainWhiteColor,
+      borderTopColor: Colors.mainWhiteColor,
+    },
+    labelStyle: {
+      fontFamily: Fonts.headText
+    },
+    inactiveTintColor: Colors.subGrayColor,
+    activeTintColor: Colors.mainGreenColor
+  }
 });
 
 tabNavigator.path = '';
-
 export default tabNavigator;
