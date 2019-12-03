@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import * as firebase from 'firebase';
 import { styles } from '../../styles/LoginScreenStyles';
+import CustomButton from '../components/CustomButton';
 // import { connect } from 'react-redux';
 // import { setUserName, watchUserData } from './../redux/app-redux';
 
@@ -69,12 +70,10 @@ export default class LoginScreen extends React.Component {
                         style={styles.input}
                         placeholder='Password'
                     />
-                    <TouchableOpacity
-                        style={styles.loginButton}
-                        onPress={() => onPressLogin()}
-                    >
-                        <Text style={styles.buttonText}>Login</Text>
-                    </TouchableOpacity>
+                    <CustomButton
+                        title='Login'
+                        onPress={()=>this.onPressLogin()}
+                    />
                     <TextInput
 
                     // onChangeText={(text)=> { this.setState({name: text})}}

@@ -28,18 +28,5 @@ export const styles = StyleSheet.create({
     marginBottom: 10,
     backgroundColor: Colors.mainWhiteColor,
     fontFamily: Fonts.subText
-},
-loginButton: {
-  marginTop: Dimensions.wp(15),
-  backgroundColor: Colors.mainBlackColor,
-  borderRadius: 40,
-  height: 80,
-  justifyContent: 'center',
-  alignItems: 'center'  
-},
-buttonText: {
-  color: Colors.highlightYellow,
-  fontFamily: Fonts.headText,
-  fontSize: 18
-}
+  }
 })
