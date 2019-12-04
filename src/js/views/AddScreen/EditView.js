@@ -30,21 +30,21 @@ class EditView extends React.Component {
 
   onEdit = () => { 
     this.props.editEconomyList(
-      this.state.key, 
       this.state.date, 
       this.state.category, 
       this.state.paymentMethod, 
       this.state.description,
-      this.state.expences
+      this.state.expences,
+      this.state.key, 
     )
 
-    this.setState({
-      key: '',
+    this.setState({      
       date: '',
       category: '',
       paymentMethod: '',
       description: '',
-      expences: ''
+      expences: '',
+      key: '',
     })
   }
 

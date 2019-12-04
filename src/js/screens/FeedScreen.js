@@ -20,9 +20,11 @@ class FeedScreen extends React.Component {
 
   render() {
     const { navigation } = this.props;
+    console.log(this.props.loadingReducer)
     return (
       <View style={styles.container}>
-        <ScrollView
+      { this.props.loadingReducer ? <Text> Loading...</Text> 
+      : <ScrollView
           contentContainerStyle={styles.contentContainer}>
             <View style={styles.totalEconomyViewContainer}>
               <Text style={styles.totalLabel}>TOTAL</Text>
@@ -35,6 +37,8 @@ class FeedScreen extends React.Component {
               deleteEconomyList={this.props.deleteEconomyList}
             />            
         </ScrollView>
+      }
+        
       </View>
     );
   }
@@ -52,7 +56,8 @@ const mapStateToProps = (state) => {
     }
   })
   return {
-    economyList
+    economyList,
+    loadingReducer: state.loadingReducer.loadingReducer
   } 
 }
 

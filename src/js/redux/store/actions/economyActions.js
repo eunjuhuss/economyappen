@@ -2,11 +2,19 @@ import Firebase from './../../../constants/Firebase';
 
 export function getEconomyList(){  
   return (dispatch, getState )=>{
+    dispatch({
+      type: 'ECONOMY_LOADING_STATUS',
+      payload: true
+    })
     Firebase.database().ref('/economyLists').on('value',snapshot => {
       dispatch({ 
         type: 'CREATE_ECONOMY_LIST_FETCH', 
         payload: snapshot.val()
-        });      
+        })
+      dispatch({
+        type: 'ECONOMY_LOADING_STATUS',
+        payload: false
+      })     
       }
     );
   };
