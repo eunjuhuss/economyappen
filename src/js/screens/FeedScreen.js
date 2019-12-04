@@ -19,6 +19,7 @@ class FeedScreen extends React.Component {
   }
 
   render() {
+    const { navigation } = this.props;
     return (
       <View style={styles.container}>
         <ScrollView
@@ -28,7 +29,8 @@ class FeedScreen extends React.Component {
               <Text style={styles.incomeLabel}>INCOME</Text> 
               <Text style={styles.expencesLabel}>EXPENCES</Text> 
             </View>     
-            <EconomyList 
+            <EconomyList
+              navigation={navigation}
               listOfEconomy={this.props.economyList} 
             />            
         </ScrollView>

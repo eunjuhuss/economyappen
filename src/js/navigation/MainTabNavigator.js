@@ -9,6 +9,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 import CategoryScreen from '../screens/CategoryScreen';
 import Fonts from '../constants/Fonts';
 import Colors from '../constants/Colors';
+import EditView from '../views/AddScreen/EditView';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -18,6 +19,7 @@ const config = Platform.select({
 const FeedStack = createStackNavigator(
   {
     Feed: FeedScreen,
+    Edit: EditView
   },
   config
 );
@@ -39,7 +41,7 @@ FeedStack.path = '';
 
 const AddStack = createStackNavigator(
   {
-    Add: AddScreen,
+    Add: AddScreen
   },
   config
 );
