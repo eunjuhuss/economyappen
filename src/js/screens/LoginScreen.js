@@ -39,23 +39,13 @@ export default class LoginScreen extends React.Component {
         // this.props.watchUserData();
     }
 
-      onPressLogin = () => {
+    onPressLogin = () => {
             this.props.navigation.navigate('Feed');
         }
-
-
-
+    onPressSignup = () => {
+        this.props.navigation.navigate('Register');
+    }
     render() {
-
-        // onSignOut = () => {
-        //   firebase.auth().signOut();
-        // }
-
-        // login = () => {
-        //   this.props.setUserName(this.state.name);
-        // }
-
-      
         return (
             <View style={styles.container}>
                 <ScrollView
@@ -79,15 +69,15 @@ export default class LoginScreen extends React.Component {
                         title='Login'
                         onPress={()=>this.onPressLogin()}
                     />
-                    <TextInput
-
-                    // onChangeText={(text)=> { this.setState({name: text})}}
-                    />
-                    <TouchableOpacity
-
-                    // onPress={()=>login()} 
-                    />
-                    {/* <Text>{this.props.userData.name}</Text> */}
+                    <View style={styles.registerContainer}>
+                        <Text style={styles.registerInfoText}>
+                            Don't have an account yet?
+                        </Text>
+                        <TouchableOpacity onPress={()=>this.onPressSignup()}>
+                            <Text style={styles.signUpText}> SingUp</Text>
+                        </TouchableOpacity>                    
+                    </View>
+                    
                 </ScrollView>
             </View>
         );
