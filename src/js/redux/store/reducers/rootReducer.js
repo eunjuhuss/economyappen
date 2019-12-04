@@ -1,12 +1,12 @@
 import authReducer from './authReducer';
 import economyListReducer from './economyListReducer';
+import loadingReducer from './loadingReducer';
 import { combineReducers } from 'redux';
-import { firestoreReducer } from 'redux-firestore';
- 
+
 const rootReducer = combineReducers({
   auth: authReducer,
   economyList: economyListReducer,
-  firestore: firestoreReducer
+  loadingReducer: loadingReducer
 })
 
 export default rootReducer;
