@@ -4,7 +4,8 @@ import {
   ScrollView,
   StyleSheet,
   View,
-  Text
+  Text,
+  ActivityIndicator
 } from 'react-native';
 import EconomyList from './../components/EconomyList';
 import { styles } from '../../styles/FeedScreenStyles';
@@ -23,22 +24,25 @@ class FeedScreen extends React.Component {
     console.log(this.props.loadingReducer)
     return (
       <View style={styles.container}>
-      { this.props.loadingReducer ? <Text> Loading...</Text> 
-      : <ScrollView
-          contentContainerStyle={styles.contentContainer}>
-            <View style={styles.totalEconomyViewContainer}>
-              <Text style={styles.totalLabel}>TOTAL</Text>
-              <Text style={styles.incomeLabel}>INCOME</Text> 
-              <Text style={styles.expencesLabel}>EXPENCES</Text> 
-            </View>     
-            <EconomyList
-              navigation={navigation}
-              listOfEconomy={this.props.economyList}
-              deleteEconomyList={this.props.deleteEconomyList}
-            />            
-        </ScrollView>
-      }
-        
+      { this.props.loadingReducer ? 
+        <ActivityIndicator
+          size='large' 
+          style={styles.loading}
+        /> 
+        : <ScrollView
+            contentContainerStyle={styles.contentContainer}>
+              <View style={styles.totalEconomyViewContainer}>
+                <Text style={styles.totalLabel}>TOTAL</Text>
+                <Text style={styles.incomeLabel}>INCOME</Text> 
+                <Text style={styles.expencesLabel}>EXPENCES</Text> 
+              </View>     
+              <EconomyList
+                navigation={navigation}
+                listOfEconomy={this.props.economyList}
+                deleteEconomyList={this.props.deleteEconomyList}
+              />            
+          </ScrollView>
+        }        
       </View>
     );
   }
