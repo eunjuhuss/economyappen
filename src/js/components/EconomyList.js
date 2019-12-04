@@ -47,7 +47,7 @@ const EconomyList = ({listOfEconomy, navigation}) => {
               </Text>
               <FunctionIcon 
                 type={'create'} 
-                onPress={()=>navigation.navigate('Edit')}
+                onPress={()=>navigation.navigate('Edit',{...item})}
               />  
               <FunctionIcon 
                 type={'close'} 
