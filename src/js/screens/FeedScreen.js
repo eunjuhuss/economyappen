@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import EconomyList from './../components/EconomyList';
 import { styles } from '../../styles/FeedScreenStyles';
-import { getEconomyList } from '../redux/store/actions/economyActions';
+import { getEconomyList, deleteEconomyList } from '../redux/store/actions/economyActions';
 import FeedHeader from '../components/headers/FeedHeader';
 import { connect } from 'react-redux';
 import _ from 'lodash';
@@ -31,7 +31,8 @@ class FeedScreen extends React.Component {
             </View>     
             <EconomyList
               navigation={navigation}
-              listOfEconomy={this.props.economyList} 
+              listOfEconomy={this.props.economyList}
+              deleteEconomyList={this.props.deleteEconomyList}
             />            
         </ScrollView>
       </View>
@@ -55,4 +56,4 @@ const mapStateToProps = (state) => {
   } 
 }
 
-export default connect(mapStateToProps, {getEconomyList})(FeedScreen);
+export default connect(mapStateToProps, {getEconomyList, deleteEconomyList})(FeedScreen);
