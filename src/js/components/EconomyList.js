@@ -12,7 +12,7 @@ import { styles } from '../../styles/EconomyListsStyles';
 import LabelIcon from '../components/LabelIcon';
 import FunctionIcon from '../components/FunctionIcon';
 
-const EconomyList = ({listOfEconomy, navigation}) => {
+const EconomyList = ({listOfEconomy, navigation,deleteEconomyList}) => {
   return (
     <View style={styles.economyListsContainer}>
       <FlatList 
@@ -51,7 +51,7 @@ const EconomyList = ({listOfEconomy, navigation}) => {
               />  
               <FunctionIcon 
                 type={'close'} 
-                onPress={()=>pressDelete()}
+                onPress={()=>deleteEconomyList(item.key)}
               />  
             </View>  
           )

@@ -13,7 +13,7 @@ export function getEconomyList(){
 };
 
 export function createEconomyList(date, category, paymentMethod, description, expences){  
-  return (dispatch, getState )=>{
+  return (dispatch)=>{
     Firebase.database().ref('/economyLists').push({
       date, 
       category,
@@ -21,6 +21,12 @@ export function createEconomyList(date, category, paymentMethod, description, ex
       description,
       expences
     });
+  };
+};
+
+export function deleteEconomyList(key){  
+  return (dispatch)=>{
+Firebase.database().ref(`/economyLists/${key}`).remove();
   };
 };
 
