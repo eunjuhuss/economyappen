@@ -12,7 +12,7 @@ import { styles } from '../../styles/EconomyListsStyles';
 import LabelIcon from '../components/LabelIcon';
 import FunctionIcon from '../components/FunctionIcon';
 
-const EconomyList = ({listOfEconomy}) => {
+const EconomyList = ({listOfEconomy, navigation}) => {
   return (
     <View style={styles.economyListsContainer}>
       <FlatList 
@@ -47,7 +47,7 @@ const EconomyList = ({listOfEconomy}) => {
               </Text>
               <FunctionIcon 
                 type={'create'} 
-                onPress={()=>pressEdit()}
+                onPress={()=>navigation.navigate('Edit',{...item})}
               />  
               <FunctionIcon 
                 type={'close'} 
