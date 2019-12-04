@@ -21,8 +21,9 @@ class AddScreen extends React.Component {
     this.state = {
       date: new Date().getDate(),
       category: '',
-      collected:'',
-      description: ''
+      paymentMethod:'',
+      description: '',
+      expences: ''
     }  
   }
 
@@ -30,7 +31,7 @@ class AddScreen extends React.Component {
     this.props.createEconomyList(
       this.state.date, 
       this.state.category, 
-      this.state.collected,
+      this.state.paymentMethod,
       this.state.description,
       this.state.expences
     )
@@ -55,15 +56,16 @@ class AddScreen extends React.Component {
     })
   }
 
-  handleCollected = paymentMethod => {
-    this.setState({
-      paymentMethod: paymentMethod
-    })
-  }
-
   handleDescription = description => {
     this.setState({
       description: description
+    })
+  }
+
+  
+  handlePaymentMethod = paymentMethod => {
+    this.setState({
+      paymentMethod: paymentMethod
     })
   }
 

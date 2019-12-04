@@ -26,7 +26,13 @@ export function createEconomyList(date, category, paymentMethod, description, ex
 
 export function deleteEconomyList(key){  
   return (dispatch)=>{
-Firebase.database().ref(`/economyLists/${key}`).remove();
+    Firebase.database().ref(`/economyLists/${key}`).remove();
+  };
+};
+
+export function editEconomyList(date, category, paymentMethod, description, expences, key){  
+  return (dispatch)=>{
+    Firebase.database().ref(`/economyLists`).child(key).update({date, category, paymentMethod, description, expences});
   };
 };
 
