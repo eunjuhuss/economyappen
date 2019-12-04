@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.mainWhiteColor,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
-    height: Dimensions.hp(100),
+    // height: Dimensions.hp(100),
   },
   verticalLine: {
     borderLeftWidth: 0.5,

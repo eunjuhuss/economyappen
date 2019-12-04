@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { styles } from '../../styles/EconomyListsStyles';
 import LabelIcon from '../components/LabelIcon';
+import FunctionIcon from '../components/FunctionIcon';
 
 const EconomyList = ({listOfEconomy}) => {
   return (
@@ -44,6 +45,14 @@ const EconomyList = ({listOfEconomy}) => {
               <Text style={styles.currencyText}>
                 kr
               </Text>
+              <FunctionIcon 
+                type={'create'} 
+                onPress={()=>pressEdit()}
+              />  
+              <FunctionIcon 
+                type={'close'} 
+                onPress={()=>pressDelete()}
+              />  
             </View>  
           )
         }} 

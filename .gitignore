@@ -10,3 +10,5 @@ npm-debug.*
 web-build/
 web-report/
 node_modules
+.idea/
+
