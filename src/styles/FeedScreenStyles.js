@@ -8,6 +8,10 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.mainGreenColor,
     height: Dimensions.hp(100)
     },
+  loading:{
+    color: Colors.mainBlackColor
+
+  },
   contentContainer: {
     backgroundColor: Colors.mainBlackColor,
     borderTopLeftRadius: 30,
