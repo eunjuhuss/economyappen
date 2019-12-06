@@ -45,5 +45,9 @@ export const styles = StyleSheet.create({
     color: Colors.highlightYellow,
     fontFamily: Fonts.headText,
     fontSize: 15
+  },
+  errorText: {
+    color: Colors.highlightRed,
+    fontFamily: Fonts.subText
   }
 })

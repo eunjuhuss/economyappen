@@ -10,8 +10,6 @@ import { styles } from '../../styles/LoginScreenStyles';
 import CustomButton from '../components/CustomButton';
 import { createUser } from '../redux/store/actions/userActions';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
 
 class RegisterScreen extends React.Component {
   constructor(props) {
@@ -38,19 +36,21 @@ class RegisterScreen extends React.Component {
 
 
   handleRegister = () => {
-    // if (!this.isValid()) {
-    //   return ;
-    // }
     const { email, password } = this.state
+    if (!this.isValid()) {
+      return ;
+    }
+    
     this.props.createUser(
       email, password
-      ).then(()=>{this.props.navigation.navigate('Login')})
-    .catch(error => {
-      this.setState({
-        error: error.message
+      ).then(()=>{
+        this.props.history.replace('/')
+      }).catch(error => {
+        this.setState({
+          error: error.message
       })
     })
-    // this.props.navigation.navigate('Login');
+    this.props.navigation.navigate('Login');
   }
 
   render() {
@@ -79,6 +79,7 @@ class RegisterScreen extends React.Component {
             placeholder='Password'
             onChange={()=>this.handlePassword}
         />
+        { this.state.error ? <Text style={styles.errorText}>{this.state.error}</Text> : null }
           <CustomButton
             color={'black'}
             title='submit'

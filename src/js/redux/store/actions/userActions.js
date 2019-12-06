@@ -4,6 +4,9 @@ import Firebase from './../../../constants/Firebase';
 export function getUser() {
   return dispatch => {
     Firebase.auth().onAuthStateChanged(user => {
+      if(user.emailVerified){
+        
+      }
       dispatch({
         type: 'GET_USER',
         payload: user
@@ -32,6 +35,34 @@ export function login(email, password) {
 
 
 export function logout() {
-  return dispatch => Firebase.auth().signOut();
+  return dispatch => auth.signOut();
 }
+
+
+// export function createUser(){  
+//     return async (dispatch, getState) => {
+//         try {
+//             const { email, password } = getState().user
+//             const response = await Firebase.auth().createUserWithEmailAndPassword(email, password)
+//             dispatch({ type: SIGNUP, payload: response.user })
+//         } catch (e) {
+//             console.log(e)
+//         }
+//     }
+//   }
+
+
+
+
+// export function login(){
+//     return async (dispatch, getState) => {
+//         try {
+//             const { email, password } = getState().user
+//             const response = await Firebase.auth().signInWithEmailAndPassword(email, password)
+//             dispatch({ type: LOGIN, payload: response.user })
+//         } catch (e) {
+//             console.log(e)
+//         }
+//     }
+// }
 

@@ -32,9 +32,10 @@ class LoginScreen extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.email !== undefined) {
-        this.props.history.push('/');
-        }
+        console.log('nextProps', nextProps);
+        // if (nextProps.user.email !== undefined) {
+        // this.props.history.push('/');
+        // }
     }
 
     handleLogin = () => {
@@ -43,7 +44,7 @@ class LoginScreen extends React.Component {
             error: err
         });
     });
-            this.props.navigation.navigate('Feed');
+
 
         }
     onPressSignup = () => {
@@ -74,6 +75,7 @@ class LoginScreen extends React.Component {
                         onChangeText={password => this.setState({ password })}
                         secureTextEntry={true}
                     />
+                    { this.state.error ? <Text style={styles.errorText}>{this.state.error}</Text> : null }
                     <CustomButton
                         color={'black'}
                         title='Login'
