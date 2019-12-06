@@ -12,82 +12,84 @@ import {
 import * as firebase from 'firebase';
 import { styles } from '../../styles/LoginScreenStyles';
 import CustomButton from '../components/CustomButton';
-// import { connect } from 'react-redux';
-// import { setUserName, watchUserData } from './../redux/app-redux';
+import { login, getUser } from '../redux/store/actions/userActions';
+import { connect } from 'react-redux';
 
-// const mapStateToProps = (state) => {
-//   return {
-//     name: state.name,
-//     userData: state.userData
-//   };
-// }
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     setUserName: (text) => { dispatch(setUserName(text)) },
-//     watchUserData: () => { dispatch(watchUserData())},
-//   };
-// }
-
-export default class LoginScreen extends React.Component {
+class LoginScreen extends React.Component {
     constructor(props) {
 
-        super(props);
-        // this.state = {
-        //   name: this.props.name
-        // }
-        // this.props.watchUserData();
+    super(props);
+    this.state = {
+        email: '',
+        password: '',
+        error: ''
+        };
     }
 
-      onPressLogin = () => {
-            this.props.navigation.navigate('Feed');
+    componentWillMount() {
+        this.props.getUser();
+        console.log('this.props.getUser()',this.props.getUser())
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log('nextProps', nextProps);
+        // if (nextProps.user.email !== undefined) {
+        // this.props.history.push('/');
+        // }
+    }
+
+    handleLogin = () => {
+        this.props.login(this.state.email, this.state.password).catch(err => {
+        this.setState({
+            error: err
+        });
+    });
+
+
         }
-
-
-
+    onPressSignup = () => {
+        this.props.navigation.navigate('Register');
+    }
     render() {
-
-        // onSignOut = () => {
-        //   firebase.auth().signOut();
-        // }
-
-        // login = () => {
-        //   this.props.setUserName(this.state.name);
-        // }
-
-      
         return (
             <View style={styles.container}>
                 <ScrollView
                     contentContainerStyle={styles.contentContainer}>
                     <Text style={styles.labelText}>
-                        Username:
+                        email:
                     </Text>
                     <TextInput
+                        value={this.state.email}
                         style={styles.input}
-                        placeholder='Username'
+                        placeholder='email'
+                        onChangeText={email => this.setState({ email })}
+
                     />
                     <Text style={styles.labelText}>
                         Password:
                     </Text>
                     <TextInput
+                        value={this.state.password}
                         style={styles.input}
                         placeholder='Password'
+                        onChangeText={password => this.setState({ password })}
+                        secureTextEntry={true}
                     />
+                    { this.state.error ? <Text style={styles.errorText}>{this.state.error}</Text> : null }
                     <CustomButton
                         color={'black'}
                         title='Login'
-                        onPress={()=>this.onPressLogin()}
+                        onPress={()=>this.handleLogin()}
                     />
-                    <TextInput
-
-                    // onChangeText={(text)=> { this.setState({name: text})}}
-                    />
-                    <TouchableOpacity
-
-                    // onPress={()=>login()} 
-                    />
-                    {/* <Text>{this.props.userData.name}</Text> */}
+                    <View style={styles.registerContainer}>
+                        <Text style={styles.registerInfoText}>
+                            Don't have an account yet?
+                        </Text>
+                        <TouchableOpacity onPress={()=>this.onPressSignup()}>
+                            <Text style={styles.signUpText}> SignUp</Text>
+                        </TouchableOpacity>                    
+                    </View>
+                    
                 </ScrollView>
             </View>
         );
@@ -98,5 +100,9 @@ LoginScreen.navigationOptions = {
     header: null,
 };
 
+function mapStateToProps(state) {
+    return { user: state.user };
+}
 
-// export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
+
+export default connect(mapStateToProps, {login, getUser})(LoginScreen);

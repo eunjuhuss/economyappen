@@ -28,5 +28,26 @@ export const styles = StyleSheet.create({
     marginBottom: 10,
     backgroundColor: Colors.mainWhiteColor,
     fontFamily: Fonts.subText
+  },
+  registerContainer: {
+    flexGrow: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+    padding: 10
+  },
+  registerInfoText: {
+    color: Colors.mainWhiteColor,
+    fontFamily: Fonts.subText,
+    fontSize: 14
+  },
+  signUpText: {
+    color: Colors.highlightYellow,
+    fontFamily: Fonts.headText,
+    fontSize: 15
+  },
+  errorText: {
+    color: Colors.highlightRed,
+    fontFamily: Fonts.subText
   }
 })
