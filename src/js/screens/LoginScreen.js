@@ -12,7 +12,7 @@ import {
 import * as firebase from 'firebase';
 import { styles } from '../../styles/LoginScreenStyles';
 import CustomButton from '../components/CustomButton';
-import { login, getUser } from '../redux/store/actions/userActions';
+import { login } from '../redux/store/actions/userActions';
 import { connect } from 'react-redux';
 
 class LoginScreen extends React.Component {
@@ -26,37 +26,24 @@ class LoginScreen extends React.Component {
         };
     }
 
-    componentWillMount() {
-        this.props.getUser();
-        console.log('this.props.getUser()',this.props.getUser())
-    }
-
-    componentWillReceiveProps(nextProps) {
-        console.log('nextProps', nextProps);
-        // if (nextProps.user.email !== undefined) {
-        // this.props.history.push('/');
-        // }
-    }
-
     handleLogin = () => {
-        this.props.login(this.state.email, this.state.password).catch(err => {
-        this.setState({
-            error: err
-        });
-    });
+        this.props.login(this.state);
+        this.props.navigation.navigate('Register');
+    };
 
 
-        }
+
     onPressSignup = () => {
         this.props.navigation.navigate('Register');
     }
     render() {
+        const { error } = this.props;
         return (
             <View style={styles.container}>
                 <ScrollView
                     contentContainerStyle={styles.contentContainer}>
                     <Text style={styles.labelText}>
-                        email:
+                        Email:
                     </Text>
                     <TextInput
                         value={this.state.email}
@@ -75,7 +62,7 @@ class LoginScreen extends React.Component {
                         onChangeText={password => this.setState({ password })}
                         secureTextEntry={true}
                     />
-                    { this.state.error ? <Text style={styles.errorText}>{this.state.error}</Text> : null }
+                    { error ? <Text style={styles.errorText}>{error}</Text> : null }
                     <CustomButton
                         color={'black'}
                         title='Login'
@@ -100,9 +87,18 @@ LoginScreen.navigationOptions = {
     header: null,
 };
 
-function mapStateToProps(state) {
-    return { user: state.user };
+const mapStateToProps =(state)=>{
+    return { 
+        // user: state.userReducer.user,
+        error: state.userReducer.error
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        login: (user) => dispatch(login(user))
+    }
 }
 
 
-export default connect(mapStateToProps, {login, getUser})(LoginScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);

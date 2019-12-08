@@ -42,7 +42,7 @@ class RegisterScreen extends React.Component {
     }
     
     this.props.createUser(
-      email, password
+      email, password 
       ).then(()=>{
         this.props.history.replace('/')
       }).catch(error => {
@@ -77,6 +77,7 @@ class RegisterScreen extends React.Component {
             value={this.state.password}
             onChangeText={password => this.setState({ password })}
             placeholder='Password'
+            secureTextEntry={true}
             onChange={()=>this.handlePassword}
         />
         { this.state.error ? <Text style={styles.errorText}>{this.state.error}</Text> : null }
