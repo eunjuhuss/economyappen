@@ -1,22 +1,7 @@
-
 const initState = {
   user: {},
   error: null
 }
-
-// function userReducer (state = initState, action) {
-//   switch (action.type) {
-//     case 'CREATE_USER':
-//       return {...state, 
-//       user:action.payload};
-//       case 'LOGIN_USER':
-//       return {...state, 
-//       user:action.payload}
-//     default:
-//       return state
-//   }
-
-// }
 
 function userReducer (state = initState, action) {
   switch (action.type) {
@@ -35,49 +20,43 @@ function userReducer (state = initState, action) {
     case 'LOGOUT_SUCCESS':
       console.log('logout sucess')
       return {
-      state
-        }
+        state
+      }
     case 'REGISTER_SUCCESS':
       console.log('register sucess')
       return {
-      ...state,
-      error: null
-        }
+        ...state,
+        error: null
+      }
       case 'REGISTER_ERROR':
       console.log('register error')
       return {
-      ...state,
-      error: action.error.message
-        }
-      case 'EMPTY_REGISTER_ERROR':
-      console.log('register error')
+        ...state,
+        error: action.error.message
+      }
+      case 'GET_USER':
       return {
-      ...state,
-      error: action.error.message
+        ...state,
+        error: null,
+        user:action.payload
         }
-      case 'EMPTY_REGISTER_PASSWORD_ERROR':
-      console.log('register error')
-      return {
-      ...state,
-      error: action.error.message
-        }
+      // case 'EMPTY_REGISTER_ERROR':
+      // console.log('register error')
+      // return {
+      // ...state,
+      // error: action.error.message
+      //   }
+      // case 'EMPTY_REGISTER_PASSWORD_ERROR':
+      // console.log('register error')
+      // return {
+      // ...state,
+      // error: action.error.message
+      //   }
         
     default:
       return state
   }
 
 }
-
-
-// export function loginUserReducer (state = {user: {}}, action) {
-//   switch (action.type) {
-//     case 'LOGIN_USER':
-//       return {...state, 
-//       user:action.payload};
-//     default:
-//       return state
-//   }
-
-// }
 
 export default userReducer;

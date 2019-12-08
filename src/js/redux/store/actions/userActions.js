@@ -1,17 +1,16 @@
 import Firebase from './../../../constants/Firebase';
 
-
 export function getUser() {
   return dispatch=> {
     Firebase.auth().onAuthStateChanged(user => {
-      if(user.emailVerified){
-      }
-      dispatch({
-        type: 'GET_USER',
-        payload: user
-      });
+      if(user){
+          console.log('login');
+          dispatch({type: 'GET_USER'})
+      } else{
+          console.log('not logged in')
+        }
     });
-  };
+  }  
 }
 
 export function createUser(newUser){  

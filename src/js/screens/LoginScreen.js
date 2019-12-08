@@ -12,7 +12,7 @@ import {
 import * as firebase from 'firebase';
 import { styles } from '../../styles/LoginScreenStyles';
 import CustomButton from '../components/CustomButton';
-import { login } from '../redux/store/actions/userActions';
+import { login, getUser } from '../redux/store/actions/userActions';
 import { connect } from 'react-redux';
 
 class LoginScreen extends React.Component {
@@ -26,12 +26,21 @@ class LoginScreen extends React.Component {
         };
     }
 
-    handleLogin = () => {
-        this.props.login(this.state);
-        // this.props.navigation.navigate('Feed');
+    componentWillMount=()=>{
+        this.props.getUser();
+        
+    }  
+
+    handleLogin = () => {  
+        this.props.login(this.state);        
+        // const { error } = this.state;
+        // if(error === ''){
+            
+        //     this.props.navigation.navigate('Feed');
+        // }
+        // return false;
+        
     };
-
-
 
     onPressSignup = () => {
         this.props.navigation.navigate('Register');
@@ -89,14 +98,15 @@ LoginScreen.navigationOptions = {
 
 const mapStateToProps =(state)=>{
     return { 
-        // user: state.userReducer.user,
+        user: state.userReducer.user,
         error: state.userReducer.error
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        login: (user) => dispatch(login(user))
+        login: (user) => dispatch(login(user)),
+        getUser: () => dispatch(getUser())
     }
 }
 
