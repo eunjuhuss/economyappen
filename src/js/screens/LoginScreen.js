@@ -38,7 +38,6 @@ class LoginScreen extends React.Component {
     }
     render() {
         const { error } = this.props;
-       
         return (
             <View style={styles.container}>
                 <ScrollView

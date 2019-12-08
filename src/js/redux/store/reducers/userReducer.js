@@ -49,6 +49,19 @@ function userReducer (state = initState, action) {
       ...state,
       error: action.error.message
         }
+      case 'EMPTY_REGISTER_ERROR':
+      console.log('register error')
+      return {
+      ...state,
+      error: action.error.message
+        }
+      case 'EMPTY_REGISTER_PASSWORD_ERROR':
+      console.log('register error')
+      return {
+      ...state,
+      error: action.error.message
+        }
+        
     default:
       return state
   }

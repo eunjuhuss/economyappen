@@ -17,37 +17,36 @@ class RegisterScreen extends React.Component {
     this.state = {
       email: '',
       password: '',
-      error: ''
+      error: '',
+      emptyError: ''
     } 
   }
 
   isValid() {
-    const { email, password} = this.state;
+    const { email, password } = this.state;
 
     if (email === '' || password === '' ) {
       this.setState({
-        error: 'Please enter in all fields'
+        emptyError: 'Please enter in all fields'
       });
       return false;
     }
     return true;
   }
 
-
-
   handleRegister = () => {
-    // const { email, password } = this.state
     if (!this.isValid()) {
-      return ;
+      return null;
     }
     
     this.props.createUser(
-      this.state 
-      )
+      this.state
+    )
   }
 
   render() {
-    const{ user, error } = this.props;
+    const { emptyError } = this.state;
+    const { error } = this.props;
 
     return (
       <View style={styles.container}>
@@ -74,7 +73,7 @@ class RegisterScreen extends React.Component {
             secureTextEntry={true}
             onChange={()=>this.handlePassword}
         />
-        { error ? <Text style={styles.errorText}>{error}</Text> : null }
+        { error || emptyError ? <Text style={styles.errorText}>{error}{emptyError}</Text> : null }
           <CustomButton
             color={'black'}
             title='submit'
