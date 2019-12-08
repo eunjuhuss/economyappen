@@ -28,7 +28,7 @@ class LoginScreen extends React.Component {
 
     handleLogin = () => {
         this.props.login(this.state);
-        this.props.navigation.navigate('Register');
+        // this.props.navigation.navigate('Feed');
     };
 
 
@@ -38,6 +38,7 @@ class LoginScreen extends React.Component {
     }
     render() {
         const { error } = this.props;
+       
         return (
             <View style={styles.container}>
                 <ScrollView

@@ -59,25 +59,28 @@ export function getUser() {
 //   }
 // };
 
-export function createUser(email, password){  
-    return dispath => Firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then(user => {})
+export function createUser(newUser){  
+    return dispath => Firebase.auth().createUserWithEmailAndPassword(newUser.email, newUser.password)
+    .then(()=> {
+      dispath({ type: 'REGISTER_SUCCESS'})
+    })
     .catch(error => {
+      dispath({ type: 'REGISTER_ERROR', error})
       switch (error.code) {
         case 'auth/email-already-in-use':
-          // alert(`Email address ${email} already in use.`)
+          console.log(`Email address ${newUser.email} already in use.`)
           break;
         case 'auth/invalid-email':
-          // alert(`Email address ${email} is invalid.`)
+          console.log(`Email address ${newUser.email} is invalid.`)
           break;
         case 'auth/operation-not-allowed':
-          // alert(`Error during sign up.`)
+          console.log(`Error during sign up.`)
           break;
         case 'auth/weak-password':
-          // alert('Password is not strong enough. Add additional characters including special characters and numbers.')
+          console.log('Password is not strong enough. Add additional characters including special characters and numbers.')
           break;
         default:
-          // alert(error.message)
+          console.log(error.message)
           break;
 
       }
@@ -96,7 +99,9 @@ export function login(user) {
 }
 
 export function logout() {
-  return dispatch => auth.signOut();
+  return dispatch => Firebase.auth().signOut().then(()=> {
+    dispatch({ type: 'LOGOUT_SUCCESS'})
+  });
 }
 
 

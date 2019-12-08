@@ -32,6 +32,23 @@ function userReducer (state = initState, action) {
         error: null,
         user:action.payload
         }
+    case 'LOGOUT_SUCCESS':
+      console.log('logout sucess')
+      return {
+      state
+        }
+    case 'REGISTER_SUCCESS':
+      console.log('register sucess')
+      return {
+      ...state,
+      error: null
+        }
+      case 'REGISTER_ERROR':
+      console.log('register error')
+      return {
+      ...state,
+      error: action.error.message
+        }
     default:
       return state
   }
