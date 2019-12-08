@@ -6,7 +6,7 @@ import loadingReducer from './loadingReducer';
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
-  auth: authReducer,
+  // auth: authReducer,
   economyList: economyListReducer,
   loadingReducer: loadingReducer,
   userReducer: userReducer
