@@ -1,11 +1,13 @@
 import Firebase from './../../../constants/Firebase';
+// import { NavigationActions } from 'react-navigation';
 
 export function getUser() {
   return dispatch=> {
     Firebase.auth().onAuthStateChanged(user => {
-      if(user){
-          console.log('login');
+      if(user !== null){
+          // console.log('user',user);
           dispatch({type: 'GET_USER'})
+          
       } else{
           console.log('not logged in')
         }
@@ -16,7 +18,8 @@ export function getUser() {
 export function createUser(newUser){  
     return dispath => Firebase.auth().createUserWithEmailAndPassword(newUser.email, newUser.password)
     .then(()=> {
-      dispath({ type: 'REGISTER_SUCCESS'})
+      dispath({ type: 'REGISTER_SUCCESS'});
+     // this is where you use navigation prop
     })
     .catch(error => {
       dispath({ type: 'REGISTER_ERROR', error})

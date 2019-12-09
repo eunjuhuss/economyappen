@@ -9,14 +9,17 @@ function userReducer (state = initState, action) {
       console.log('login error')
       return {
         ...state, 
-        error:'Login failed'};
+        error:'Login failed',
+        isLoggingIn: false,
+        isAuthenticated: false
+        };
     case 'LOGIN_SUCCESS':
       console.log('login sucess')
       return {
         ...state,
         error: null,
         user:action.payload
-        }
+        };
     case 'LOGOUT_SUCCESS':
       console.log('logout sucess')
       return {
@@ -39,7 +42,7 @@ function userReducer (state = initState, action) {
         ...state,
         error: null,
         user:action.payload
-        }
+      }
       // case 'EMPTY_REGISTER_ERROR':
       // console.log('register error')
       // return {
