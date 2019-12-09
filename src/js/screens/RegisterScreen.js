@@ -18,7 +18,7 @@ class RegisterScreen extends React.Component {
       email: '',
       password: '',
       error: '',
-      emptyError: ''
+      isLoading: false
     } 
   }
 

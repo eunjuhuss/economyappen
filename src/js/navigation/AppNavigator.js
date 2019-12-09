@@ -8,11 +8,13 @@ import {
 import MainTabNavigator from './MainTabNavigator';
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
+import LoadingScreen from '../screens/LoadingScreen';
 
 const AuthNavigator = createStackNavigator (
   {
     Login: { screen : LoginScreen },
-    Register: { screen : RegisterScreen }
+    Register: { screen : RegisterScreen },
+    Loading: { screen : LoadingScreen },
   },
   {
     hedaerMode: 'none'
