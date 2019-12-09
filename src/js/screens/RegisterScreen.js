@@ -17,43 +17,36 @@ class RegisterScreen extends React.Component {
     this.state = {
       email: '',
       password: '',
-      error: ''
+      error: '',
+      emptyError: ''
     } 
   }
 
   isValid() {
-    const { email, password} = this.state;
+    const { email, password } = this.state;
 
     if (email === '' || password === '' ) {
       this.setState({
-        error: 'Please enter in all fields'
+        emptyError: 'Please enter in all fields'
       });
       return false;
     }
     return true;
   }
 
-
-
   handleRegister = () => {
-    const { email, password } = this.state
     if (!this.isValid()) {
-      return ;
+      return null;
     }
     
     this.props.createUser(
-      email, password 
-      ).then(()=>{
-        this.props.history.replace('/')
-      }).catch(error => {
-        this.setState({
-          error: error.message
-      })
-    })
-    this.props.navigation.navigate('Login');
+      this.state
+    )
   }
 
   render() {
+    const { emptyError } = this.state;
+    const { error } = this.props;
 
     return (
       <View style={styles.container}>
@@ -80,7 +73,7 @@ class RegisterScreen extends React.Component {
             secureTextEntry={true}
             onChange={()=>this.handlePassword}
         />
-        { this.state.error ? <Text style={styles.errorText}>{this.state.error}</Text> : null }
+        { error || emptyError ? <Text style={styles.errorText}>{error}{emptyError}</Text> : null }
           <CustomButton
             color={'black'}
             title='submit'
@@ -95,16 +88,17 @@ RegisterScreen.navigationOptions = {
     header: null,
 };
 
-// const mapStateToProps = state =>{
-//   return state;
-// }
+const mapStateToProps = (state) =>{
+  return {
+      user: state.userReducer.user,
+      error: state.userReducer.error
+    }
+}
 
-// const mapDispatchToProps = (dispatch) => {
-//   return bindActionCreators({
-//     createUser: createUser
-//   }, dispatch) 
-// }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createUser: (user)=> dispatch(createUser(user))
+  }
+}
 
-// export default connect(mapStateToProps, mapDispatchToProps)(RegisterScreen)
-
-export default connect(null, {createUser})(RegisterScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterScreen)

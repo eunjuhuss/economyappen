@@ -12,7 +12,7 @@ import {
 import * as firebase from 'firebase';
 import { styles } from '../../styles/LoginScreenStyles';
 import CustomButton from '../components/CustomButton';
-import { login } from '../redux/store/actions/userActions';
+import {login, getUser} from '../redux/store/actions/userActions';
 import { connect } from 'react-redux';
 
 class LoginScreen extends React.Component {
@@ -26,18 +26,39 @@ class LoginScreen extends React.Component {
         };
     }
 
-    handleLogin = () => {
+    componentDidMount () {
+        this.props.getUser();
+    }
+
+
+
+    handleLogin = () => { 
+        
         this.props.login(this.state);
-        this.props.navigation.navigate('Register');
-    };
+            
+        // this.props.navigation.navigate('Feed');
+        //TODO  
 
-
+        // Firebase.auth().signInWithEmailAndPassword(
+        //     this.state.email, this.state.password
+        // )
+        // .then(() => {
+        //     this.props.navigation.navigate('Feed')    
+        // })
+        // .catch(error=> {
+        //     this.setState({
+        //     ...state,
+        //     error: error
+        //     })
+        // })
+    }
 
     onPressSignup = () => {
         this.props.navigation.navigate('Register');
     }
     render() {
-        const { error } = this.props;
+        const { error } = this.props;    
+
         return (
             <View style={styles.container}>
                 <ScrollView
@@ -72,7 +93,10 @@ class LoginScreen extends React.Component {
                         <Text style={styles.registerInfoText}>
                             Don't have an account yet?
                         </Text>
-                        <TouchableOpacity onPress={()=>this.onPressSignup()}>
+                        
+                        <TouchableOpacity
+                        onPress={()=>this.onPressSignup()}
+                        >
                             <Text style={styles.signUpText}> SignUp</Text>
                         </TouchableOpacity>                    
                     </View>
@@ -89,15 +113,16 @@ LoginScreen.navigationOptions = {
 
 const mapStateToProps =(state)=>{
     return { 
-        // user: state.userReducer.user,
+        user: state.userReducer.user,
         error: state.userReducer.error
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        login: (user) => dispatch(login(user))
-    }
+        login: (user) => dispatch(login(user)),
+        getUser: () => dispatch(getUser())
+    } 
 }
 
 
