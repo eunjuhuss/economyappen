@@ -5,61 +5,40 @@ const initState = {
 
 function userReducer (state = initState, action) {
   switch (action.type) {
-    case 'LOGIN_ERROR':
-      console.log('login error')
-      return {
-        ...state, 
-        error:'Login failed',
-        isLoggingIn: false,
-        isAuthenticated: false
-        };
-    case 'LOGIN_SUCCESS':
-      console.log('login sucess')
-      return {
-        ...state,
-        error: null,
-        user:action.payload
-        };
-    case 'LOGOUT_SUCCESS':
-      console.log('logout sucess')
-      return {
-        state
-      }
+    case 'GET_USER':
+    return {
+      ...state,
+      error: null,
+      user:action.payload
+    }
     case 'REGISTER_SUCCESS':
-      console.log('register sucess')
-      return {
-        ...state,
-        error: null
-      }
-      case 'REGISTER_ERROR':
-      console.log('register error')
-      return {
-        ...state,
-        error: action.error.message
-      }
-      case 'GET_USER':
-      return {
-        ...state,
-        error: null,
-        user:action.payload
-      }
-      // case 'EMPTY_REGISTER_ERROR':
-      // console.log('register error')
-      // return {
-      // ...state,
-      // error: action.error.message
-      //   }
-      // case 'EMPTY_REGISTER_PASSWORD_ERROR':
-      // console.log('register error')
-      // return {
-      // ...state,
-      // error: action.error.message
-      //   }
-        
+    return {
+      ...state,
+      error: null
+    }
+    case 'REGISTER_ERROR':
+    return {
+      ...state,
+      error: action.error.message
+    }
+    case 'LOGIN_SUCCESS':
+    return {
+      ...state,
+      error: null,
+      user:action.payload
+    };
+    case 'LOGIN_ERROR':
+    return {
+      ...state, 
+      error:'Login failed',
+    };
+    case 'LOGOUT_SUCCESS':
+    return {
+      state
+    }    
     default:
-      return state
+    return state
   }
-
 }
 
 export default userReducer;
