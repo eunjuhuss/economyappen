@@ -34,7 +34,6 @@ export function createEconomyList(date, category, paymentMethod, description, ex
     })
     .then(()=>{
       dispatch({ type: 'CREATE_ECONOMY_LISTS'});
-      Actions.economyLists({ type: 'reset' });
     })
   };
 };
