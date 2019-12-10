@@ -12,14 +12,12 @@ export function getEconomyList(){
       dispatch({ 
         type: 'FETCH_ECONOMY_LIST', 
         payload: snapshot.val()
-        });
-      
+      });      
       dispatch({
         type: 'ECONOMY_LOADING_STATUS',
         payload: false
       })     
-      }
-    );
+    });
   };
 };
 
@@ -62,19 +60,3 @@ export function editEconomyList(date, category, paymentMethod, description, expe
     })
   };
 };
-
-// export const createEconomyList = (economyList) => 
-// {  return (dispatch, getState, {getFirebase, getFirestore})=>{
-//     //make async call ti database
-//     const firestore = getFirestore();
-//     firestore.collection('economyLists').add({
-//       ...economyList,
-//       date: new Date(),
-//       category: 'frukost'
-//     }).then(()=>{
-//       dispatch({ type: 'CREATE_ECONOMY_LIST', economyList});
-//     }).catch((err)=>{
-//       dispatch({ type: 'CREAT_ECONOMY_ERROR', err});
-//     })
-//   };
-// };
