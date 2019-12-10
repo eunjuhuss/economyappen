@@ -7,11 +7,12 @@ export function getEconomyList(){
       type: 'ECONOMY_LOADING_STATUS',
       payload: true
     })
-    Firebase.database().ref(`/users/${currentUser.uid}/economyLists`).on('value',snapshot => {
+    Firebase.database().ref(`/users/${currentUser.uid}/economyLists`).on('value',(snapshot)=> {
       dispatch({ 
         type: 'CREATE_ECONOMY_LIST_FETCH', 
         payload: snapshot.val()
-        })
+        });
+      
       dispatch({
         type: 'ECONOMY_LOADING_STATUS',
         payload: false
@@ -26,7 +27,7 @@ export function createEconomyList(date, category, paymentMethod, description, ex
  
   const { currentUser } = Firebase.auth(); 
   console.log(currentUser)
-  Firebase.database().ref(`/users/${currentUser.uid}/economyLists/`).push({
+  Firebase.database().ref(`/users/${currentUser.uid}/economyLists`).push({
       date, 
       category,
       paymentMethod, 
@@ -34,15 +35,19 @@ export function createEconomyList(date, category, paymentMethod, description, ex
       expences
     })
     .then(()=>{
-      dispatch({ type: 'CREATE_ECONOMY_LISTS'})
+      dispatch({ type: 'CREATE_ECONOMY_LISTS'});
+      Actions.economyLists({ type: 'reset' });
     })
   };
 };
 
-export function deleteEconomyList(key){  
+export function deleteEconomyList({uid}){  
   const { currentUser } = Firebase.auth(); 
   return (dispatch)=>{
-    Firebase.database().ref(`/users/${currentUser.uid}/economyLists/${key}`).remove();
+    Firebase.database().ref(`/users/${currentUser.uid}/economyLists/${uid}`).remove()
+    .then(()=>{
+      dispatch({ type: 'REMOVE_ECONOMY_LISTS'})
+    })
   };
 };
 

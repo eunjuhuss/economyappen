@@ -1,6 +1,4 @@
-const initState = {
-  economyList: {}
-}
+const initState = {}
 
 function economyListReducer (state = initState, action) {
   switch (action.type) {
@@ -10,7 +8,7 @@ function economyListReducer (state = initState, action) {
         case 'CREATE_ECONOMY_LIST_FETCH':
       return action.payload;
       default:
-  return state
+      return state
   }
 
 }
