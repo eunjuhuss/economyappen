@@ -2,8 +2,6 @@ const initState = { }
 
 function economyListReducer (state = initState, action) {
   switch (action.type) {
-    case 'ECONOMY_LOADING_STATUS':
-    return action.payload;
     case 'FETCH_ECONOMY_LIST':
     return action.payload;
     case 'CREATE_ECONOMY_LISTS':

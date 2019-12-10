@@ -1,18 +1,15 @@
-const initState = {
-  economyList: {}
-}
+const initState = { }
 
 function loadingReducer(state = initState, action) {
   switch (action.type) {
     case 'ECONOMY_LOADING_STATUS':
-      return {
-        ...state,
-        loadingReducer:action.payload
-      };
-      default:
-        return state
+    return {
+      ...state,
+      loadingReducer: action.payload
+    };
+    default:
+    return state
   }
-
 }
 
 export default loadingReducer;
