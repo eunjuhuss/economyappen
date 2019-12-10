@@ -2,15 +2,18 @@ import Firebase from './../../../constants/Firebase';
 
 export function getEconomyList(){  
   return (dispatch, getState )=>{
+    const { currentUser } = Firebase.auth(); 
     dispatch({
       type: 'ECONOMY_LOADING_STATUS',
       payload: true
     })
-    Firebase.database().ref('/economyLists').on('value',snapshot => {
+    Firebase.database().ref(`/users/${currentUser.uid}/economyLists`)
+    .on('value',(snapshot)=> {
       dispatch({ 
-        type: 'CREATE_ECONOMY_LIST_FETCH', 
+        type: 'FETCH_ECONOMY_LIST', 
         payload: snapshot.val()
-        })
+        });
+      
       dispatch({
         type: 'ECONOMY_LOADING_STATUS',
         payload: false
@@ -21,26 +24,42 @@ export function getEconomyList(){
 };
 
 export function createEconomyList(date, category, paymentMethod, description, expences){  
-  return (dispatch)=>{
-    Firebase.database().ref('/economyLists').push({
+  return (dispatch)=>{ 
+    const { currentUser } = Firebase.auth(); 
+    Firebase.database().ref(`/users/${currentUser.uid}/economyLists`)
+    .push({
       date, 
       category,
       paymentMethod, 
       description,
       expences
-    });
+    })
+    .then(()=>{
+      dispatch({ type: 'CREATE_ECONOMY_LISTS'});
+      Actions.economyLists({ type: 'reset' });
+    })
   };
 };
 
-export function deleteEconomyList(key){  
+export function deleteEconomyList(uid){  
+  const { currentUser } = Firebase.auth(); 
   return (dispatch)=>{
-    Firebase.database().ref(`/economyLists/${key}`).remove();
+    Firebase.database().ref(`/users/${currentUser.uid}/economyLists/${uid}`)
+    .remove()
+    .then(()=>{
+      dispatch({ type: 'REMOVE_ECONOMY_LISTS'})
+    })
   };
 };
 
-export function editEconomyList(date, category, paymentMethod, description, expences, key){  
+export function editEconomyList(date, category, paymentMethod, description, expences, uid){ 
+  const { currentUser } = Firebase.auth(); 
   return (dispatch)=>{
-    Firebase.database().ref(`/economyLists`).child(key).update({date, category, paymentMethod, description, expences});
+    Firebase.database().ref(`/users/${currentUser.uid}/economyLists/${uid}`)
+    .update({date, category, paymentMethod, description, expences})
+    .then(() => {
+      dispatch({ type: 'UPDATE_ECONOMY_LISTS' });
+    })
   };
 };
 

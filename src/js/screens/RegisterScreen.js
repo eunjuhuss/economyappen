@@ -18,7 +18,7 @@ class RegisterScreen extends React.Component {
       email: '',
       password: '',
       error: '',
-      emptyError: ''
+      isLoading: false
     } 
   }
 
@@ -34,7 +34,7 @@ class RegisterScreen extends React.Component {
     return true;
   }
 
-  handleRegister = () => {
+  handleRegister = async () => {
     if (!this.isValid()) {
       return null;
     }

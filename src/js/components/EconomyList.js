@@ -17,7 +17,7 @@ const EconomyList = ({listOfEconomy, navigation,deleteEconomyList}) => {
     <View style={styles.economyListsContainer}>
       <FlatList 
         data={listOfEconomy}
-        keyExtractor={(item) => item.key}
+        keyExtractor={(item) => item.uid}
         showsVerticalScrollIndicator={false}
         renderItem={({item})=> {
           return (
@@ -51,7 +51,7 @@ const EconomyList = ({listOfEconomy, navigation,deleteEconomyList}) => {
               />  
               <FunctionIcon 
                 type={'close'} 
-                onPress={()=>deleteEconomyList(item.key)}
+                onPress={()=>deleteEconomyList(item.uid)}
               />  
             </View>  
           )

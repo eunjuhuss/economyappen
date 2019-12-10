@@ -63,7 +63,7 @@ class AddScreen extends React.Component {
   }
 
   
-  handlePaymentMethod = paymentMethod => {
+  handlepaymentMethod = paymentMethod => {
     this.setState({
       paymentMethod: paymentMethod
     })
@@ -98,7 +98,7 @@ class AddScreen extends React.Component {
             icon={'options'}
             label={'paymentMethod'}
             value={this.state.paymentMethod}
-            onChangeText={this.handlePaymentMethod}
+            onChangeText={this.handlepaymentMethod}
           />
           <AddinputList 
             icon={'book'}
