@@ -1,32 +1,25 @@
 import React from 'react';
-import {
-    ScrollView,
-    TouchableOpacity,
+import {    
     View,
     Text,
-    TextInput
+    TextInput,
+    ScrollView
 } from 'react-native';
-import * as firebase from 'firebase';
 import { styles } from '../../styles/LoginScreenStyles';
-import CustomButton from '../components/CustomButton';
-import {login, getUser} from '../redux/store/actions/userActions';
+import { login, getUser } from '../redux/store/actions/userActions';
 import { connect } from 'react-redux';
+import CustomButton from '../components/CustomButton';
 import Firebase from '../constants/Firebase';
-
-
 
 class LoginScreen extends React.Component {
     constructor(props) {
-
-    super(props);
-    this.state = {
-        email: '',
-        password: '',
-        error: '',
-        isLoading: false
+        super(props);
+        this.state = {
+            email: '',
+            password: '',
+            error: '',
+            isLoading: false
         };
-
-    this.props.getUser();
     }
 
     onSignUp = async () =>{
@@ -40,23 +33,29 @@ class LoginScreen extends React.Component {
                 );
                 if(response) {
                     this.setState({ isLoading: false});
-                    const user =  await Firebase.database().ref('/users').child(response.user.uid).set({email:response.user.email, uid:response.user.uid})
+                    const user =  await Firebase.database()
+                    .ref('/users').child(response.user.uid)
+                    .set({
+                        email:response.user.email, 
+                        uid:response.user.uid
+                    })
                     this.props.navigation.navigate('Loading');
                 }
-
             }catch(error) {
-                this.setState({ isLoading: false });
-                if(error.code == 'auth/email-already-in-use'){
-                    alert('User already Exists. try Loggin in')
+                this.setState({ 
+                    isLoading: false 
+                });
+                if(error.code === 'auth/email-already-in-use'){
+                    this.setState({ 
+                        error: 'User already Exists. try Loggin' 
+                    });
                 }
             }
         }
-
     }
 
 
-    handleLogin = async () => {     
-
+    handleLogin = async () => {
         if(this.state.email && this.state.password){
             this.setState({isLoading: true});
             try{
@@ -64,7 +63,9 @@ class LoginScreen extends React.Component {
                 .auth()
                 .signInWithEmailAndPassword(this.state.email,this.state.password);
                 if(response){
-                    this.setState({ isLoading: false})
+                    this.setState({ 
+                        isLoading: false
+                        })
                     this.props.navigation.navigate('Loading');
                 }
             } catch(error) {
@@ -148,7 +149,7 @@ class LoginScreen extends React.Component {
 
                     <CustomButton
                         color={'Green'}
-                        title='signUp'
+                        title='SignUp'
                         onPress={()=>this.onSignUp()}
                     />
 
@@ -173,20 +174,21 @@ class LoginScreen extends React.Component {
 LoginScreen.navigationOptions = {
     header: null,
 };
+export default LoginScreen;
 
-const mapStateToProps =(state)=>{
-    return { 
-        user: state.userReducer.user,
-        error: state.userReducer.error
-    }
-}
+// const mapStateToProps =(state)=>{
+//     return { 
+//         user: state.userReducer.user,
+//         error: state.userReducer.error
+//     }
+// }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        login: (user) => dispatch(login(user)),
-        getUser: () => dispatch(getUser())
-    } 
-}
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         login: (user) => dispatch(login(user)),
+//         getUser: () => dispatch(getUser())
+//     } 
+// }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
+// export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
