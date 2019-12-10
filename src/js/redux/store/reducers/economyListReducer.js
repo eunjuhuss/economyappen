@@ -4,11 +4,11 @@ const initState = {
 
 function economyListReducer (state = initState, action) {
   switch (action.type) {
-    case 'CREATE_ECONOMY_LIST':
+    case 'CREATE_ECONOMY_LISTS':
       console.log('created economy', action.payload);
       return state;
         case 'CREATE_ECONOMY_LIST_FETCH':
-      return {...state, economyList:action.payload};
+      return action.payload;
       default:
   return state
   }

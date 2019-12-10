@@ -13,10 +13,26 @@ import { getEconomyList, deleteEconomyList } from '../redux/store/actions/econom
 import FeedHeader from '../components/headers/FeedHeader';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import Firebase from '../constants/Firebase';
 
 class FeedScreen extends React.Component {
-  componentDidMount(){
-    this.props.getEconomyList();
+  constructor(props){
+    super(props);
+    this.state={
+      currentUser: {}
+
+ }
+
+
+  }
+ 
+
+  componentDidMount = async()=>{
+    // this.props.getEconomyList();
+    const navigation = this.props;
+    const user = navigation.getParams('user');
+    const currentUserData = await Firebase.database().ref('users').child('user.uid').once('value')
+    this.setState({currentUser: currentUserData})
   }
 
   render() {
@@ -53,10 +69,10 @@ FeedScreen.navigationOptions = {
 };
 
 const mapStateToProps = (state) => {
-  const economyList = _.map(state.economyList.economyList, (value, key)=> {
+  const economyList = _.map(state.economyList.economyList, (value, uid)=> {
     return {
       ...value,
-      key:key
+      uid
     }
   })
   return {

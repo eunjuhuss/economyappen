@@ -40,7 +40,7 @@ class LoginScreen extends React.Component {
                 );
                 if(response) {
                     this.setState({ isLoading: false});
-                    const user =  await Firebase.database().ref('/economyLists/users').child(response.user.uid).set({email:response.user.email, uid:response.user.uid})
+                    const user =  await Firebase.database().ref('/users').child(response.user.uid).set({email:response.user.email, uid:response.user.uid})
                     this.props.navigation.navigate('Loading');
                 }
 
