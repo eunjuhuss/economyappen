@@ -35,7 +35,7 @@ class EditView extends React.Component {
       this.state.paymentMethod, 
       this.state.description,
       this.state.expences,
-      this.state.key, 
+      this.state.uid, 
     )
 
     this.setState({      
@@ -86,6 +86,7 @@ class EditView extends React.Component {
   }
   
   render(){
+    console.log('item')
     return (
       <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.contentContainer}>
