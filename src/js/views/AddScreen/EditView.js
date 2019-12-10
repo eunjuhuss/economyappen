@@ -19,7 +19,7 @@ class EditView extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      key: this.props.navigation.state.params.key,
+      uid: this.props.navigation.state.params.uid,
       date: this.props.navigation.state.params.date,
       category: this.props.navigation.state.params.category,
       paymentMethod: this.props.navigation.state.params.paymentMethod,
@@ -44,8 +44,9 @@ class EditView extends React.Component {
       paymentMethod: '',
       description: '',
       expences: '',
-      key: '',
+      uid: '',
     })
+    this.props.navigation.navigate('Feed');
   }
 
   handleDate = date => {
@@ -57,6 +58,12 @@ class EditView extends React.Component {
   handleCategory = category => {
     this.setState({
       category: category
+    })
+  }
+
+  handlePaymentMethod = paymentMethod => {
+    this.setState({
+      paymentMethod: paymentMethod
     })
   }
 

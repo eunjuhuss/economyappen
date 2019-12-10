@@ -7,9 +7,10 @@ export function getEconomyList(){
       type: 'ECONOMY_LOADING_STATUS',
       payload: true
     })
-    Firebase.database().ref(`/users/${currentUser.uid}/economyLists`).on('value',(snapshot)=> {
+    Firebase.database().ref(`/users/${currentUser.uid}/economyLists`)
+    .on('value',(snapshot)=> {
       dispatch({ 
-        type: 'CREATE_ECONOMY_LIST_FETCH', 
+        type: 'FETCH_ECONOMY_LIST', 
         payload: snapshot.val()
         });
       
@@ -23,11 +24,10 @@ export function getEconomyList(){
 };
 
 export function createEconomyList(date, category, paymentMethod, description, expences){  
-  return (dispatch)=>{
- 
-  const { currentUser } = Firebase.auth(); 
-  console.log(currentUser)
-  Firebase.database().ref(`/users/${currentUser.uid}/economyLists`).push({
+  return (dispatch)=>{ 
+    const { currentUser } = Firebase.auth(); 
+    Firebase.database().ref(`/users/${currentUser.uid}/economyLists`)
+    .push({
       date, 
       category,
       paymentMethod, 
@@ -41,20 +41,25 @@ export function createEconomyList(date, category, paymentMethod, description, ex
   };
 };
 
-export function deleteEconomyList({uid}){  
+export function deleteEconomyList(uid){  
   const { currentUser } = Firebase.auth(); 
   return (dispatch)=>{
-    Firebase.database().ref(`/users/${currentUser.uid}/economyLists/${uid}`).remove()
+    Firebase.database().ref(`/users/${currentUser.uid}/economyLists/${uid}`)
+    .remove()
     .then(()=>{
       dispatch({ type: 'REMOVE_ECONOMY_LISTS'})
     })
   };
 };
 
-export function editEconomyList({date, category, paymentMethod, description, expences, key}){  
+export function editEconomyList(date, category, paymentMethod, description, expences, uid){ 
   const { currentUser } = Firebase.auth(); 
   return (dispatch)=>{
-    Firebase.database().ref(`/users/${currentUser.uid}/economyLists`).set({date, category, paymentMethod, description, expences});
+    Firebase.database().ref(`/users/${currentUser.uid}/economyLists/${uid}`)
+    .update({date, category, paymentMethod, description, expences})
+    .then(() => {
+      dispatch({ type: 'UPDATE_ECONOMY_LISTS' });
+    })
   };
 };
 

@@ -1,4 +1,3 @@
-import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import {
   ScrollView,
@@ -17,13 +16,11 @@ import _ from 'lodash';
 class FeedScreen extends React.Component {
 
   componentDidMount(){
-    this.props.getEconomyList();
-    
+    this.props.getEconomyList();    
   }
 
   render() {
     const { navigation } = this.props;
-    console.log('this.props', this.props.economyList)
     return (
       <View style={styles.container}>
       { this.props.loadingReducer ? 
@@ -56,8 +53,10 @@ FeedScreen.navigationOptions = {
 
 const mapStateToProps = (state) => {
   const economyList = _.map(state.economyList, (value, uid)=> {
-    return { ...value, uid };
-
+    return { 
+      ...value, 
+      uid 
+    };
   });
   return {
     economyList,

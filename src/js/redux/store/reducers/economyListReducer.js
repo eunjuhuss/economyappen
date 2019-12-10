@@ -3,11 +3,14 @@ const initState = {}
 function economyListReducer (state = initState, action) {
   switch (action.type) {
     case 'CREATE_ECONOMY_LISTS':
-      console.log('created economy', action.payload);
       return state;
-        case 'CREATE_ECONOMY_LIST_FETCH':
+    case 'FETCH_ECONOMY_LIST':
       return action.payload;
-      default:
+    case 'REMOVE_ECONOMY_LISTS':
+      return action.payload;
+    case 'UPDATE_ECONOMY_LISTS':
+      return action.payload;
+    default:
       return state
   }
 
