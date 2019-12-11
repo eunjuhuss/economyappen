@@ -5,6 +5,7 @@ import {
   Text
 } from 'react-native';
 import { styles } from '../../styles/ProfileScreenStyles';
+import SettingList from '../components/SettingList';
 
 class ProfileScreen extends React.Component {
   render() {
@@ -28,6 +29,24 @@ class ProfileScreen extends React.Component {
             </View>
           </View>
           <View style={styles.settingListContainer}>
+            <SettingList 
+              icon={'key'}
+              color={'#E5E13C'}
+              label={'Change Password'}
+              onPress={()=>this.props.navigation.navigate('Feed')}
+            />
+            <SettingList 
+              icon={'contacts'}
+              color={'#8CE1AD'}
+              label={'Invite friends'}
+              onPress={()=>this.props.navigation.navigate('Feed')}
+            />
+            <SettingList 
+              icon={'log-out'}
+              color={'#F64336'}
+              label={'Logout'}
+              onPress={()=>this.props.navigation.navigate('Feed')}
+            />
             
           </View>
         </ScrollView>
