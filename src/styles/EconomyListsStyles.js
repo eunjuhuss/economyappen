@@ -52,5 +52,12 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.subText,
     color: Colors.subGrayColor,
     fontSize: 13
+  },
+  swipeout: {
+    backgroundColor: Colors.mainWhiteColor
+  },
+  icon: {
+    padding: 20,
+    color: Colors.mainWhiteColor
   }
 })
