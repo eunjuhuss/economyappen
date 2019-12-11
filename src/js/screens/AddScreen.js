@@ -85,6 +85,7 @@ class AddScreen extends React.Component {
         </View>
         <View style={styles.addInputListContainer}>
           <Calendar
+            format={(value, name) => value === '' ? null : value}
             date={this.state.date}
             onDateChange={this.handleDate}
           />
