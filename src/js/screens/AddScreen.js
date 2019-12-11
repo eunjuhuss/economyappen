@@ -84,8 +84,7 @@ class AddScreen extends React.Component {
           <Text style={styles.incomeLabel}>INCOME</Text> 
         </View>
         <View style={styles.addInputListContainer}>
-          <Calendar
-            format={(value, name) => value === '' ? null : value}
+          <Calendar            
             date={this.state.date}
             onDateChange={this.handleDate}
           />

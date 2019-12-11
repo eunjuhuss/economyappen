@@ -10,8 +10,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 export default class AddHeader extends React.Component{
   constructor(props) {  
-    super(props); 
-
+    super(props);
   }
 
 

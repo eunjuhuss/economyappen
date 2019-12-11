@@ -1,33 +1,61 @@
 import React from 'react';
 import {
   ScrollView,
-  StyleSheet,
-  View
+  View,
+  Text
 } from 'react-native';
+import { styles } from '../../styles/ProfileScreenStyles';
+import SettingList from '../components/SettingList';
 
-
-export default function ProfileScreen() {
-  return (
-    <View style={styles.container}>
-      <ScrollView
-        style={styles.container}
-      >
-      </ScrollView>
-    </View>
-  );
-
+class ProfileScreen extends React.Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <ScrollView
+            contentContainerStyle={styles.contentContainer}>
+          <View style={styles.userNameContainer}>
+            <Text style={styles.userEmailText}>
+              user@email.com
+            </Text>
+            <View style={styles.incomeAndExpenceContainer}>
+              <View style={styles.totalAndLabelContainer}>
+                <Text style={styles.totalText}>34000</Text>
+                <Text style={styles.labelText}>INCOMES</Text>
+              </View>
+              <View style={styles.totalAndLabelContainer}>
+                <Text style={styles.totalText}>34000</Text>
+                <Text style={styles.labelText}>EXPENCES</Text>
+              </View>
+            </View>
+          </View>
+          <View style={styles.settingListContainer}>
+            <SettingList 
+              icon={'key'}
+              color={'#E5E13C'}
+              label={'Change Password'}
+              onPress={()=>this.props.navigation.navigate('Feed')}
+            />
+            <SettingList 
+              icon={'contacts'}
+              color={'#8CE1AD'}
+              label={'Invite friends'}
+              onPress={()=>this.props.navigation.navigate('Feed')}
+            />
+            <SettingList 
+              icon={'log-out'}
+              color={'#F64336'}
+              label={'Logout'}
+              onPress={()=>this.props.navigation.navigate('Feed')}
+            />
+            
+          </View>
+        </ScrollView>
+      </View>
+    );
+  }
 }
-
 ProfileScreen.navigationOptions = {
-  title: 'Profile',
+  header: null
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  contentContainer: {
-    paddingTop: 30,
-  }
-});
+export default ProfileScreen;
