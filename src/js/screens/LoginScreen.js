@@ -111,11 +111,8 @@ class LoginScreen extends React.Component {
     //     this.props.navigation.navigate('Register');
     // }
     render() {
-        const { error } = this.props;    
-
-        return (
-
-    
+        const { error } = this.props;  
+        return (    
             <View style={styles.container}>
                 <ScrollView
                     contentContainerStyle={styles.contentContainer}>
@@ -128,7 +125,6 @@ class LoginScreen extends React.Component {
                         placeholder='abc@exemple.com'
                         keyboardType='email-address'
                         onChangeText={email => this.setState({ email })}
-
                     />
                     <Text style={styles.labelText}>
                         Password:
@@ -146,7 +142,6 @@ class LoginScreen extends React.Component {
                         title='Login'
                         onPress={()=>this.handleLogin()}
                     />
-
                     <CustomButton
                         color={'Green'}
                         title='SignUp'

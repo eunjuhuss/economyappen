@@ -12,7 +12,7 @@ const Calendar = ({date, onDateChange}) => {
           <LabelIcon type={'calendar'} />
         }
         style={{width: '100%'}}
-        date={date} //initial date from state
+        date={date!== ''? new Date() : null} //initial date from state
         mode="date" //The enum of date, datetime and time
         placeholder="select date"
         format="DD-MM-YYYY"
