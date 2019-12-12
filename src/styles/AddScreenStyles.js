@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 import Colors from '../js/constants/Colors';
 import Dimensions from '../js/constants/Dimensions';
 import Fonts from '../js/constants/Fonts';
+import { red } from 'ansi-colors';
 
 export const styles = StyleSheet.create({
   container: {
@@ -40,5 +41,17 @@ export const styles = StyleSheet.create({
     color: Colors.highlightYellow,
     fontFamily: Fonts.headText,
     fontSize: 14
+  },
+  dropDown: {
+    color: Colors.subGrayColor,
+    fontFamily: Fonts.headText,
+  },
+  dropDown: {
+    marginTop: 7,
+    marginBottom: 7,
+    borderColor: Colors.subGrayColor,
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 8
   }
 })

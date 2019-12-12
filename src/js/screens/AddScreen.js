@@ -16,6 +16,9 @@ import CustomButton from '../components/CustomButton';
 import AddHeader from '../components/headers/AddHeader';
 import Calendar from '../components/Calendar';
 import ModalDropdown from 'react-native-modal-dropdown';
+import Colors from '../constants/Colors';
+import Fonts from '../constants/Fonts';
+import Dimensions from '../constants/Dimensions';
 
 class AddScreen extends React.Component {
   constructor(props){
@@ -25,8 +28,7 @@ class AddScreen extends React.Component {
       category: '',
       paymentMethod:'',
       description: '',
-      expences: ''
-    
+      expences: ''    
     }  
     this.dropDownRef = React.createRef();
   }
@@ -70,6 +72,7 @@ class AddScreen extends React.Component {
       paymentMethod.length > 0 && 
       description.length > 0 && 
       expences.length > 0;
+      
 
     return (
       <View style={styles.container}>
@@ -88,13 +91,27 @@ class AddScreen extends React.Component {
             />
 
             <ModalDropdown
+              style={styles.dropDown}
               defaultValue = {'Select Category'}
-              defaultIndex={0}
+              defaultIndex={-1}
               ref={this.dropDownRef}
-              options={['Home', 'Transport','Travel', 'Food & Dining', 'Helth & Fitness', 'Shopping']}
+              options={[
+                'Home', 
+                'Transport',
+                'Travel', 
+                'Food & Dining', 
+                'Helth & Fitness', 
+                'Shopping'
+                ]}
+              dropdownTextStyle={{
+                fontSize: 16, 
+                textAlign: 'center',
+                color: Colors.subGrayColor,
+                fontFamily: Fonts.subText
+              }}
               dropdownStyle={{
+                width: Dimensions.wp(90),
                 borderRadius: 6,
-                backgroundColor: "#26344a",
                 shadowColor: "rgba(0, 0, 0, 0.2)",
                 shadowOffset: {
                   width: 0,
@@ -104,20 +121,37 @@ class AddScreen extends React.Component {
                 shadowOpacity: 1,
                 padding: 8
               }}
-              textStyle = {{textAlign: 'center'}}
+              textStyle = {{
+                textAlign: 'center',
+                color: Colors.subGrayColor,
+                fontFamily: Fonts.subText, 
+                fontSize: 14
+              }}
               onSelect={
                 (index, category) => this.setState({ index, category })
               }
             />
 
             <ModalDropdown
+              style={styles.dropDown}
               defaultValue = {'Select Payment Method'}
-              defaultIndex={0}
+              defaultIndex={-1}
               ref={this.dropDownRef}
-              options={['Swish', 'Cash','Credit', 'Internet Banking']}
+              options={[
+                'Swish', 
+                'Cash',
+                'Credit', 
+                'Internet Banking'
+              ]}
+              dropdownTextStyle={{
+                fontSize: 16, 
+                textAlign: 'center',
+                color: Colors.subGrayColor,
+                fontFamily: Fonts.subText
+              }}
               dropdownStyle={{
+                width: Dimensions.wp(90),
                 borderRadius: 6,
-                backgroundColor: "#26344a",
                 shadowColor: "rgba(0, 0, 0, 0.2)",
                 shadowOffset: {
                   width: 0,
@@ -126,6 +160,12 @@ class AddScreen extends React.Component {
                 shadowRadius: 20,
                 shadowOpacity: 1,
                 padding: 8
+              }}
+              textStyle = {{
+                textAlign: 'center',
+                color: Colors.subGrayColor,
+                fontFamily: Fonts.subText, 
+                fontSize: 14
               }}
               onSelect={
                 (index, paymentMethod) => this.setState({ index, paymentMethod })

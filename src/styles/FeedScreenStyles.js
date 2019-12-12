@@ -37,5 +37,11 @@ export const styles = StyleSheet.create({
     color: Colors.highlightYellow,
     fontFamily: Fonts.headText,
     fontSize: 14
-  }
+  },
+  fab: {
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0,
+  },
 })

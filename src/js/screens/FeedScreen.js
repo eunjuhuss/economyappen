@@ -21,6 +21,7 @@ class FeedScreen extends React.Component {
 
   render() {
     const { navigation } = this.props;
+    
     return (
       <View style={styles.container}>
       { this.props.loadingReducer ? 
@@ -39,7 +40,7 @@ class FeedScreen extends React.Component {
                 navigation={navigation}
                 listOfEconomy={this.props.economyList}
                 deleteEconomyList={this.props.deleteEconomyList}
-              />            
+              />       
           </ScrollView>
         }        
       </View>
