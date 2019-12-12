@@ -28,14 +28,21 @@ class EditView extends React.Component {
     }  
   }
 
-  onEdit = () => { 
+  onEdit = () => {
+    const { 
+      date, 
+      category, 
+      paymentMethod, 
+      description, 
+      expences 
+      } = this.state;
     this.props.editEconomyList(
-      this.state.date, 
-      this.state.category, 
-      this.state.paymentMethod, 
-      this.state.description,
-      this.state.expences,
-      this.state.uid, 
+      date, 
+      category, 
+      paymentMethod, 
+      description,
+      expences,
+      uid, 
     )
 
     this.setState({      
@@ -49,44 +56,7 @@ class EditView extends React.Component {
     this.props.navigation.navigate('Feed');
   }
 
-  handleDate = date => {
-    this.setState({
-      date: date
-    })
-  }
-
-  handleCategory = category => {
-    this.setState({
-      category: category
-    })
-  }
-
-  handlePaymentMethod = paymentMethod => {
-    this.setState({
-      paymentMethod: paymentMethod
-    })
-  }
-
-  handleCollected = paymentMethod => {
-    this.setState({
-      paymentMethod: paymentMethod
-    })
-  }
-
-  handleDescription = description => {
-    this.setState({
-      description: description
-    })
-  }
-
-  handleExpences = expences => {
-    this.setState({
-      expences: expences
-    })
-  }
-  
   render(){
-    console.log('item')
     return (
       <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.contentContainer}>
@@ -97,31 +67,31 @@ class EditView extends React.Component {
         <View style={styles.addInputListContainer}>
           <Calendar
             date={this.state.date}
-            onDateChange={this.handleDate}
+            onDateChange={date => this.setState({ date })}
           />
           <AddinputList 
             icon={'folder'}
             label={'category'}
             value={this.state.category}
-            onChangeText={this.handleCategory}
+            onChangeText={category => this.setState({ category })}
           />
           <AddinputList 
             icon={'options'}
             label={'paymentMethod'}
             value={this.state.paymentMethod}
-            onChangeText={this.handlePaymentMethod}
+            onChangeText={paymentMethod => this.setState({ paymentMethod })}
           />
           <AddinputList 
             icon={'book'}
             label={'description'}
             value={this.state.description}
-            onChangeText={this.handleDescription}
+            onChangeText={description => this.setState({ description })}
           />
           <AddinputList 
             icon={'switch'}
             label={'income/expences'}
             value={this.state.expences}
-            onChangeText={this.handleExpences}
+            onChangeText={expences => this.setState({ expences })}
           />      
           <CustomButton
             color={'red'} 

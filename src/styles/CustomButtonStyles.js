@@ -18,11 +18,21 @@ export const styles = StyleSheet.create({
     fontSize: 18
   },
   redCustomButton: {
-    marginTop: Dimensions.wp(15),
     backgroundColor: Colors.highlightRed,
+    marginTop: Dimensions.wp(15),
     borderRadius: 40,
-    height: 80,
+    height: 80, 
+  },
+  abledButton: {
     justifyContent: 'center',
-    alignItems: 'center'  
-  }
+    alignItems: 'center',
+    borderRadius: 40,
+    opacity: 1
+  },
+  disabledButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 40,
+    opacity: 0.6
+  },
 })
