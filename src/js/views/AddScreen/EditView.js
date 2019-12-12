@@ -34,8 +34,10 @@ class EditView extends React.Component {
       category, 
       paymentMethod, 
       description, 
-      expences 
+      expences,
+      uid
       } = this.state;
+
     this.props.editEconomyList(
       date, 
       category, 

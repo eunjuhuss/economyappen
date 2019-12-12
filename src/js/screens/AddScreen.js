@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'; 
 import { 
   ScrollView, 
   StyleSheet, 
@@ -14,6 +15,7 @@ import { styles } from '../../styles/AddScreenStyles';
 import CustomButton from '../components/CustomButton';
 import AddHeader from '../components/headers/AddHeader';
 import Calendar from '../components/Calendar';
+import ModalDropdown from 'react-native-modal-dropdown';
 
 class AddScreen extends React.Component {
   constructor(props){
@@ -24,7 +26,9 @@ class AddScreen extends React.Component {
       paymentMethod:'',
       description: '',
       expences: ''
+    
     }  
+    this.dropDownRef = React.createRef();
   }
 
   onsubmit = () => { 
@@ -83,16 +87,63 @@ class AddScreen extends React.Component {
               }
             />
 
-            <AddinputList 
+            <ModalDropdown
+              defaultValue = {'Select Category'}
+              defaultIndex={0}
+              ref={this.dropDownRef}
+              options={['Home', 'Transport','Travel', 'Food & Dining', 'Helth & Fitness', 'Shopping']}
+              dropdownStyle={{
+                borderRadius: 6,
+                backgroundColor: "#26344a",
+                shadowColor: "rgba(0, 0, 0, 0.2)",
+                shadowOffset: {
+                  width: 0,
+                  height: 5
+                },
+                shadowRadius: 20,
+                shadowOpacity: 1,
+                padding: 8
+              }}
+              textStyle = {{textAlign: 'center'}}
+              onSelect={
+                (index, category) => this.setState({ index, category })
+              }
+            />
+
+            <ModalDropdown
+              defaultValue = {'Select Payment Method'}
+              defaultIndex={0}
+              ref={this.dropDownRef}
+              options={['Swish', 'Cash','Credit', 'Internet Banking']}
+              dropdownStyle={{
+                borderRadius: 6,
+                backgroundColor: "#26344a",
+                shadowColor: "rgba(0, 0, 0, 0.2)",
+                shadowOffset: {
+                  width: 0,
+                  height: 5
+                },
+                shadowRadius: 20,
+                shadowOpacity: 1,
+                padding: 8
+              }}
+              onSelect={
+                (index, paymentMethod) => this.setState({ index, paymentMethod })
+              }
+            />
+
+            
+
+            {/* <AddinputList 
               icon={'folder'}
               label={'category'}
               value={this.state.category}
               onChangeText={
                 category => this.setState({ category })
               }
-            />
+            /> */}
 
-              <AddinputList 
+              {/* <AddinputList 
                 icon={'options'}
                 label={'paymentMethod'}
                 value={this.state.paymentMethod}
@@ -101,7 +152,7 @@ class AddScreen extends React.Component {
                     paymentMethod 
                   })
                 }
-              />
+              /> */}
 
               <AddinputList 
                 icon={'book'}
@@ -143,6 +194,10 @@ class AddScreen extends React.Component {
 //     createEconomyList: (economyList) => dispatch(createEconomyList(economyList))
 //   }
 // }
+
+
+
+
 AddScreen.navigationOptions = {
   header: <AddHeader />
 };
