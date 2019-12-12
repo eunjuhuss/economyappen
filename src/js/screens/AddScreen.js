@@ -28,12 +28,19 @@ class AddScreen extends React.Component {
   }
 
   onsubmit = () => { 
+    const { 
+      date, 
+      category, 
+      paymentMethod, 
+      description, 
+      expences 
+    } = this.state;
     this.props.createEconomyList(
-      this.state.date, 
-      this.state.category, 
-      this.state.paymentMethod,
-      this.state.description,
-      this.state.expences
+      date,
+      category,
+      paymentMethod,
+      description,
+      expences
     )
     this.setState({
       date:'',
@@ -43,39 +50,23 @@ class AddScreen extends React.Component {
       expences: 0      
     })
   }
-
-  handleDate = date => {
-    this.setState({
-      date: date
-    })
-  }
-
-  handleCategory = category => {
-    this.setState({
-      category: category
-    })
-  }
-
-  handleDescription = description => {
-    this.setState({
-      description: description
-    })
-  }
-
-  
-  handlepaymentMethod = paymentMethod => {
-    this.setState({
-      paymentMethod: paymentMethod
-    })
-  }
-
-  handleExpences = expences => {
-    this.setState({
-      expences: expences
-    })
-  }
   
   render(){
+    const { 
+      date, 
+      category, 
+      paymentMethod, 
+      description, 
+      expences 
+    } = this.state;
+
+    const isEnabled = 
+      date.length > 0 &&  
+      category.length > 0 && 
+      paymentMethod.length > 0 && 
+      description.length > 0 && 
+      expences.length > 0;
+
     return (
       <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.contentContainer}>
@@ -84,35 +75,58 @@ class AddScreen extends React.Component {
           <Text style={styles.incomeLabel}>INCOME</Text> 
         </View>
         <View style={styles.addInputListContainer}>
-          <Calendar            
-            date={this.state.date}
-            onDateChange={this.handleDate}
-          />
-          <AddinputList 
-            icon={'folder'}
-            label={'category'}
-            value={this.state.category}
-            onChangeText={this.handleCategory}
-          />
-          <AddinputList 
-            icon={'options'}
-            label={'paymentMethod'}
-            value={this.state.paymentMethod}
-            onChangeText={this.handlepaymentMethod}
-          />
-          <AddinputList 
-            icon={'book'}
-            label={'description'}
-            value={this.state.description}
-            onChangeText={this.handleDescription}
-          />
-          <AddinputList 
-            icon={'switch'}
-            label={'income/expences'}
-            value={this.state.expences}
-            onChangeText={this.handleExpences}
-          />      
+
+            <Calendar            
+              date={this.state.date}
+              onDateChange={ 
+                date => this.setState({ date })
+              }
+            />
+
+            <AddinputList 
+              icon={'folder'}
+              label={'category'}
+              value={this.state.category}
+              onChangeText={
+                category => this.setState({ category })
+              }
+            />
+
+              <AddinputList 
+                icon={'options'}
+                label={'paymentMethod'}
+                value={this.state.paymentMethod}
+                onChangeText={ 
+                  paymentMethod => this.setState({
+                    paymentMethod 
+                  })
+                }
+              />
+
+              <AddinputList 
+                icon={'book'}
+                label={'description'}
+                value={this.state.description}
+                onChangeText={
+                  description => this.setState({
+                    description 
+                  })
+                }
+              />
+
+              <AddinputList 
+                icon={'switch'}
+                label={'income/expences'}
+                value={this.state.expences}
+                onChangeText={ 
+                  expences => this.setState({
+                    expences 
+                  })
+                }
+              />
+  
           <CustomButton
+            buttonStatus={!isEnabled} 
             color={'red'} 
             title={'Submit'}
             onPress={()=>this.onsubmit()}

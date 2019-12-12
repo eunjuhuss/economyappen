@@ -3,7 +3,8 @@ import {
     View,
     Text,
     TextInput,
-    ScrollView
+    ScrollView,
+    TouchableOpacity
 } from 'react-native';
 import { styles } from '../../styles/LoginScreenStyles';
 import { login, getUser } from '../redux/store/actions/userActions';
@@ -111,7 +112,13 @@ class LoginScreen extends React.Component {
     //     this.props.navigation.navigate('Register');
     // }
     render() {
-        const { error } = this.props;  
+        const { error } = this.props; 
+        const { email, password } = this.state;
+
+        const isEnabled = 
+            email.length > 0 &&  
+            password.length > 0;
+
         return (    
             <View style={styles.container}>
                 <ScrollView
@@ -138,27 +145,30 @@ class LoginScreen extends React.Component {
                     />
                     { error ? <Text style={styles.errorText}>{error}</Text> : null }
                     <CustomButton
+                        buttonStatus={!isEnabled} 
                         color={'black'}
                         title='Login'
                         onPress={()=>this.handleLogin()}
                     />
-                    <CustomButton
+                    {/* <CustomButton
+                        buttonStatus={!isEnabled} 
                         color={'Green'}
                         title='SignUp'
                         onPress={()=>this.onSignUp()}
-                    />
+                    /> */}
 
-                    {/* <View style={styles.registerContainer}>
+                    <View style={styles.registerContainer}>
                         <Text style={styles.registerInfoText}>
                             Don't have an account yet?
                         </Text>
                         
                         <TouchableOpacity
-                        onPress={()=>this.onPressSignup()}
+                            disabled={!isEnabled}
+                            onPress={()=>this.onSignUp()}
                         >
                             <Text style={styles.signUpText}> SignUp</Text>
                         </TouchableOpacity>                    
-                    </View> */}
+                    </View>
                     
                 </ScrollView>
             </View>
