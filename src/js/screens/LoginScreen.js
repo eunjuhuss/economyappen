@@ -150,13 +150,13 @@ class LoginScreen extends React.Component {
                         title='Login'
                         onPress={()=>this.handleLogin()}
                     />
-                    {/* <CustomButton
+                    <CustomButton
                         buttonStatus={!isEnabled} 
-                        color={'Green'}
+                        color={'blackLine'}
                         title='SignUp'
                         onPress={()=>this.onSignUp()}
-                    /> */}
-
+                    />
+{/* 
                     <View style={styles.registerContainer}>
                         <Text style={styles.registerInfoText}>
                             Don't have an account yet?
@@ -168,7 +168,7 @@ class LoginScreen extends React.Component {
                         >
                             <Text style={styles.signUpText}> SignUp</Text>
                         </TouchableOpacity>                    
-                    </View>
+                    </View> */}
                     
                 </ScrollView>
             </View>
