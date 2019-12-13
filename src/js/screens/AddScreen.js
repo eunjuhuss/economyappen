@@ -56,6 +56,7 @@ class AddScreen extends React.Component {
       expences: 0      
     })
   }
+
   
   render(){
     const { 
@@ -77,6 +78,7 @@ class AddScreen extends React.Component {
     return (
       <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.contentContainer}>
+        
         <View style={styles.titleHeaderContainer}>
           <Text style={styles.expencesLabel}>EXPENCES</Text>
           <Text style={styles.incomeLabel}>INCOME</Text> 
@@ -89,6 +91,7 @@ class AddScreen extends React.Component {
                 date => this.setState({ date })
               }
             />
+            
 
             <ModalDropdown
               style={styles.dropDown}
@@ -109,7 +112,7 @@ class AddScreen extends React.Component {
                 color: Colors.subGrayColor,
                 fontFamily: Fonts.subText
               }}
-              dropdownStyle={{
+              dropdownStyle={{      
                 width: Dimensions.wp(90),
                 borderRadius: 6,
                 shadowColor: "rgba(0, 0, 0, 0.2)",
@@ -119,10 +122,10 @@ class AddScreen extends React.Component {
                 },
                 shadowRadius: 20,
                 shadowOpacity: 1,
-                padding: 8
+              
               }}
               textStyle = {{
-                textAlign: 'center',
+                textAlign: 'left',
                 color: Colors.subGrayColor,
                 fontFamily: Fonts.subText, 
                 fontSize: 14
@@ -131,6 +134,7 @@ class AddScreen extends React.Component {
                 (index, category) => this.setState({ index, category })
               }
             />
+            
 
             <ModalDropdown
               style={styles.dropDown}
@@ -151,7 +155,7 @@ class AddScreen extends React.Component {
               }}
               dropdownStyle={{
                 width: Dimensions.wp(90),
-                borderRadius: 6,
+                borderRadius: 8,
                 shadowColor: "rgba(0, 0, 0, 0.2)",
                 shadowOffset: {
                   width: 0,
@@ -162,7 +166,7 @@ class AddScreen extends React.Component {
                 padding: 8
               }}
               textStyle = {{
-                textAlign: 'center',
+                textAlign: 'left',
                 color: Colors.subGrayColor,
                 fontFamily: Fonts.subText, 
                 fontSize: 14

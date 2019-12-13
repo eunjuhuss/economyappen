@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
   contentContainer: {
     backgroundColor: Colors.mainBlackColor,
     borderTopLeftRadius: 30,
-    borderTopRightRadius: 30
+    borderTopRightRadius: 30,
   },
   titleHeaderContainer: {
     padding: 20,
@@ -20,17 +20,13 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around'
   },
-    totalLabel: {
-    color: Colors.mainWhiteColor,
-    fontFamily: Fonts.headText,
-    fontSize: 15
-  },
+
   addInputListContainer: {
     backgroundColor:Colors.mainWhiteColor,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
-    flex: 1,
-    padding: 20
+    padding: 20,
+    flex: 1
   },
   incomeLabel: {
     color: Colors.mainGreenColor,
@@ -43,14 +39,13 @@ export const styles = StyleSheet.create({
     fontSize: 14
   },
   dropDown: {
-    color: Colors.subGrayColor,
-    fontFamily: Fonts.headText,
-  },
-  dropDown: {
-    marginTop: 7,
-    marginBottom: 7,
+    width: Dimensions.wp(90),
+    marginTop: 10,
+    marginBottom: 10,
+    height: 50,
     borderColor: Colors.subGrayColor,
-    borderWidth: 1,
+    color: Colors.subGrayColor,
+    borderBottomWidth: 1,
     padding: 10,
     borderRadius: 8
   }
