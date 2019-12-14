@@ -9,6 +9,8 @@ import {
 } from 'react-native';
 import { createEconomyList } from '../redux/store/actions/economyActions';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { connectActionSheet } from '@expo/react-native-action-sheet';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import AddinputList from '../components/AddInputList';
 import { styles } from '../../styles/AddScreenStyles';
@@ -57,8 +59,29 @@ class AddScreen extends React.Component {
     })
   }
 
+  addImage = () => {
+    const options = ['Select from Phots', 'Camera', 'Cancel'];
+    const cancelButtonIndex = 2;
+
+    this.props.showActionSheetWithOptions(
+      {
+        options,
+        cancelButtonIndex
+      },
+      buttonIndex => {
+        if(buttonIndex == 0){
+          console.log('open image libray')
+        } else if(buttonIndex == 1){
+          console.log('open the camera')
+        }
+
+      }
+    )
+  }
+
   
   render(){
+
     const { 
       date, 
       category, 
@@ -197,6 +220,7 @@ class AddScreen extends React.Component {
                   })
                 }
               /> */}
+            
 
               <AddinputList 
                 icon={'book'}
@@ -219,6 +243,15 @@ class AddScreen extends React.Component {
                   })
                 }
               />
+              <TouchableOpacity
+                // disabled={!editable}
+                style={styles.addImage}
+                onPress={()=> this.addImage()}  
+              >
+                <View style={styles.imageInput}>
+                </View>
+              </TouchableOpacity>
+            
   
           <CustomButton
             buttonStatus={!isEnabled} 
@@ -233,19 +266,24 @@ class AddScreen extends React.Component {
   }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     createEconomyList: (economyList) => dispatch(createEconomyList(economyList))
-//   }
-// }
-
-
-
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createEconomyList: (economyList) => dispatch(createEconomyList(economyList))
+  }
+}
 
 AddScreen.navigationOptions = {
   header: <AddHeader />
 };
 
-export default connect(null, {createEconomyList})(AddScreen)
+const wrapper = compose(
+  connect(
+    null, 
+    mapDispatchToProps
+  ), 
+  connectActionSheet
+)
+
+export default wrapper(AddScreen)
 
 
