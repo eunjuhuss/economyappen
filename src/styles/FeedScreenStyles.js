@@ -5,12 +5,12 @@ import Fonts from '../js/constants/Fonts';
 
 export const styles = StyleSheet.create({
   container: {
+    flex:1,
     backgroundColor: Colors.mainGreenColor,
     height: Dimensions.hp(100)
     },
   loading:{
     color: Colors.mainBlackColor
-
   },
   contentContainer: {
     backgroundColor: Colors.mainBlackColor,
@@ -37,5 +37,24 @@ export const styles = StyleSheet.create({
     color: Colors.highlightYellow,
     fontFamily: Fonts.headText,
     fontSize: 14
+  },
+  floatingTouchableButton: {
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
+    zIndex: 1
+
+  },
+  floatingAddButton: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    backgroundColor: Colors.mainWhiteColor,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  floatingButtonText: {
+    fontSize: 30,
+    color: Colors.subGrayColor
   }
 })

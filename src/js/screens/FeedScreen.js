@@ -4,7 +4,8 @@ import {
   StyleSheet,
   View,
   Text,
-  ActivityIndicator
+  ActivityIndicator,
+  TouchableOpacity
 } from 'react-native';
 import EconomyList from './../components/EconomyList';
 import { styles } from '../../styles/FeedScreenStyles';
@@ -24,25 +25,35 @@ class FeedScreen extends React.Component {
     
     return (
       <View style={styles.container}>
+        <TouchableOpacity 
+          style={styles.floatingTouchableButton}>
+          <View style={styles.floatingAddButton}>
+            <Text style={styles.floatingButtonText}>
+              +
+            </Text>
+          </View>
+        </TouchableOpacity>  
       { this.props.loadingReducer ? 
         <ActivityIndicator
           size='large' 
           style={styles.loading}
         /> 
-        : <ScrollView
+        :
+        <ScrollView
             contentContainerStyle={styles.contentContainer}>
+            
               <View style={styles.totalEconomyViewContainer}>
-                <Text style={styles.totalLabel}>TOTAL</Text>
+                <Text style={styles.totalLabel}>ALL</Text>
                 <Text style={styles.incomeLabel}>INCOME</Text> 
                 <Text style={styles.expencesLabel}>EXPENCES</Text> 
-              </View>     
+              </View>
               <EconomyList
                 navigation={navigation}
                 listOfEconomy={this.props.economyList}
                 deleteEconomyList={this.props.deleteEconomyList}
-              />       
+              />
           </ScrollView>
-        }        
+        }         
       </View>
     );
   }
