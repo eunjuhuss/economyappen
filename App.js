@@ -18,6 +18,7 @@ import rootReducer from './src/js/redux/store/reducers/rootReducer';
 import thunk from 'redux-thunk';
 import AppNavigator from './src/js/navigation/AppNavigator';
 import 'firebase/firestore';
+import { ActionSheetProvider } from '@expo/react-native-action-sheet'; 
 
 export default class App extends React.Component {
     constructor(props) {
@@ -54,10 +55,12 @@ export default class App extends React.Component {
         } else {
             return (
                 <Provider store={store}>
+                    <ActionSheetProvider>
                     <View style={styles.container}>
                         {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
                         <AppNavigator />
                     </View>
+                    </ActionSheetProvider>
                 </Provider>
             );
         }

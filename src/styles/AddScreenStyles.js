@@ -48,5 +48,15 @@ export const styles = StyleSheet.create({
     borderBottomWidth: 1,
     padding: 10,
     borderRadius: 8
+  },
+  addImage: {
+    flex: 1
+  },
+  imageInput: {
+    width: 80,
+    height: 80,
+    borderWidth: 1,
+    borderColor: Colors.subGrayColor,
+    borderRadius: 10
   }
 })
