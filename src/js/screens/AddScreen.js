@@ -34,7 +34,7 @@ class AddScreen extends React.Component {
       category: '',
       paymentMethod:'',
       description: '',
-      expences: ''    
+      expences: ''  
     }  
     this.dropDownRef = React.createRef();
   }
@@ -45,7 +45,7 @@ class AddScreen extends React.Component {
       category, 
       paymentMethod, 
       description, 
-      expences 
+      expences
     } = this.state;
     this.props.createEconomyList(
       date,
@@ -63,14 +63,14 @@ class AddScreen extends React.Component {
     })
   }
 
- render(){
+render(){
 
     const { 
       date, 
       category, 
       paymentMethod, 
       description, 
-      expences 
+      expences
     } = this.state;
 
     const isEnabled = 

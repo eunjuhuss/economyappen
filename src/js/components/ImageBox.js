@@ -11,47 +11,45 @@ import { Ionicons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { connectActionSheet } from '@expo/react-native-action-sheet';
-import Firebase from '../constants/Firebase';
 import { uploadImage } from '../redux/store/actions/imageActions';
-
-
-
-
+import Firebase from '../constants/Firebase';
 
 class ImageBox extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      image: null
+      // userId: null
     }  
   }
 
-  uploadImage = async (image) => {
-  const { currentUser } = Firebase.auth(); 
-  const ref = Firebase.storage().ref('images/')
 
-  try{
-    const blob= await ImageHelpers.prepareBlob(image.uri)
-    const snapshop = await ref.put(blob)
+  uploadImage = async (image, result) => {
+    const { currentUser } = Firebase.auth(); 
+    const ref = Firebase.storage().ref('images/').child(result)
+    const {userId} = this.props;
 
-    let downloadUrl = await ref.getDownloadURL()
-    await Firebase.database().ref(`/users/${currentUser.uid}/economyLists`).update({image:downloadUrl})
-    blob.close();
-    return dowunloadUrl
-  }catch(error){
-    console.log(error)
+    try{
+      const blob = await ImageHelpers.prepareBlob(image.uri)
+      const snapshop = await ref.put(blob)
+
+      let downloadUrl = await ref.getDownloadURL()
+      await Firebase.database().ref(`/users/${currentUser.uid}/economyLists/${userId}/`).update({image: downloadUrl})
+      blob.close();
+      return dowunloadUrl
+    }catch(error){
+      console.log(error)
+    }
   }
-}
 
   openImageLibray = async () => {
     const result = await ImageHelpers.openImageLibrary()
-    console.log('result', result.uri)
+
     if(result)
     {
-      const downloadUrl = await this.uploadImage(result)
-      this.setState({
-        image: result.uri
-      })
+      const downloadUrl = await this.uploadImage(result, 'test')
+      // this.setState({
+      //   image: result.uri
+      // })
     }
     console.log('result', this.state)
   }
@@ -60,20 +58,17 @@ class ImageBox extends React.Component {
     const result = await ImageHelpers.openCamera()
     if(result)
     {
-      alert('Image Clicked successfully');
-      this.setState({
-        image: result.uri
-      })   
-      
+      const downloadUrl = await this.uploadImage(result)
+      // this.setState({
+      //   image: result.uri
+      // })      
     }
-
   }
 
 
   addImage = () => {
     const options = ['Select from Phots', 'Camera', 'Cancel'];
     const cancelButtonIndex = 2;
-
     this.props.showActionSheetWithOptions(
       {
         options,
@@ -85,13 +80,11 @@ class ImageBox extends React.Component {
         } else if(buttonIndex == 1){
           this.openCamera()
         }
-
       }
     )
   }
 
   render(){
-
     return (
       <TouchableOpacity
         // disabled={!editable}
@@ -100,7 +93,7 @@ class ImageBox extends React.Component {
       >
         <View style={styles.imageInput}>
           <Image
-          source={{uri: this.state.image}}/>
+            source={{uri: this.state.image}}/>
         </View>
       </TouchableOpacity>
     )
