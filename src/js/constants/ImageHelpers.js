@@ -27,7 +27,7 @@ export const openCamera = async() => {
     Permissions.CAMERA
   );
 
-   if(status !== 'granted')
+  if(status !== 'granted')
   {
     alert('Sorry, we need camera roll & camera permission to select an image')
     return false
@@ -35,7 +35,7 @@ export const openCamera = async() => {
   else {
     const result = await ImagePicker.launchCameraAsync({
       auality: 0.1,
-      allowsEditing: Platform.OS == 'ios'?false:true,
+      allowsEditing: Platform.OS == 'ios'? false:true,
       aspect: [4,3],
       base64: true
     })
@@ -44,3 +44,27 @@ export const openCamera = async() => {
   }
 
 }
+
+  export const prepareBlob = async imageUri => {
+    const blob = await new Promise((resolve, reject)=>{
+      //new request
+      const xml = new XMLHttpRequest()
+      //success resolved it
+      xml.onload = function(){
+        resolve(xml.response)
+      }
+      //error threw new error
+      xml.onerror = function(error){
+        console.log(error)
+        reject(new TypeError('Image Upload failed'))
+      }
+      //set the response type to get the blob
+      xml.responseType = 'blob'
+      xml.open('GET', imageUri, true)
+      //send the request
+      xml.send()
+    })
+
+    return blob
+
+  }
