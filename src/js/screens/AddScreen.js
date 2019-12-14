@@ -21,6 +21,7 @@ import ModalDropdown from 'react-native-modal-dropdown';
 import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
 import Dimensions from '../constants/Dimensions';
+import * as ImageHelpers from '../constants/ImageHelpers'
 
 class AddScreen extends React.Component {
   constructor(props){
@@ -58,6 +59,23 @@ class AddScreen extends React.Component {
       expences: 0      
     })
   }
+  openImageLibray = async () => {
+    const result = await ImageHelpers.openImageLibrary()
+    if(result)
+    {
+      alert('Image Picked');
+    }
+
+  }
+
+  openCamera = async () => {
+    const result = await ImageHelpers.openCamera()
+    if(result)
+    {
+      alert('Image CLicked successfully');
+    }
+
+  }
 
   addImage = () => {
     const options = ['Select from Phots', 'Camera', 'Cancel'];
@@ -70,9 +88,9 @@ class AddScreen extends React.Component {
       },
       buttonIndex => {
         if(buttonIndex == 0){
-          console.log('open image libray')
+          this.openImageLibray()
         } else if(buttonIndex == 1){
-          console.log('open the camera')
+          this.openCamera()
         }
 
       }
