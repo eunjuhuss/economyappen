@@ -19,13 +19,17 @@ class FeedScreen extends React.Component {
   componentDidMount(){
     this.props.getEconomyList();    
   }
+  navigateToAddScreen=()=>{
+    this.props.navigation.navigate('Add')
+  }
 
   render() {
     const { navigation } = this.props;
     
     return (
       <View style={styles.container}>
-        <TouchableOpacity 
+        <TouchableOpacity
+          onPress={()=>this.navigateToAddScreen()}
           style={styles.floatingTouchableButton}>
           <View style={styles.floatingAddButton}>
             <Text style={styles.floatingButtonText}>
