@@ -18,7 +18,7 @@ class ImageBox extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      // userId: null
+      picture: ''
     }  
   }
 
@@ -33,9 +33,9 @@ class ImageBox extends React.Component {
       const snapshop = await ref.put(blob)
 
       let downloadUrl = await ref.getDownloadURL()
-      await Firebase.database().ref(`/users/${currentUser.uid}/economyLists/${userId}/`).update({image: downloadUrl})
+      await Firebase.database().ref(`/users/${currentUser.uid}/economyLists/${userId}/`).push({image: downloadUrl})
       blob.close();
-      return dowunloadUrl
+      return downloadUrl
     }catch(error){
       console.log(error)
     }
@@ -43,27 +43,33 @@ class ImageBox extends React.Component {
 
   openImageLibray = async () => {
     const result = await ImageHelpers.openImageLibrary()
-
+    const source = {uri:result.uri}
+  const {userId} = this.props;
     if(result)
     {
-      const downloadUrl = await this.uploadImage(result, 'test')
-      // this.setState({
-      //   image: result.uri
-      // })
+      const downloadUrl = await this.uploadImage(result, userId)
+  
+        this.setState({
+        picture: source
+      })
     }
-    console.log('result', this.state)
+    console.log('(result)', this.state.picture)
   }
 
   openCamera = async () => {
     const result = await ImageHelpers.openCamera()
+    const source = {uri:result.uri}
+    const {userId} = this.props;
     if(result)
     {
-      const downloadUrl = await this.uploadImage(result)
-      // this.setState({
-      //   image: result.uri
-      // })      
+      const downloadUrl = await this.uploadImage(result, userId)
+    
+        this.setState({
+        picture: source
+      })
+    }    
     }
-  }
+ 
 
 
   addImage = () => {
@@ -85,6 +91,8 @@ class ImageBox extends React.Component {
   }
 
   render(){
+    const {picture}= this.state;
+    console.log('picture', picture.uri)
     return (
       <TouchableOpacity
         // disabled={!editable}
@@ -93,12 +101,14 @@ class ImageBox extends React.Component {
       >
         <View style={styles.imageInput}>
           <Image
-            source={{uri: this.state.image}}/>
+          style={{ width: 200, height: 200 }}
+            source={{uri: picture.uri}}/>
         </View>
       </TouchableOpacity>
     )
   }            
 }
+
 // const mapDispatchToProps = (dispatch) => {
 //   return {
 //     uploadImage: (image) => dispatch(uploadImage(image))

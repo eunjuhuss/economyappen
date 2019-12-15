@@ -34,7 +34,7 @@ export const openCamera = async() => {
   }
   else {
     const result = await ImagePicker.launchCameraAsync({
-      auality: 0.1,
+      qauality: 0.1,
       allowsEditing: Platform.OS == 'ios'? false:true,
       aspect: [4,3],
       base64: true
