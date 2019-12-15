@@ -20,10 +20,11 @@ import { styles } from '../../styles/AddScreenStyles';
 import CustomButton from '../components/CustomButton';
 import AddHeader from '../components/headers/AddHeader';
 import Calendar from '../components/Calendar';
-import ModalDropdown from 'react-native-modal-dropdown';
 import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
-import ImageBox from '../components/ImageBox'
+import SelectDropdown from '../components/SelectDropdown';
+
+import ImageBox from '../components/ImageBox';
 
 
 class AddScreen extends React.Component {
@@ -90,20 +91,15 @@ render(){
           <Text style={styles.incomeLabel}>INCOME</Text> 
         </View>
         <View style={styles.addInputListContainer}>
-
             <Calendar            
               date={this.state.date}
               onDateChange={ 
                 date => this.setState({ date })
               }
             />
-            
 
-            <ModalDropdown
-              style={styles.dropDown}
+            <SelectDropdown 
               defaultValue = {'Select Category'}
-              defaultIndex={-1}
-              ref={this.dropDownRef}
               options={[
                 'Home', 
                 'Transport',
@@ -112,99 +108,23 @@ render(){
                 'Helth & Fitness', 
                 'Shopping'
                 ]}
-              dropdownTextStyle={{
-                fontSize: 16, 
-                textAlign: 'center',
-                color: Colors.subGrayColor,
-                fontFamily: Fonts.subText
-              }}
-              dropdownStyle={{      
-                width: Dimensions.wp(90),
-                borderRadius: 6,
-                shadowColor: "rgba(0, 0, 0, 0.2)",
-                shadowOffset: {
-                  width: 0,
-                  height: 5
-                },
-                shadowRadius: 20,
-                shadowOpacity: 1,
-              
-              }}
-              textStyle = {{
-                textAlign: 'left',
-                color: Colors.subGrayColor,
-                fontFamily: Fonts.subText, 
-                fontSize: 14
-              }}
               onSelect={
                 (index, category) => this.setState({ index, category })
               }
             />
-            
 
-            <ModalDropdown
-              style={styles.dropDown}
+            <SelectDropdown 
               defaultValue = {'Select Payment Method'}
-              defaultIndex={-1}
-              ref={this.dropDownRef}
               options={[
                 'Swish', 
                 'Cash',
                 'Credit', 
                 'Internet Banking'
               ]}
-              dropdownTextStyle={{
-                fontSize: 16, 
-                textAlign: 'center',
-                color: Colors.subGrayColor,
-                fontFamily: Fonts.subText
-              }}
-              dropdownStyle={{
-                width: Dimensions.wp(90),
-                borderRadius: 8,
-                shadowColor: "rgba(0, 0, 0, 0.2)",
-                shadowOffset: {
-                  width: 0,
-                  height: 5
-                },
-                shadowRadius: 20,
-                shadowOpacity: 1,
-                padding: 8
-              }}
-              textStyle = {{
-                textAlign: 'left',
-                color: Colors.subGrayColor,
-                fontFamily: Fonts.subText, 
-                fontSize: 14
-              }}
               onSelect={
-                (index, paymentMethod) => this.setState({ index, paymentMethod })
+                (index, category) => this.setState({ index, category })
               }
-            />
-
-            
-
-            {/* <AddinputList 
-              icon={'folder'}
-              label={'category'}
-              value={this.state.category}
-              onChangeText={
-                category => this.setState({ category })
-              }
-            /> */}
-
-              {/* <AddinputList 
-                icon={'options'}
-                label={'paymentMethod'}
-                value={this.state.paymentMethod}
-                onChangeText={ 
-                  paymentMethod => this.setState({
-                    paymentMethod 
-                  })
-                }
-              /> */}
-            
-
+            />            
               <AddinputList 
                 icon={'book'}
                 label={'description'}
