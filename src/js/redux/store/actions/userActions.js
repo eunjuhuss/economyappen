@@ -12,7 +12,7 @@ export function getUser() {
   }  
 }
 
-export function createUser (newUser){  
+export function createUser(newUser){  
   return (dispath) => Firebase.auth()
   .createUserWithEmailAndPassword(newUser.email, newUser.password)
   .then((userInfo)=> {      

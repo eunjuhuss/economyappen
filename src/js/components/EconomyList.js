@@ -13,6 +13,8 @@ import LabelIcon from '../components/LabelIcon';
 import FunctionIcon from '../components/FunctionIcon';
 import Swipeout from 'react-native-swipeout'
 import { Ionicons } from '@expo/vector-icons';
+import ImageBox from '../components/ImageBox';
+
 
 class EconomyList extends React.Component {
 
@@ -38,7 +40,9 @@ class EconomyList extends React.Component {
     {
       text: 'Delete',
       type: 'delete',
-      onPress: () => { deleteEconomyList(item.uid) },
+      onPress: () => { 
+        deleteEconomyList(item.uid) 
+      },
       component: (
       <Ionicons
         size={26}
@@ -56,8 +60,8 @@ class EconomyList extends React.Component {
       autoClose={true}
       right={SwipeoutButton}
       style={styles.swipeout}
-    >
-      <View style={styles.itemContainer}>
+    > 
+      <View style={styles.itemContainer}>   
         <View 
           style={styles.dateAndverticalLineContainer}
         >
@@ -66,11 +70,20 @@ class EconomyList extends React.Component {
           </Text>
           <View style={styles.verticalLine} />
         </View>              
-        <LabelIcon type={'briefcase'}/>       
-        <View style={styles.categoryContainer}>             
-          <Text style={styles.categoryText}>
-            {item.category}
-          </Text>              
+        {/* <LabelIcon type={'briefcase'}/>        */}
+        <ImageBox 
+          userId={item.uid}
+        />
+        <View style={styles.categoryContainer}>
+          {
+            item.category ?(
+            <Text style={styles.categoryText}>
+              {item.category}
+            </Text>  
+            ):(
+              null
+            )
+          }             
           <Text style={styles.categoryDateText}>
             {item.date}
           </Text>
@@ -89,14 +102,21 @@ class EconomyList extends React.Component {
 render(){
 const { listOfEconomy } = this.props;   
   return (
-    <View style={styles.economyListsContainer}>    
-      <FlatList 
-        data={listOfEconomy}
-        keyExtractor={(item) => item.uid}
-        showsVerticalScrollIndicator={false}
-        renderItem={this.renderItem.bind(this)} 
-      />    
+    
+    <View style={styles.economyListsContainer}>
+      { listOfEconomy ? (
+        <FlatList 
+          data={listOfEconomy}
+          keyExtractor={(item) => item.uid}
+          showsVerticalScrollIndicator={false}
+          renderItem={this.renderItem.bind(this)} 
+        /> 
+      ):( 
+      null
+      )
+    }    
     </View>
+    
   );  
 }
 }            

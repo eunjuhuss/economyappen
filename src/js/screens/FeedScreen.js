@@ -25,8 +25,9 @@ class FeedScreen extends React.Component {
 
   render() {
     const { navigation } = this.props;
-    
+ 
     return (
+      
       <View style={styles.container}>
         <TouchableOpacity
           onPress={()=>this.navigateToAddScreen()}
@@ -44,18 +45,17 @@ class FeedScreen extends React.Component {
         /> 
         :
         <ScrollView
-            contentContainerStyle={styles.contentContainer}>
-            
+            contentContainerStyle={styles.contentContainer}>            
               <View style={styles.totalEconomyViewContainer}>
                 <Text style={styles.totalLabel}>ALL</Text>
                 <Text style={styles.incomeLabel}>INCOME</Text> 
                 <Text style={styles.expencesLabel}>EXPENCES</Text> 
               </View>
-              <EconomyList
-                navigation={navigation}
-                listOfEconomy={this.props.economyList}
-                deleteEconomyList={this.props.deleteEconomyList}
-              />
+                <EconomyList
+                  navigation={navigation}
+                  listOfEconomy={this.props.economyList}
+                  deleteEconomyList={this.props.deleteEconomyList}
+                />
           </ScrollView>
         }         
       </View>

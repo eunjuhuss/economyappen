@@ -1,7 +1,7 @@
 import Firebase from './../../../constants/Firebase';
 
 export function getEconomyList() {  
-  return (dispatch, getState ) => {
+  return (dispatch, getState) => {
     const { currentUser } = Firebase.auth(); 
     dispatch({
       type: 'ECONOMY_LOADING_STATUS',

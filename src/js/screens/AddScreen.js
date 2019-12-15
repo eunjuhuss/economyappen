@@ -11,6 +11,9 @@ import { createEconomyList } from '../redux/store/actions/economyActions';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { connectActionSheet } from '@expo/react-native-action-sheet';
+import Firebase from '../constants/Firebase';
+import Dimensions from '../constants/Dimensions';
+import * as ImageHelpers from '../constants/ImageHelpers'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import AddinputList from '../components/AddInputList';
 import { styles } from '../../styles/AddScreenStyles';
@@ -20,8 +23,8 @@ import Calendar from '../components/Calendar';
 import ModalDropdown from 'react-native-modal-dropdown';
 import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
-import Dimensions from '../constants/Dimensions';
-import * as ImageHelpers from '../constants/ImageHelpers'
+import ImageBox from '../components/ImageBox'
+
 
 class AddScreen extends React.Component {
   constructor(props){
@@ -31,7 +34,7 @@ class AddScreen extends React.Component {
       category: '',
       paymentMethod:'',
       description: '',
-      expences: ''    
+      expences: ''  
     }  
     this.dropDownRef = React.createRef();
   }
@@ -42,7 +45,7 @@ class AddScreen extends React.Component {
       category, 
       paymentMethod, 
       description, 
-      expences 
+      expences
     } = this.state;
     this.props.createEconomyList(
       date,
@@ -59,53 +62,15 @@ class AddScreen extends React.Component {
       expences: 0      
     })
   }
-  openImageLibray = async () => {
-    const result = await ImageHelpers.openImageLibrary()
-    if(result)
-    {
-      alert('Image Picked');
-    }
 
-  }
-
-  openCamera = async () => {
-    const result = await ImageHelpers.openCamera()
-    if(result)
-    {
-      alert('Image CLicked successfully');
-    }
-
-  }
-
-  addImage = () => {
-    const options = ['Select from Phots', 'Camera', 'Cancel'];
-    const cancelButtonIndex = 2;
-
-    this.props.showActionSheetWithOptions(
-      {
-        options,
-        cancelButtonIndex
-      },
-      buttonIndex => {
-        if(buttonIndex == 0){
-          this.openImageLibray()
-        } else if(buttonIndex == 1){
-          this.openCamera()
-        }
-
-      }
-    )
-  }
-
-  
-  render(){
+render(){
 
     const { 
       date, 
       category, 
       paymentMethod, 
       description, 
-      expences 
+      expences
     } = this.state;
 
     const isEnabled = 
@@ -261,14 +226,7 @@ class AddScreen extends React.Component {
                   })
                 }
               />
-              <TouchableOpacity
-                // disabled={!editable}
-                style={styles.addImage}
-                onPress={()=> this.addImage()}  
-              >
-                <View style={styles.imageInput}>
-                </View>
-              </TouchableOpacity>
+              <ImageBox />
             
   
           <CustomButton
@@ -294,14 +252,7 @@ AddScreen.navigationOptions = {
   header: <AddHeader />
 };
 
-const wrapper = compose(
-  connect(
-    null, 
-    mapDispatchToProps
-  ), 
-  connectActionSheet
-)
 
-export default wrapper(AddScreen)
+export default connect(null, mapDispatchToProps)(AddScreen)
 
 
