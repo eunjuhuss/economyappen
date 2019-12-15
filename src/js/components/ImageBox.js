@@ -25,29 +25,30 @@ class ImageBox extends React.Component {
 
   uploadImage = async (image, result) => {
     const { currentUser } = Firebase.auth(); 
-    const ref = Firebase.storage().ref('images/').child(result)
-    const {userId} = this.props;
+    const { picture } = this.state;
+    const ref = Firebase.storage().ref('images/').child(result.uri)
+    const { userId } = this.props;
 
     try{
       const blob = await ImageHelpers.prepareBlob(image.uri)
       const snapshop = await ref.put(blob)
 
       let downloadUrl = await ref.getDownloadURL()
-      await Firebase.database().ref(`/users/${currentUser.uid}/economyLists/${userId}/`).push({image: downloadUrl})
+      await Firebase.database().ref(`/users/${currentUser.uid}/economyLists/${userId}/`).update({image: downloadUrl})
       blob.close();
       return downloadUrl
-    }catch(error){
-      console.log(error)
-    }
+      }catch(error){
+        console.log(error)
+      }
   }
 
   openImageLibray = async () => {
     const result = await ImageHelpers.openImageLibrary()
-    const source = {uri:result.uri}
-  const {userId} = this.props;
+    const source = { uri:result.uri }
+    const {userId} = this.props;
     if(result)
     {
-      const downloadUrl = await this.uploadImage(result, userId)
+      const downloadUrl = await this.uploadImage(result, source)
   
         this.setState({
         picture: source
@@ -62,7 +63,7 @@ class ImageBox extends React.Component {
     const {userId} = this.props;
     if(result)
     {
-      const downloadUrl = await this.uploadImage(result, userId)
+      const downloadUrl = await this.uploadImage(result, source)
     
         this.setState({
         picture: source
@@ -91,8 +92,7 @@ class ImageBox extends React.Component {
   }
 
   render(){
-    const {picture}= this.state;
-    console.log('picture', picture.uri)
+    const { picture }= this.state;
     return (
       <TouchableOpacity
         // disabled={!editable}
@@ -101,7 +101,7 @@ class ImageBox extends React.Component {
       >
         <View style={styles.imageInput}>
           <Image
-          style={{ width: 200, height: 200 }}
+            style={{ width: 200, height: 200 }}
             source={{uri: picture.uri}}/>
         </View>
       </TouchableOpacity>
