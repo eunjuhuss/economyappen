@@ -9,7 +9,7 @@ function economyListReducer (state = initState, action) {
     case 'REMOVE_ECONOMY_LISTS':
     return state;
     case 'UPDATE_ECONOMY_LISTS':
-    return action.payload;
+    return state;
     default:
     return state  
   }

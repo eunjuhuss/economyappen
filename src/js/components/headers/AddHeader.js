@@ -8,13 +8,19 @@ import BasicHeader from './BasicHeader';
 import HeaderLayout from './HeaderLayout';
 import { Ionicons } from '@expo/vector-icons';
 
+
 export default class AddHeader extends React.Component{
   constructor(props) {  
     super(props);
   }
 
 
-  render(){   
+
+
+  render(){ 
+    // const value = this.props.value;
+
+    
     return (
       <HeaderLayout>
         <BasicHeader
@@ -28,7 +34,7 @@ export default class AddHeader extends React.Component{
             />
           }
           // middleComponent={
-            
+               
           // }
           rightComponent={
               <Ionicons 

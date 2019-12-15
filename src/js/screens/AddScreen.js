@@ -23,6 +23,7 @@ import Calendar from '../components/Calendar';
 import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
 import SelectDropdown from '../components/SelectDropdown';
+import ModalDropdown from 'react-native-modal-dropdown';
 
 import ImageBox from '../components/ImageBox';
 
@@ -77,7 +78,7 @@ render(){
     const isEnabled = 
       date.length > 0 &&  
       category.length > 0 && 
-      paymentMethod.length > 0 && 
+      // paymentMethod.length > 0 && 
       description.length > 0 && 
       expences.length > 0;
       
@@ -98,6 +99,90 @@ render(){
               }
             />
 
+            <ModalDropdown
+      style={styles.dropDown}
+      defaultValue = {'Select Category'}
+      defaultIndex={-1}
+      ref={this.dropDownRef}
+      options={[
+                'Home', 
+                'Transport',
+                'Travel', 
+                'Food & Dining', 
+                'Helth & Fitness', 
+                'Shopping'
+                ]}
+      dropdownTextStyle={{
+        fontSize: 16, 
+        textAlign: 'center',
+        color: Colors.subGrayColor,
+        fontFamily: Fonts.subText
+      }}
+      dropdownStyle={{      
+        width: Dimensions.wp(90),
+        borderRadius: 6,
+        shadowColor: "rgba(0, 0, 0, 0.2)",
+        shadowOffset: {
+          width: 0,
+          height: 5
+        },
+        shadowRadius: 20,
+        shadowOpacity: 1,
+      
+      }}
+      textStyle = {{
+        textAlign: 'left',
+        color: Colors.subGrayColor,
+        fontFamily: Fonts.subText, 
+        fontSize: 14
+      }}
+        onSelect={
+                (category) => this.setState({ category })
+              }
+    />
+
+
+    <ModalDropdown
+      style={styles.dropDown}
+      defaultValue = {'Select Payment Method'}
+      defaultIndex={-1}
+      ref={this.dropDownRef}
+      options={[
+                'Swish', 
+                'Cash',
+                'Credit', 
+                'Internet Banking'
+              ]}
+      dropdownTextStyle={{
+        fontSize: 16, 
+        textAlign: 'center',
+        color: Colors.subGrayColor,
+        fontFamily: Fonts.subText
+      }}
+      dropdownStyle={{      
+        width: Dimensions.wp(90),
+        borderRadius: 6,
+        shadowColor: "rgba(0, 0, 0, 0.2)",
+        shadowOffset: {
+          width: 0,
+          height: 5
+        },
+        shadowRadius: 20,
+        shadowOpacity: 1,
+      
+      }}
+      textStyle = {{
+        textAlign: 'left',
+        color: Colors.subGrayColor,
+        fontFamily: Fonts.subText, 
+        fontSize: 14
+      }}
+    onSelect={
+                paymentMethod => this.setState({ paymentMethod })
+              }
+              />
+
+{/* 
             <SelectDropdown 
               defaultValue = {'Select Category'}
               options={[
@@ -111,9 +196,9 @@ render(){
               onSelect={
                 (index, category) => this.setState({ index, category })
               }
-            />
+            /> */}
 
-            <SelectDropdown 
+            {/* <SelectDropdown 
               defaultValue = {'Select Payment Method'}
               options={[
                 'Swish', 
@@ -124,7 +209,11 @@ render(){
               onSelect={
                 (index, category) => this.setState({ index, category })
               }
-            />            
+            />   */}
+
+ 
+
+
               <AddinputList 
                 icon={'book'}
                 label={'description'}

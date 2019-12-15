@@ -14,6 +14,16 @@ export const styles = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
   },
+  selectExpenceIncomeButtonContainer: {
+    width: Dimensions.wp(80),
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+
+  },
+  swithSelector: {
+    fontFamily: Fonts.headText,
+  },
   titleHeaderContainer: {
     padding: 20,
     flex: 1,
