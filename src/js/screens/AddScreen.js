@@ -25,9 +25,7 @@ import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
 import SelectDropdown from '../components/SelectDropdown';
 import ModalDropdown from 'react-native-modal-dropdown';
-
 import ImageBox from '../components/ImageBox';
-
 
 class AddScreen extends React.Component {
   constructor(props){
@@ -76,29 +74,29 @@ class AddScreen extends React.Component {
   }
 
 render(){
-    const {
-      expence,
-      income, 
-      date, 
-      category, 
-      paymentMethod, 
-      description, 
-      price,
-    } = this.state;
+  const {
+    expence,
+    income, 
+    date, 
+    category, 
+    paymentMethod, 
+    description, 
+    price,
+  } = this.state;
 
-    const isEnabled = 
-      date.length > 0 &&  
-      category.length !== '' && 
-      paymentMethod.length !== '' &&  
-      description.length > 0 && 
-      price.length > 0;
+  const isEnabled = 
+    date.length > 0 &&  
+    category.length !== '' && 
+    paymentMethod.length !== '' &&  
+    description.length > 0 && 
+    price.length > 0;
 
-    return (
-      <View style={styles.container}>
+  return (
+    <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.contentContainer}>
-        
-        <View style={styles.titleHeaderContainer}>
-          <CheckBox 
+        <View style={styles.checkboxContainer}>
+          <CheckBox
+            style={styles.checkbox} 
             value={this.state.expence}
             onValueChange={
             value => this.setState({
@@ -107,8 +105,11 @@ render(){
               })
             }
           />
-          <Text style={styles.expencesLabel}>EXPENCES</Text>
+          <Text style={styles.expencesLabel}>
+            EXPENCES
+          </Text>
           <CheckBox 
+            style={styles.checkbox} 
             value={this.state.income}
             onValueChange={
             value => this.setState({
@@ -117,7 +118,9 @@ render(){
               })
             }
           />
-          <Text style={styles.incomeLabel}>INCOME</Text> 
+          <Text style={styles.incomeLabel}>
+            INCOME
+          </Text> 
         </View>
         <View style={styles.addInputListContainer}>
             <Calendar            
@@ -126,7 +129,6 @@ render(){
                 date => this.setState({ date })
               }
             />
-
             <SelectDropdown 
               defaultValue = {'Select Category'}
               options={[
@@ -141,7 +143,6 @@ render(){
                 (index, category) => this.setState({ index, category })
               }
             />
-
             <SelectDropdown 
               defaultValue = {'Select Payment Method'}
               options={[
@@ -153,54 +154,48 @@ render(){
               onSelect={
                 (index, paymentMethod) => this.setState({ index, paymentMethod })
               }
-            />  
-
-
-              <AddinputList 
-                icon={'book'}
-                label={'description'}
-                value={this.state.description}
-                onChangeText={
-                  description => this.setState({
-                    description 
+            />
+            <AddinputList 
+              icon={'book'}
+              label={'description'}
+              value={this.state.description}
+              onChangeText={
+                description => this.setState({
+                  description 
+                })
+              }
+            />
+            <AddinputList
+              icon={'switch'}
+              label={'income/expences'}
+              value={this.state.price}
+              onChangeText={ 
+                price => this.setState({
+                  price 
+                })
+              }
+            />
+            <View style={styles.receiptCheckBoxContainer}>
+              <Text style={styles.checkboxText}> 
+                Do you have a receipt?
+              </Text>
+              <CheckBox 
+                value={this.state.checkReceipt}
+                onValueChange={
+                  () => this.setState({
+                    checkReceipt: !this.state.checkReceipt
                   })
                 }
-              />
-
-              <AddinputList
-                icon={'switch'}
-                label={'income/expences'}
-                value={this.state.price}
-                onChangeText={ 
-                  price => this.setState({
-                    price 
-                  })
-                }
-              />
-              <View style={styles.receiptCheckBoxContainer}>
-                <Text style={styles.checkboxText}> 
-                  Do you have a receipt?
-                </Text>
-                <CheckBox 
-                  value={this.state.checkReceipt}
-                  onValueChange={
-                    () => this.setState({
-                      checkReceipt: !this.state.checkReceipt
-                    })
-                  }
-                />
-                
+              />                
+            </View>
+            { this.state.checkReceipt ? (
+              <View style={styles.imageBoxContainer}>
+                <ImageBox /> 
               </View>
-
-              { this.state.checkReceipt ? (
-                <View style={styles.imageBoxContainer}>
-                  <ImageBox /> 
-                </View>
-                ):(
-                  null
-                )
-              }  
-  
+              ):(
+                null
+              )
+            } 
           <CustomButton
             buttonStatus={!isEnabled} 
             color={'red'} 
@@ -209,7 +204,7 @@ render(){
           />
         </View>       
       </ScrollView>
-      </View>
+    </View>
     );
   }
 }

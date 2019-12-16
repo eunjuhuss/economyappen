@@ -6,7 +6,7 @@ import { red } from 'ansi-colors';
 
 export const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.mainGreenColor,
+    backgroundColor: Colors.mainWhiteColor,
     flex: 1
   },
   contentContainer: {
@@ -14,21 +14,29 @@ export const styles = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
   },
-  selectExpenceIncomeButtonContainer: {
-    width: Dimensions.wp(80),
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-
+  checkbox: {
+    backgroundColor: Colors.mainWhiteColor,
+    borderRadius: 20,
+    borderColor: Colors.mainWhiteColor,
+    borderWidth:1
+    
   },
+  // selectExpenceIncomeButtonContainer: {
+  //   width: Dimensions.wp(80),
+  //   flex: 1,
+  //   justifyContent: 'center',
+  //   alignItems: 'center'
+
+  // },
   swithSelector: {
     fontFamily: Fonts.headText,
   },
-  titleHeaderContainer: {
+  checkboxContainer: {
     padding: 20,
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    alignItems: 'center'
   },
 
   addInputListContainer: {
@@ -79,7 +87,6 @@ export const styles = StyleSheet.create({
     color: Colors.subGrayColor
   },
   imageBoxContainer: {
-    flex: 1,
     justifyContent: 'center',
     alignContent: 'center'
   }
