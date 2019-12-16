@@ -5,7 +5,8 @@ import {
   StyleSheet, 
   Text,
   View,
-  TextInput 
+  TextInput,
+  CheckBox 
 } from 'react-native';
 import { createEconomyList } from '../redux/store/actions/economyActions';
 import { connect } from 'react-redux';
@@ -36,7 +37,8 @@ class AddScreen extends React.Component {
       category: '',
       paymentMethod:'',
       description: '',
-      expences: ''  
+      expences: '',
+      checkReceipt: false  
     }  
     this.dropDownRef = React.createRef();
   }
@@ -71,11 +73,13 @@ render(){
       category, 
       paymentMethod, 
       description, 
-      expences
+      expences,
     } = this.state;
 
     const isEnabled = 
       date.length > 0 &&  
+      category.length !== '' && 
+      paymentMethod.length !== '' &&  
       description.length > 0 && 
       expences.length > 0;
       
@@ -95,88 +99,6 @@ render(){
                 date => this.setState({ date })
               }
             />
-
-            {/* <ModalDropdown
-      style={styles.dropDown}
-      defaultValue = {'Select Category'}
-      defaultIndex={-1}
-      ref={this.dropDownRef}
-      options={[
-                'Home', 
-                'Transport',
-                'Travel', 
-                'Food & Dining', 
-                'Helth & Fitness', 
-                'Shopping'
-                ]}
-      dropdownTextStyle={{
-        fontSize: 16, 
-        textAlign: 'center',
-        color: Colors.subGrayColor,
-        fontFamily: Fonts.subText
-      }}
-      dropdownStyle={{      
-        width: Dimensions.wp(90),
-        borderRadius: 6,
-        shadowColor: "rgba(0, 0, 0, 0.2)",
-        shadowOffset: {
-          width: 0,
-          height: 5
-        },
-        shadowRadius: 20,
-        shadowOpacity: 1,
-      
-      }}
-      textStyle = {{
-        textAlign: 'left',
-        color: Colors.subGrayColor,
-        fontFamily: Fonts.subText, 
-        fontSize: 14
-      }}
-        onSelect={
-                category => this.setState({ category })
-              }
-    />
-
-
-    <ModalDropdown
-      style={styles.dropDown}
-      defaultValue = {'Select Payment Method'}
-      defaultIndex={-1}
-      ref={this.dropDownRef}
-      options={[
-                'Swish', 
-                'Cash',
-                'Credit', 
-                'Internet Banking'
-              ]}
-      dropdownTextStyle={{
-        fontSize: 16, 
-        textAlign: 'center',
-        color: Colors.subGrayColor,
-        fontFamily: Fonts.subText
-      }}
-      dropdownStyle={{      
-        width: Dimensions.wp(90),
-        borderRadius: 6,
-        shadowColor: "rgba(0, 0, 0, 0.2)",
-        shadowOffset: {
-          width: 0,
-          height: 5
-        },
-        shadowRadius: 20,
-        shadowOpacity: 1,
-      
-      }}
-      textStyle = {{
-        textAlign: 'left',
-        color: Colors.subGrayColor,
-        fontFamily: Fonts.subText, 
-        fontSize: 14
-      }}
-    onSelect={paymentMethod => this.setState({ paymentMethod }) }
-/> */}
-
 
             <SelectDropdown 
               defaultValue = {'Select Category'}
@@ -228,8 +150,27 @@ render(){
                   })
                 }
               />
-              {/* <ImageBox /> */}
-            
+              <View style={styles.receiptCheckBoxContainer}>
+                <Text> Do you have a receipt?</Text>
+                <CheckBox 
+                  value={this.state.checkReceipt}
+                  onValueChange={
+                    () => this.setState({
+                      checkReceipt: !this.state.checkReceipt
+                    })
+                  }
+                />
+                
+              </View>
+
+              { this.state.checkReceipt ? (
+                <View style={styles.imageBoxContainer}>
+                  <ImageBox /> 
+                </View>
+                ):(
+                  null
+                )
+              }  
   
           <CustomButton
             buttonStatus={!isEnabled} 

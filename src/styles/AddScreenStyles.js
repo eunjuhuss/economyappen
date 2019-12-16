@@ -68,5 +68,15 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.subGrayColor,
     borderRadius: 10
+  },
+  receiptCheckBoxContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignContent: 'center'
+  },
+  imageBoxContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignContent: 'center'
   }
 })

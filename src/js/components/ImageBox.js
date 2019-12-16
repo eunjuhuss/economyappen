@@ -3,7 +3,8 @@ import {
   Platform,
   View,
   TouchableOpacity,
-  Image
+  Image,
+  Text
 } from 'react-native';
 import { styles } from '../../styles/ImageBoxStyles';
 import * as ImageHelpers from '../constants/ImageHelpers'
@@ -99,10 +100,15 @@ class ImageBox extends React.Component {
         style={styles.addImage}
         onPress={()=> this.addImage()}  
       >
-        <View style={styles.imageInput}>
+        
+        <View style={styles.imageAddButton}>
           <Image
-            style={{ width: 200, height: 200 }}
+            style={styles.recieptImage}
             source={{uri: picture.uri}}/>
+          
+            <Text style={styles.imageButtonText}>
+              +
+            </Text>
         </View>
       </TouchableOpacity>
     )
