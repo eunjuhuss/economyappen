@@ -66,7 +66,6 @@ class AddScreen extends React.Component {
   }
 
 render(){
-
     const { 
       date, 
       category, 
@@ -78,7 +77,7 @@ render(){
     const isEnabled = 
       date.length > 0 &&  
       category.length > 0 && 
-      // paymentMethod.length > 0 && 
+      paymentMethod.length > 0 && 
       description.length > 0 && 
       expences.length > 0;
       
@@ -99,7 +98,7 @@ render(){
               }
             />
 
-            <ModalDropdown
+            {/* <ModalDropdown
       style={styles.dropDown}
       defaultValue = {'Select Category'}
       defaultIndex={-1}
@@ -137,7 +136,7 @@ render(){
         fontSize: 14
       }}
         onSelect={
-                (category) => this.setState({ category })
+                category => this.setState({ category })
               }
     />
 
@@ -177,10 +176,8 @@ render(){
         fontFamily: Fonts.subText, 
         fontSize: 14
       }}
-    onSelect={
-                paymentMethod => this.setState({ paymentMethod })
-              }
-              />
+    onSelect={paymentMethod => this.setState({ paymentMethod }) }
+/> */}
 
 {/* 
             <SelectDropdown 
@@ -211,7 +208,26 @@ render(){
               }
             />   */}
 
- 
+ <AddinputList 
+                icon={'book'}
+                label={'description'}
+                value={this.state.category}
+                onChangeText={
+                  category => this.setState({
+                    category
+                  })
+                }
+              />
+              <AddinputList 
+                icon={'book'}
+                label={'description'}
+                value={this.state.paymentMethod}
+                onChangeText={
+                  paymentMethod => this.setState({
+                    paymentMethod 
+                  })
+                }
+              />
 
 
               <AddinputList 
@@ -235,7 +251,7 @@ render(){
                   })
                 }
               />
-              <ImageBox />
+              {/* <ImageBox /> */}
             
   
           <CustomButton
@@ -251,16 +267,15 @@ render(){
   }
 }
 
+AddScreen.navigationOptions = {
+  header: <AddHeader />
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     createEconomyList: (economyList) => dispatch(createEconomyList(economyList))
   }
 }
-
-AddScreen.navigationOptions = {
-  header: <AddHeader />
-};
-
 
 export default connect(null, mapDispatchToProps)(AddScreen)
 

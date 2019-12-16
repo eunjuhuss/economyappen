@@ -24,7 +24,7 @@ export function getEconomyList() {
 export function createEconomyList(date, category, paymentMethod, description, expences) {  
   return (dispatch) => { 
     const { currentUser } = Firebase.auth(); 
-    Firebase.database().ref(`/users/${currentUser.uid}/economyLists`)
+    Firebase.database().ref(`/users/${currentUser.uid}/economyLists/`)
     .push({
       date, 
       category,
