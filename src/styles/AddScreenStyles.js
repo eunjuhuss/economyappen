@@ -6,20 +6,20 @@ import { red } from 'ansi-colors';
 
 export const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.mainWhiteColor,
-    flex: 1
+    backgroundColor:'#F4F7F9',
+    flex: 1,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 3,
+      height: 0
+    },
+    shadowOpacity: 0.6
+  
   },
   contentContainer: {
-    backgroundColor: Colors.mainBlackColor,
+    backgroundColor:'#F4F7F9',
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
-  },
-  checkbox: {
-    backgroundColor: Colors.mainWhiteColor,
-    borderRadius: 20,
-    borderColor: Colors.mainWhiteColor,
-    borderWidth:1
-    
   },
   // selectExpenceIncomeButtonContainer: {
   //   width: Dimensions.wp(80),
@@ -40,19 +40,16 @@ export const styles = StyleSheet.create({
   },
 
   addInputListContainer: {
-    backgroundColor:Colors.mainWhiteColor,
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
+    
+
     padding: 20,
     flex: 1
   },
   incomeLabel: {
-    color: Colors.mainGreenColor,
     fontFamily: Fonts.headText,
     fontSize: 14
   },
   expencesLabel: {
-    color: Colors.highlightYellow,
     fontFamily: Fonts.headText,
     fontSize: 14
   },

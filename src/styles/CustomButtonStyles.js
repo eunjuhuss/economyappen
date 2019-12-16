@@ -7,8 +7,7 @@ export const styles = StyleSheet.create({
   blackCustomButton: {
     marginTop: Dimensions.wp(15),
     backgroundColor: Colors.mainBlackColor,
-    borderRadius: 40,
-    height: 80,
+    height: 50,
     justifyContent: 'center',
     alignItems: 'center'  
   },
@@ -25,27 +24,24 @@ export const styles = StyleSheet.create({
   //   fontSize: 18
   // },
   buttonText: {
-    color: Colors.highlightYellow,
+    color: Colors.mainWhiteColor,
     fontFamily: Fonts.headText,
     fontSize: 18
   },
-  redCustomButton: {
+  blueCustomButton: {
     marginTop: 'auto',
-    backgroundColor: Colors.highlightRed,
+    backgroundColor: Colors.highlightBlue,
     marginTop: Dimensions.wp(15),
-    borderRadius: 40,
-    height: 80,
+    height: 50,
   },
   abledButton: {
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 40,
     opacity: 1
   },
   disabledButton: {
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 40,
     opacity: 0.6
   },
 })

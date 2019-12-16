@@ -90,9 +90,27 @@ render(){
     paymentMethod.length !== '' &&  
     description.length > 0 && 
     price.length > 0;
+  
+  const checkedIncomeStyle = () => {
+    const { expence, income }= this.state;
+    if(income === true){
+      return{ color: Colors.highlightBlue }
+    }else if(income === false){
+      return{ color: Colors.subGrayColor }
+    }
+  }
+
+   const checkedExpenceStyle = () => {
+    const { expence, income }= this.state;
+    if(expence === true){
+      return{ color: Colors.highlightBlue }
+    }else if(expence === false){
+      return{ color: Colors.subGrayColor }
+    }
+  }
 
   return (
-    <View style={styles.container}>
+    <View elevation={5} style={styles.container}>
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <View style={styles.checkboxContainer}>
           <CheckBox
@@ -105,7 +123,7 @@ render(){
               })
             }
           />
-          <Text style={styles.expencesLabel}>
+          <Text style={[checkedExpenceStyle(), styles.expencesLabel]}>
             EXPENCES
           </Text>
           <CheckBox 
@@ -118,7 +136,7 @@ render(){
               })
             }
           />
-          <Text style={styles.incomeLabel}>
+          <Text style={[checkedIncomeStyle(),styles.incomeLabel]}>
             INCOME
           </Text> 
         </View>

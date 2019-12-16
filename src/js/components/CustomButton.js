@@ -12,7 +12,7 @@ const CustomButton = ({onPress, title, color, buttonStatus}) => {
       style={[
         color === 'black' ? 
         styles.blackCustomButton : 
-        styles.redCustomButton, 
+        styles.blueCustomButton, 
         buttonStatus === true ? 
           styles.disabledButton : 
           styles.abledButton,]}
