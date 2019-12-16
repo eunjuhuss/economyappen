@@ -44,4 +44,11 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     opacity: 0.6
   },
+  titleAndIconButtonContainer: {
+    flexDirection: 'row',
+  },
+  icon: {
+    color: Colors.mainWhiteColor,
+    marginRight: 5
+  }
 })

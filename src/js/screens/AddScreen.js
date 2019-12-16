@@ -100,7 +100,7 @@ render(){
     }
   }
 
-   const checkedExpenceStyle = () => {
+  const checkedExpenceStyle = () => {
     const { expence, income }= this.state;
     if(expence === true){
       return{ color: Colors.highlightBlue }
@@ -217,7 +217,8 @@ render(){
           <CustomButton
             buttonStatus={!isEnabled} 
             color={'red'} 
-            title={'Submit'}
+            title={'SUBMIT'}
+            icon={'checkmark'}
             onPress={()=>this.onsubmit()}
           />
         </View>       
