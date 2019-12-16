@@ -76,8 +76,6 @@ render(){
 
     const isEnabled = 
       date.length > 0 &&  
-      category.length > 0 && 
-      paymentMethod.length > 0 && 
       description.length > 0 && 
       expences.length > 0;
       
@@ -179,7 +177,7 @@ render(){
     onSelect={paymentMethod => this.setState({ paymentMethod }) }
 /> */}
 
-{/* 
+
             <SelectDropdown 
               defaultValue = {'Select Category'}
               options={[
@@ -193,9 +191,9 @@ render(){
               onSelect={
                 (index, category) => this.setState({ index, category })
               }
-            /> */}
+            />
 
-            {/* <SelectDropdown 
+            <SelectDropdown 
               defaultValue = {'Select Payment Method'}
               options={[
                 'Swish', 
@@ -206,28 +204,7 @@ render(){
               onSelect={
                 (index, category) => this.setState({ index, category })
               }
-            />   */}
-
- <AddinputList 
-                icon={'book'}
-                label={'description'}
-                value={this.state.category}
-                onChangeText={
-                  category => this.setState({
-                    category
-                  })
-                }
-              />
-              <AddinputList 
-                icon={'book'}
-                label={'description'}
-                value={this.state.paymentMethod}
-                onChangeText={
-                  paymentMethod => this.setState({
-                    paymentMethod 
-                  })
-                }
-              />
+            />  
 
 
               <AddinputList 
@@ -271,12 +248,12 @@ AddScreen.navigationOptions = {
   header: <AddHeader />
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    createEconomyList: (economyList) => dispatch(createEconomyList(economyList))
-  }
-}
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     createEconomyList: (economyList) => dispatch(createEconomyList(economyList))
+//   }
+// }
 
-export default connect(null, mapDispatchToProps)(AddScreen)
+export default connect(null, {createEconomyList})(AddScreen)
 
 
