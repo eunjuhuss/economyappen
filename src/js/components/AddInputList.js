@@ -34,12 +34,12 @@ class AddInputList extends React.Component {
 
   render() {
     const {
-      icon, label, value, onChangeText, onFocus, onBlur, ...otherProps
+      label, value, onChangeText, onFocus, onBlur, ...otherProps
     } = this.props;
     const { isFocused } = this.state;
     return (    
       <View style={styles.singleInputContainer}>
-        <LabelIcon type={icon}/>
+        {/* <LabelIcon type={icon}/> */}
         {/* <View style={styles.textAndinputContainer}> */}
           {/* <Text style={styles.labelText}>
             {label}
@@ -49,6 +49,7 @@ class AddInputList extends React.Component {
             placeholder={label}
             onChangeText={onChangeText}
             value={value}
+            multiline={true}
             underlineColorAndroid={
               isFocused ? MAIN_GREEN : LIGHT_GRAY
             }

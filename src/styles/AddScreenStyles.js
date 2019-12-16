@@ -38,6 +38,11 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center'
   },
+  labelInputBox: {
+
+paddingTop: 10,
+paddingBottom: 10
+  },
 
   addInputListContainer: {
     
@@ -54,15 +59,11 @@ export const styles = StyleSheet.create({
     fontSize: 14
   },
   dropDown: {
-    width: Dimensions.wp(90),
-    marginTop: 10,
-    marginBottom: 10,
-    height: 50,
-    borderColor: Colors.subGrayColor,
+    width: Dimensions.wp(43),
+    height: 30,
+    borderBottomColor: Colors.subGrayColor,
     color: Colors.subGrayColor,
     borderBottomWidth: 1,
-    padding: 10,
-    borderRadius: 8
   },
   addImage: {
     flex: 1
@@ -76,15 +77,38 @@ export const styles = StyleSheet.create({
   },
   receiptCheckBoxContainer: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: 'space-between',
+    height: Dimensions.hp(15)
   },
+  labelCheckBox: {
+    flexDirection: 'row',
+    alignItems: 'center'
+ },
+
   checkboxText: {
     fontFamily: Fonts.headText,
     color: Colors.subGrayColor
   },
   imageBoxContainer: {
-    justifyContent: 'center',
-    alignContent: 'center'
+    justifyContent: 'flex-end',
+  },
+  labelText: {
+    fontFamily: Fonts.subText,
+    color: Colors.subGrayColor,
+    paddingBottom: 5,
+    fontSize: 12
+  },
+  dropDownContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  dropDownAndIconContainer: {
+    flexDirection: 'row',
+
+  },
+  arrowDownIcon: {
+    margin: 10,
+    alignSelf: 'flex-end',
+    color: Colors.subGrayColor,
   }
 })

@@ -5,36 +5,35 @@ import {
   StyleSheet, 
   Text,
   View,
+  Platform,
   TextInput,
   TouchableOpacity 
 } from 'react-native';
-
 import Dimensions from '../constants/Dimensions';
 import { styles } from '../../styles/AddScreenStyles';
-
 import ModalDropdown from 'react-native-modal-dropdown';
 import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
-
-
+import { Ionicons } from '@expo/vector-icons';
 
 const SelectDropdown = ({defaultValue, options, onSelect}) => {
   return (
+    <View style={styles.dropDownAndIconContainer}>
     <ModalDropdown
       style={styles.dropDown}
-      defaultValue = {defaultValue}
+      defaultValue={defaultValue}
       defaultIndex={-1}
       ref={this.dropDownRef}
       options={options}
       dropdownTextStyle={{
-        fontSize: 16, 
-        textAlign: 'center',
+        fontSize: 14, 
+        textAlign: 'left',
         color: Colors.subGrayColor,
         fontFamily: Fonts.subText
       }}
       dropdownStyle={{      
-        width: Dimensions.wp(90),
-        borderRadius: 6,
+        width: Dimensions.wp(43),
+        margin: 0,
         shadowColor: "rgba(0, 0, 0, 0.2)",
         shadowOffset: {
           width: 0,
@@ -52,6 +51,21 @@ const SelectDropdown = ({defaultValue, options, onSelect}) => {
       }}
       onSelect={onSelect}
     />
+    {/* <View>
+
+    
+    <Ionicons
+      size={22}
+      style={styles.arrowDownIcon}
+      
+      name={Platform.OS === 'ios' ?
+        `ios-arrow-down` : 
+        `md-arrow-down`}
+    />
+    </View>
+    </ModalDropdown> */}
+
+    </View>
   )
 }
 export default SelectDropdown;
