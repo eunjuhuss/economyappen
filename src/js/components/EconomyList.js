@@ -14,9 +14,12 @@ import FunctionIcon from '../components/FunctionIcon';
 import Swipeout from 'react-native-swipeout'
 import { Ionicons } from '@expo/vector-icons';
 import ImageBox from '../components/ImageBox';
+import Colors from '../constants/Colors';
 
 
 class EconomyList extends React.Component {
+
+
 
 
   renderItem = ({item}) => {
@@ -55,6 +58,15 @@ class EconomyList extends React.Component {
     }
   ]
 
+  const statusStyles = (item)=> {   
+    if(item.expence === true){
+      return { color: Colors.highlightRed }
+    } 
+    else if(item.income === true){
+      return { color: Colors.mainBlackColor }
+    }
+  }
+
   return(
     <Swipeout
       autoClose={true}
@@ -88,8 +100,8 @@ class EconomyList extends React.Component {
             {item.date}
           </Text>
         </View>
-        <Text style={styles.incomeExpencesText}>
-          {item.expences}
+        <Text style={[statusStyles(item),styles.incomeExpencesText]}>
+          {item.price}
         </Text>
         <Text style={styles.currencyText}>
           kr
@@ -97,10 +109,12 @@ class EconomyList extends React.Component {
       </View>  
     </Swipeout>
     )
-  }  
+  }
 
 render(){
-const { listOfEconomy } = this.props;   
+const { listOfEconomy } = this.props;
+
+ 
   return (
     
     <View style={styles.economyListsContainer}>

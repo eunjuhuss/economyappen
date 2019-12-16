@@ -8,6 +8,7 @@ export function getEconomyList() {
       payload: true
     })
     Firebase.database().ref(`/users/${currentUser.uid}/economyLists`)
+    .orderByChild("date")
     .on('value',(snapshot)=> {
       dispatch({ 
         type: 'FETCH_ECONOMY_LIST', 
@@ -21,16 +22,18 @@ export function getEconomyList() {
   };
 };
 
-export function createEconomyList(date, category, paymentMethod, description, expences) {  
+export function createEconomyList(expence, income, date, category, paymentMethod, description, price) {  
   return (dispatch) => { 
     const { currentUser } = Firebase.auth(); 
-    Firebase.database().ref(`/users/${currentUser.uid}/economyLists`)
+    Firebase.database().ref(`/users/${currentUser.uid}/economyLists/`)
     .push({
-      date, 
+      expence,
+      income,
+      date,                           
       category,
       paymentMethod, 
       description,
-      expences
+      price
     })
     .then(()=>{
       dispatch({ type: 'CREATE_ECONOMY_LISTS'});
@@ -49,11 +52,11 @@ export function deleteEconomyList(uid) {
   };
 };
 
-export function editEconomyList(date, category, paymentMethod, description, expences, uid) { 
+export function editEconomyList(  expence,income,date, category, paymentMethod, description, expences, uid) { 
   const { currentUser } = Firebase.auth(); 
   return (dispatch) => {
     Firebase.database().ref(`/users/${currentUser.uid}/economyLists/${uid}`)
-    .update({date, category, paymentMethod, description, expences})
+    .update({  expence, income,date, category, paymentMethod, description, price})
     .then(() => {
       dispatch({ type: 'UPDATE_ECONOMY_LISTS' });
     })
