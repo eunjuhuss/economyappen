@@ -72,7 +72,11 @@ export const styles = StyleSheet.create({
   receiptCheckBoxContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    alignContent: 'center'
+    alignItems: 'center'
+  },
+  checkboxText: {
+    fontFamily: Fonts.headText,
+    color: Colors.subGrayColor
   },
   imageBoxContainer: {
     flex: 1,

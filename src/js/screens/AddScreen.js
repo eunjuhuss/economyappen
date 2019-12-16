@@ -33,11 +33,13 @@ class AddScreen extends React.Component {
   constructor(props){
     super(props)
     this.state = {
+      expence: true,
+      income: false,
       date: new Date().getDate(),
       category: '',
       paymentMethod:'',
       description: '',
-      expences: '',
+      price: '',
       checkReceipt: false  
     }  
     this.dropDownRef = React.createRef();
@@ -45,35 +47,43 @@ class AddScreen extends React.Component {
 
   onsubmit = () => { 
     const { 
-      date, 
+      expence,
+      income, 
+      date,
       category, 
       paymentMethod, 
       description, 
-      expences
+      price
     } = this.state;
     this.props.createEconomyList(
+      expence,
+      income, 
       date,
       category,
       paymentMethod,
       description,
-      expences
+      price
     )
     this.setState({
+      expence: true,
+      income: false, 
       date:'',
       category:'',
       paymentMethod:'',
       description: '',
-      expences: 0      
+      price: 0      
     })
   }
 
 render(){
-    const { 
+    const {
+      expence,
+      income, 
       date, 
       category, 
       paymentMethod, 
       description, 
-      expences,
+      price,
     } = this.state;
 
     const isEnabled = 
@@ -81,15 +91,32 @@ render(){
       category.length !== '' && 
       paymentMethod.length !== '' &&  
       description.length > 0 && 
-      expences.length > 0;
-      
+      price.length > 0;
 
     return (
       <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.contentContainer}>
         
         <View style={styles.titleHeaderContainer}>
+          <CheckBox 
+            value={this.state.expence}
+            onValueChange={
+            value => this.setState({
+                expence: !expence,
+                income: !this.state.income
+              })
+            }
+          />
           <Text style={styles.expencesLabel}>EXPENCES</Text>
+          <CheckBox 
+            value={this.state.income}
+            onValueChange={
+            value => this.setState({
+                income: !income,
+                expence: !this.state.expence
+              })
+            }
+          />
           <Text style={styles.incomeLabel}>INCOME</Text> 
         </View>
         <View style={styles.addInputListContainer}>
@@ -124,7 +151,7 @@ render(){
                 'Internet Banking'
               ]}
               onSelect={
-                (index, category) => this.setState({ index, category })
+                (index, paymentMethod) => this.setState({ index, paymentMethod })
               }
             />  
 
@@ -140,18 +167,20 @@ render(){
                 }
               />
 
-              <AddinputList 
+              <AddinputList
                 icon={'switch'}
                 label={'income/expences'}
-                value={this.state.expences}
+                value={this.state.price}
                 onChangeText={ 
-                  expences => this.setState({
-                    expences 
+                  price => this.setState({
+                    price 
                   })
                 }
               />
               <View style={styles.receiptCheckBoxContainer}>
-                <Text> Do you have a receipt?</Text>
+                <Text style={styles.checkboxText}> 
+                  Do you have a receipt?
+                </Text>
                 <CheckBox 
                   value={this.state.checkReceipt}
                   onValueChange={

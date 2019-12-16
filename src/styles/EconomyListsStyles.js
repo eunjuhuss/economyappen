@@ -46,7 +46,6 @@ export const styles = StyleSheet.create({
   incomeExpencesText: {
     width: Dimensions.wp(10),
     fontFamily: Fonts.subText,
-    color: Colors.highlightRed
   },
   currencyText: {
     fontFamily: Fonts.subText,
