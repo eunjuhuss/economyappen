@@ -26,7 +26,8 @@ export const styles = StyleSheet.create({
   buttonText: {
     color: Colors.mainWhiteColor,
     fontFamily: Fonts.headText,
-    fontSize: 18
+    fontSize: 18,
+    letterSpacing: 2
   },
   blueCustomButton: {
     marginTop: 'auto',
@@ -48,7 +49,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   icon: {
+    paddingLeft: 5,
     color: Colors.mainWhiteColor,
-    marginRight: 5
   }
 })
