@@ -13,8 +13,7 @@ export const styles = StyleSheet.create({
       width: 3,
       height: 0
     },
-    shadowOpacity: 0.6
-  
+    shadowOpacity: 0.6  
   },
   contentContainer: {
     backgroundColor:'#F4F7F9',
@@ -39,14 +38,10 @@ export const styles = StyleSheet.create({
     alignItems: 'center'
   },
   labelInputBox: {
-
-paddingTop: 10,
-paddingBottom: 10
+    paddingTop: 10,
+    paddingBottom: 10
   },
-
-  addInputListContainer: {
-    
-
+  addInputListContainer: { 
     padding: 20,
     flex: 1
   },

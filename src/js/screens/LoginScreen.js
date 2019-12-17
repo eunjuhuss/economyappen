@@ -4,7 +4,9 @@ import {
     Text,
     TextInput,
     ScrollView,
-    TouchableOpacity
+    KeyboardAvoidingView,
+    TouchableOpacity,
+    Keyboard
 } from 'react-native';
 import { styles } from '../../styles/LoginScreenStyles';
 import { login, getUser } from '../redux/store/actions/userActions';
@@ -121,15 +123,18 @@ class LoginScreen extends React.Component {
             password.length > 0;
 
         return (    
-            <View style={styles.container}> 
+            <View style={styles.container}>
+                     
                 <View style={styles.topTriangle} />  
                     <ScrollView
                         contentContainerStyle={styles.contentContainer}>
+                           
                     <View style={styles.inputContainer}>
                         <View style={styles.welcomeTextContainer}>
                             <Text style={styles.helloText}>Hello</Text>
                             <Text style={styles.dotText}>.</Text>  
-                        </View>                        
+                        </View>  
+                                        
                         <AddinputList
                             keyboardType={'email-address'}          
                             placeHolder={'Email'}
@@ -152,7 +157,8 @@ class LoginScreen extends React.Component {
                                     password 
                                 })
                             }
-                        />                
+                        />
+                                     
                         { error ?  (   
                             <Text style={styles.errorText}>
                                 {error}
@@ -161,6 +167,7 @@ class LoginScreen extends React.Component {
                                 null
                             )  
                         }
+
                         <CustomButton
                             icon={'checkmark'}
                             buttonStatus={!isEnabled} 
@@ -190,8 +197,9 @@ class LoginScreen extends React.Component {
                             <Text style={styles.signUpText}> SignUp</Text>
                         </TouchableOpacity>                    
                     </View> */}
+
                 </ScrollView>
-                <View style={styles.bottomTriangle}/>    
+                <View style={styles.bottomTriangle}/>   
             </View>
         );
     }

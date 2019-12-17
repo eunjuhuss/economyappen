@@ -60,8 +60,7 @@ export const styles = StyleSheet.create({
   dotText: {
     fontSize: 50,
     color: Colors.mainGreenColor,
-    fontFamily: Fonts.headText,
-    
+    fontFamily: Fonts.headText    
   },
   registerContainer: {
     flexGrow: 1,

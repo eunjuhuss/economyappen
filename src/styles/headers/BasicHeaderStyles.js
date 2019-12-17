@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   middleContainer: {
-    width: Dimensions.wp(80),
+    width: Dimensions.wp(60),
     height: '100%', 
     flexDirection: 'row',
     justifyContent: 'flex-start',

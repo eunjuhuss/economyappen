@@ -5,39 +5,36 @@ import Fonts from '../js/constants/Fonts';
 
 export const styles = StyleSheet.create({
   container: {
-    flex:1,
-    backgroundColor: Colors.mainGreenColor,
-    height: Dimensions.hp(100)
+    backgroundColor:'#F4F7F9',
+    flex: 1,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 3,
+      height: 0
+    },
+    shadowOpacity: 0.6
     },
   loading:{
     color: Colors.mainBlackColor
   },
-  contentContainer: {
-    backgroundColor: Colors.mainBlackColor,
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30
-  },
-  totalEconomyViewContainer: {
+ checkboxContainer: {
     padding: 20,
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-around'
-  },
-  totalLabel: {
-    color: Colors.mainWhiteColor,
-    fontFamily: Fonts.headText,
-    fontSize: 15
+    justifyContent: 'space-around',
+    alignItems: 'center'
   },
   incomeLabel: {
-    color: Colors.mainGreenColor,
     fontFamily: Fonts.headText,
     fontSize: 14
   },
   expencesLabel: {
-    color: Colors.highlightYellow,
     fontFamily: Fonts.headText,
     fontSize: 14
   },
+
+
+
   floatingTouchableButton: {
     position: 'absolute',
     bottom: 20,
