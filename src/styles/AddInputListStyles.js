@@ -5,7 +5,6 @@ import Fonts from '../js/constants/Fonts';
                     
 export const styles = StyleSheet.create({
   singleInputContainer: {
-    padding: 10,
     flex: 1,
     flexDirection: 'row',
     // justifyContent: 'space-around'
@@ -18,13 +17,12 @@ export const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: 'red'
   },
-  labelText: {
-    color: Colors.subGrayColor,
-    fontFamily: Fonts.headText
-  },
+
   input: {
-    height: 50,
-    paddingLeft: 10,
+    height: 40,
+    lineHeight: 23,
+     textAlignVertical: 'top',
+
     fontFamily: Fonts.subText,
     flexGrow: 1,
     // width: Dimensions.wp(40),

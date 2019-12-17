@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   View,
+  Text,
   Platform
 } from 'react-native';
 import { styles } from '../../../styles/headers/BasicHeaderStyles';
@@ -33,18 +34,20 @@ export default class AddHeader extends React.Component{
                 'md-arrow-back'}
             />
           }
-          // middleComponent={
-               
-          // }
-          rightComponent={
-              <Ionicons 
-              size={26} 
-              style={styles.headerIcon} 
-              name={Platform.OS === 'ios' ? 
-                'ios-search' : 
-                'md-search'}
-            />
+          middleComponent={
+            <Text style={styles.headerText} >
+              Have you spend a money?
+            </Text>  
           }
+          // rightComponent={
+          //     <Ionicons 
+          //     size={26} 
+          //     style={styles.headerIcon} 
+          //     name={Platform.OS === 'ios' ? 
+          //       'ios-search' : 
+          //       'md-search'}
+          //   />
+          // }
         />
       </HeaderLayout>
     );

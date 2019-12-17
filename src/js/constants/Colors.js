@@ -15,6 +15,7 @@ export default {
   mainBlackColor: "#060505",
   mainWhiteColor: "#F9F9F9",
   highlightRed: "#F64336",
+  highlightBlue: "#3262DC",
   highlightYellow: "#E5E13C",
   subGrayColor: "#8E8E8B"
 };

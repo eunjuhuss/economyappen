@@ -8,7 +8,8 @@ export const styles = StyleSheet.create({
     width: 100, 
     height: 100, 
     zIndex: 1,
-    borderRadius: 10
+    borderRadius: 10,
+
   },
   imageAddButton: {
     width: 100,
@@ -17,12 +18,13 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
+    borderStyle: 'dotted',
     borderColor: Colors.subGrayColor
   },
   imageButtonText: {
     fontSize: 30,
     color: Colors.subGrayColor,
     position: 'absolute',
-    bottom: 50
+    bottom: 30
   }
 })
