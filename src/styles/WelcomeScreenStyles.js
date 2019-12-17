@@ -5,13 +5,21 @@ import Fonts from '../js/constants/Fonts';
 
 export const styles = StyleSheet.create({
   container: {
-    paddingTop: Dimensions.hp(30),
+    paddingTop: Dimensions.hp(10),
+    paddingLeft: Dimensions.wp(5),
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: 'flex-start',
     backgroundColor: Colors.mainGreenColor
   },
   contentContainer: {
     paddingTop: 30,
+  },
+  welcomeContainer: {
+    width: Dimensions.wp(70),
+  },
+  welcomeText: {
+    fontSize: 50,
+    color: Colors.mainBlackColor,
+    fontFamily: Fonts.headText,
   }
 })
