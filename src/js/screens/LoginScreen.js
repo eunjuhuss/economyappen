@@ -11,6 +11,7 @@ import { login, getUser } from '../redux/store/actions/userActions';
 import { connect } from 'react-redux';
 import CustomButton from '../components/CustomButton';
 import Firebase from '../constants/Firebase';
+import AddinputList from '../components/AddInputList';
 
 class LoginScreen extends React.Component {
     constructor(props) {
@@ -72,7 +73,7 @@ class LoginScreen extends React.Component {
             } catch(error) {
                 this.setState({ isLoading: false});
                 switch(error.code) {
-                    case 'auth/email-already-in-use':
+                    case 'auth/email-already-in-use':             
                         alert(`Email address ${this.state.email} already in use.`)
                         break;
                     case 'auth/invalid-email':
@@ -112,7 +113,7 @@ class LoginScreen extends React.Component {
     //     this.props.navigation.navigate('Register');
     // }
     render() {
-        const { error } = this.props; 
+        const { error } = this.state; 
         const { email, password } = this.state;
 
         const isEnabled = 
@@ -120,44 +121,62 @@ class LoginScreen extends React.Component {
             password.length > 0;
 
         return (    
-            <View style={styles.container}>
-                <ScrollView
-                    contentContainerStyle={styles.contentContainer}>
-                    <Text style={styles.labelText}>
-                        Email:
-                    </Text>
-                    <TextInput
-                        value={this.state.email}
-                        style={styles.input}
-                        placeholder='abc@exemple.com'
-                        keyboardType='email-address'
-                        onChangeText={email => this.setState({ email })}
-                    />
-                    <Text style={styles.labelText}>
-                        Password:
-                    </Text>
-                    <TextInput
-                        value={this.state.password}
-                        style={styles.input}
-                        placeholder='Password'
-                        onChangeText={password => this.setState({ password })}
-                        secureTextEntry={true}
-                    />
-                    { error ? <Text style={styles.errorText}>{error}</Text> : null }
-                    <CustomButton
-                        icon={'checkmark'}
-                        buttonStatus={!isEnabled} 
-                        color={'black'}
-                        title='Login'
-                        onPress={()=>this.handleLogin()}
-                    />
-                    <CustomButton
-                        icon={'checkmark'}
-                        buttonStatus={!isEnabled} 
-                        color={'blackLine'}
-                        title='SignUp'
-                        onPress={()=>this.onSignUp()}
-                    />
+            <View style={styles.container}> 
+                <View style={styles.topTriangle} />  
+                    <ScrollView
+                        contentContainerStyle={styles.contentContainer}>
+                    <View style={styles.inputContainer}>
+                        <View style={styles.welcomeTextContainer}>
+                            <Text style={styles.helloText}>Hello</Text>
+                            <Text style={styles.dotText}>.</Text>  
+                        </View>                        
+                        <AddinputList
+                            keyboardType={'email-address'}          
+                            placeHolder={'Email'}
+                            label={'abc@exemple.com'}
+                            value={this.state.email}
+                            onChangeText={
+                                email => this.setState({ 
+                                    email 
+                                })
+                            }
+                        />
+                        <AddinputList
+                            keyboardType={'default'}          
+                            placeHolder={'Password'}
+                            label={'Password'}
+                            value={this.state.password}
+                            secureTextEntry={true}
+                            onChangeText={
+                                password => this.setState({ 
+                                    password 
+                                })
+                            }
+                        />                
+                        { error ?  (   
+                            <Text style={styles.errorText}>
+                                {error}
+                            </Text>
+                            ):(
+                                null
+                            )  
+                        }
+                        <CustomButton
+                            icon={'checkmark'}
+                            buttonStatus={!isEnabled} 
+                            color={'black'}
+                            title='Login'
+                            onPress={()=>this.handleLogin()}
+                        />
+                        <CustomButton
+                            icon={'checkmark'}
+                            buttonStatus={!isEnabled} 
+                            color={'blackLine'}
+                            title='SignUp'
+                            onPress={()=>this.onSignUp()}
+                        />
+                    </View>
+                    
 {/* 
                     <View style={styles.registerContainer}>
                         <Text style={styles.registerInfoText}>
@@ -171,8 +190,8 @@ class LoginScreen extends React.Component {
                             <Text style={styles.signUpText}> SignUp</Text>
                         </TouchableOpacity>                    
                     </View> */}
-                    
                 </ScrollView>
+                <View style={styles.bottomTriangle}/>    
             </View>
         );
     }

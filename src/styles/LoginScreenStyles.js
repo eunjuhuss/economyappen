@@ -4,15 +4,35 @@ import Dimensions from '../js/constants/Dimensions';
 import Fonts from '../js/constants/Fonts';
 
 export const styles = StyleSheet.create({
-  container: {
-    paddingTop: Dimensions.hp(30),
+  container: {    
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Colors.mainGreenColor
+    backgroundColor: Colors.mainWhiteColor,    
+    width: Dimensions.wp(100)
   },
-  contentContainer: {
-    paddingTop: 30,
+  topTriangle: {
+    flex: 1,
+    alignSelf: 'flex-start',
+    backgroundColor: 'transparent', 
+    borderStyle: 'solid', 
+    justifyContent: 'flex-end',
+    borderRightWidth: 80, 
+    borderTopWidth: 100, 
+    borderRightColor: 'transparent', 
+    borderTopColor: Colors.mainGreenColor,
+  },
+  bottomTriangle: {
+    flex: 1,
+    alignSelf: 'flex-end',
+    backgroundColor: 'transparent', 
+    borderStyle: 'solid', 
+    justifyContent: 'flex-start',
+    borderRightWidth: 80, 
+    borderTopWidth: 100, 
+    borderRightColor: 'transparent', 
+    borderTopColor: Colors.mainGreenColor,
+    transform: [{ rotate: '180deg'}]
   },
   labelText: {
     marginTop: 20,
@@ -20,14 +40,28 @@ export const styles = StyleSheet.create({
     color: Colors.subGrayColor,
     fontFamily: Fonts.headText
   },
-  input: {
-    width: Dimensions.wp(70),
-    height: 50,
-    borderRadius: 5,
-    paddingLeft: 10,
-    marginBottom: 10,
-    backgroundColor: Colors.mainWhiteColor,
-    fontFamily: Fonts.subText
+  contentContainer: {
+    backgroundColor: 'transparent', 
+  },
+  inputContainer: {
+    width: Dimensions.wp(90)
+  },
+  welcomeTextContainer: {
+    flexDirection: 'row',
+    paddingBottom: 30
+
+  },
+  helloText: {
+    fontSize: 50,
+    color: Colors.mainBlackColor,
+    fontFamily: Fonts.headText,
+    
+  },
+  dotText: {
+    fontSize: 50,
+    color: Colors.mainGreenColor,
+    fontFamily: Fonts.headText,
+    
   },
   registerContainer: {
     flexGrow: 1,
