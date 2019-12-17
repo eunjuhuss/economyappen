@@ -134,12 +134,12 @@ class FeedScreen extends React.Component {
             INCOME
           </Text> 
         </View>
-                <EconomyList
-                  navigation={navigation}
-                  listOfEconomy={this.props.economyList}
-                  deleteEconomyList={this.props.deleteEconomyList}
-                />
-          </ScrollView>
+        <EconomyList
+          navigation={navigation}
+          listOfEconomy={this.props.economyList}
+          deleteEconomyList={this.props.deleteEconomyList}
+        />
+        </ScrollView>
         }         
       </View>
     );

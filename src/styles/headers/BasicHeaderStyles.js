@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
     paddingTop: 20
   },
   leftContainer: {
-    width: Dimensions.wp(20),
+    width: Dimensions.wp(15),
     height: '100%',
     justifyContent: 'center', 
     alignItems: 'center',
@@ -35,8 +35,17 @@ export const styles = StyleSheet.create({
   headerIcon: {
     color: Colors.mainBlackColor
   },
+  headerTextContainer: {
+    flexDirection: 'row'
+  },
   headerText: {
     fontFamily: Fonts.headText,
-    color: Colors.subGrayColor
+    color: Colors.mainBlackColor,
+    fontSize: 22
+  },
+  dotText: {
+    fontFamily: Fonts.headText,
+    color: Colors.mainGreenColor,
+    fontSize: 24
   }
 });

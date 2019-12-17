@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   View,
+  Text,
   Platform
 } from 'react-native';
 import { styles } from '../../../styles/headers/BasicHeaderStyles';
@@ -33,11 +34,16 @@ export default class FeedHeader extends React.Component{
                 'md-list'}
             />
           }
-          // middleComponent={
-    
-   
-            
-          // }
+          middleComponent={
+            <View style={styles.headerTextContainer}>
+              <Text style={styles.headerText}>
+                Feed
+              </Text>
+              <Text style={styles.dotText}>
+                .
+              </Text>
+            </View>  
+          }
           // rightComponent={
             //   <Ionicons 
             //   size={26} 
