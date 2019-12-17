@@ -145,12 +145,14 @@ class LoginScreen extends React.Component {
                     />
                     { error ? <Text style={styles.errorText}>{error}</Text> : null }
                     <CustomButton
+                        icon={'checkmark'}
                         buttonStatus={!isEnabled} 
                         color={'black'}
                         title='Login'
                         onPress={()=>this.handleLogin()}
                     />
                     <CustomButton
+                        icon={'checkmark'}
                         buttonStatus={!isEnabled} 
                         color={'blackLine'}
                         title='SignUp'
