@@ -18,7 +18,7 @@ const CustomButton = ({onPress, title, icon, color, buttonStatus}) => {
         styles.blueCustomButton, 
         buttonStatus === true ? 
           styles.disabledButton : 
-          styles.abledButton,]}
+          styles.abledButton]}
       onPress={onPress}
     >
     <View style={styles.titleAndIconButtonContainer}>   

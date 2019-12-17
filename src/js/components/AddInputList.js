@@ -29,7 +29,8 @@ class AddInputList extends React.Component {
   };
 
   render() {
-    const {      
+    const {
+      keyboardType,
       label, 
       value, 
       placeHolder,
@@ -47,6 +48,7 @@ class AddInputList extends React.Component {
           {placeHolder}
         </Text>
         <TextInput
+          keyboardType={keyboardType}
           returnKeyType="done"
           multiline={false}
           blurOnSubmit={true}

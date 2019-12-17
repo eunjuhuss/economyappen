@@ -6,25 +6,20 @@ import Fonts from '../js/constants/Fonts';
 export const styles = StyleSheet.create({
   singleInputContainer: {
     flex: 1,
-    flexDirection: 'row',
-    // justifyContent: 'space-around'
+    paddingTop: 10,
+    paddingBottom: 10
   },
-  textAndinputContainer: {
-    padding: 10,
-    flexGrow: 1,
-    width: Dimensions.wp(70),
-
-    borderWidth: 2,
-    borderColor: 'red'
-  },
-
   input: {
     height: 40,
     lineHeight: 23,
-     textAlignVertical: 'top',
-
+    textAlignVertical: 'top',
     fontFamily: Fonts.subText,
-    flexGrow: 1,
-    // width: Dimensions.wp(40),
+    flexGrow: 1
+  },
+    labelText: {
+    fontFamily: Fonts.subText,
+    color: Colors.subGrayColor,
+    paddingBottom: 5,
+    fontSize: 12
   }
 });
