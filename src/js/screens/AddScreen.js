@@ -90,7 +90,6 @@ class AddScreen extends React.Component {
       price.length > 0;
     
     const checkedIncomeStyle = () => {
-      const { income }= this.state;
       if(income === true){
         return{ color: Colors.highlightBlue }
       }else if(income === false){
@@ -99,7 +98,6 @@ class AddScreen extends React.Component {
     }
 
     const checkedExpenceStyle = () => {
-      const { expence }= this.state;
       if(expence === true){
         return{ color: Colors.highlightBlue }
       }else if(expence === false){
@@ -117,7 +115,6 @@ class AddScreen extends React.Component {
       >
         <View style={styles.checkboxContainer}>
           <CheckBox
-            style={styles.checkbox} 
             value={this.state.expence}
             onValueChange={
             value => this.setState({
@@ -134,7 +131,6 @@ class AddScreen extends React.Component {
             EXPENCES
           </Text>
           <CheckBox 
-            style={styles.checkbox} 
             value={this.state.income}
             onValueChange={
             value => this.setState({

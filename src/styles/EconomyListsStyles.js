@@ -7,53 +7,64 @@ import {
 } from 'react-native';
 
 export const styles = StyleSheet.create({
-  itemContainer: {    
-    padding: 10,
-    marginBottom: 10,
+  itemContainer: {
+    padding:10,
     flex: 1,
+    height: 70,
     flexDirection: 'row',
     justifyContent: 'space-around',
-    alignItems: 'center'
+    // alignItems: 'center',
+    borderBottomWidth: 3,
+    borderBottomColor: Colors.mainWhiteColor,
+
   },
   dateAndverticalLineContainer: {
-    height: '90%',
-    alignItems: 'center'
+    height: '100%',
+    alignItems: 'center',
+    width: Dimensions.wp(40),
   },
   economyListsContainer: {
-    backgroundColor: Colors.mainWhiteColor,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     // height: Dimensions.hp(100),
   },
   verticalLine: {
-    borderLeftWidth: 0.5,
-    height: '100%',
+    borderLeftWidth: 1,
+    height: '90%',
     borderColor: Colors.mainGreenColor,
   },
   dateText: {
-    fontFamily: Fonts.subText,
-    color: Colors.mainGreenColor,
+    fontFamily: Fonts.headText,
+    color: Colors.subGrayColor,
     fontSize: 14
   },
   categoryText: {   
     fontFamily: Fonts.headText,
-    color: Colors.mainBlackColor
+    color: Colors.mainBlackColor,
+    fontSize: 16,
+    paddingBottom: 10
+  },
+  categoryAndDateContainer: {
+    width: Dimensions.wp(40),
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start'
+
+
   },
   categoryDateText: {
     fontFamily: Fonts.subText,
     color: Colors.subGrayColor
   },
-  incomeExpencesText: {
-    width: Dimensions.wp(10),
-    fontFamily: Fonts.subText,
-  },
-  currencyText: {
-    fontFamily: Fonts.subText,
-    color: Colors.subGrayColor,
-    fontSize: 13
+  priceText: {
+    width: Dimensions.wp(20),
+    fontFamily: Fonts.headText,
+    textAlign: 'right',
+    fontSize: 16,
+    paddingRight: 20
   },
   swipeout: {
-    backgroundColor: Colors.mainWhiteColor
+    backgroundColor:'#F4F7F9',
   },
   icon: {
     padding: 20,

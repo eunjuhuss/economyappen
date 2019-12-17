@@ -4,6 +4,7 @@ import {
   StyleSheet,
   View,
   Text,
+  CheckBox,
   ActivityIndicator,
   TouchableOpacity
 } from 'react-native';
@@ -13,8 +14,17 @@ import { getEconomyList, deleteEconomyList } from '../redux/store/actions/econom
 import FeedHeader from '../components/headers/FeedHeader';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import Colors from '../constants/Colors';
 
 class FeedScreen extends React.Component {
+   constructor(props){
+    super(props)
+    this.state = {
+      all: false,
+      expence: false,
+      income: false     
+    }  
+  }
 
   componentDidMount(){
     this.props.getEconomyList();    
@@ -25,10 +35,37 @@ class FeedScreen extends React.Component {
 
   render() {
     const { navigation } = this.props;
+    const { all, income, expence }= this.state;
+
+      const checkedAllStyle = () => {     
+      if(all === true){
+        return{ color: Colors.highlightBlue }
+      }else if(all === false){
+        return{ color: Colors.subGrayColor }
+      }
+    }
+
+    const checkedIncomeStyle = () => {     
+      if(income === true){
+        return{ color: Colors.highlightBlue }
+      }else if(income === false){
+        return{ color: Colors.subGrayColor }
+      }
+    }
+
+    const checkedExpenceStyle = () => {
+      if(expence === true){
+        return{ color: Colors.highlightBlue }
+      }else if(expence === false){
+        return{ color: Colors.subGrayColor }
+      }
+    }
  
-    return (
-      
-      <View style={styles.container}>
+    return (     
+      <View 
+        elevation={5} 
+        style={styles.container}
+      >
         <TouchableOpacity
           onPress={()=>this.navigateToAddScreen()}
           style={styles.floatingTouchableButton}>
@@ -44,19 +81,65 @@ class FeedScreen extends React.Component {
           style={styles.loading}
         /> 
         :
-        <ScrollView
-            contentContainerStyle={styles.contentContainer}>            
-              <View style={styles.totalEconomyViewContainer}>
-                <Text style={styles.totalLabel}>ALL</Text>
-                <Text style={styles.incomeLabel}>INCOME</Text> 
-                <Text style={styles.expencesLabel}>EXPENCES</Text> 
-              </View>
-                <EconomyList
-                  navigation={navigation}
-                  listOfEconomy={this.props.economyList}
-                  deleteEconomyList={this.props.deleteEconomyList}
-                />
-          </ScrollView>
+        <ScrollView>            
+          <View style={styles.checkboxContainer}>
+            <CheckBox
+              value={this.state.all}
+              onValueChange={
+              value => this.setState({
+                  all: !all,
+                  income: this.state.income,
+                  expence: this.state.expence
+                })
+              }
+            />
+          <Text style={[
+              checkedAllStyle(), 
+              styles.expencesLabel
+            ]}
+          >
+            ALL
+          </Text>
+          <CheckBox
+            value={this.state.expence}
+            onValueChange={
+            value => this.setState({
+                expence: !expence,
+                income: this.state.income,
+                all: this.state.all
+              })
+            }
+          />
+          <Text style={[
+              checkedExpenceStyle(), 
+              styles.expencesLabel
+            ]}
+          >
+            EXPENCES
+          </Text>
+          <CheckBox 
+            value={this.state.income}
+            onValueChange={
+            value => this.setState({
+                income: !income,
+                expence: this.state.expence,
+                all: this.state.all
+              })
+            }
+          />
+          <Text style={[
+            checkedIncomeStyle(),
+            styles.incomeLabel]}
+          >
+            INCOME
+          </Text> 
+        </View>
+        <EconomyList
+          navigation={navigation}
+          listOfEconomy={this.props.economyList}
+          deleteEconomyList={this.props.deleteEconomyList}
+        />
+        </ScrollView>
         }         
       </View>
     );

@@ -35,9 +35,14 @@ export default class AddHeader extends React.Component{
             />
           }
           middleComponent={
-            <Text style={styles.headerText} >
-              Have you spend a money?
-            </Text>  
+            <View style={styles.headerTextContainer}>
+              <Text style={styles.headerText}>
+                Add
+              </Text>
+              <Text style={styles.dotText}>
+                .
+              </Text>
+            </View>  
           }
           // rightComponent={
           //     <Ionicons 

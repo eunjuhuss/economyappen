@@ -18,13 +18,8 @@ import Colors from '../constants/Colors';
 
 
 class EconomyList extends React.Component {
-
-
-
-
   renderItem = ({item}) => {
     const {navigation, deleteEconomyList} = this.props;
-
     const SwipeoutButton = [
       {
         text: 'Edit',
@@ -82,11 +77,10 @@ class EconomyList extends React.Component {
           </Text>
           <View style={styles.verticalLine} />
         </View>              
-        {/* <LabelIcon type={'briefcase'}/>        */}
-        <ImageBox 
+        {/* <ImageBox 
           userId={item.uid}
-        />
-        <View style={styles.categoryContainer}>
+        /> */}
+        <View style={styles.categoryAndDateContainer}>
           {
             item.category ?(
             <Text style={styles.categoryText}>
@@ -97,14 +91,11 @@ class EconomyList extends React.Component {
             )
           }             
           <Text style={styles.categoryDateText}>
-            {item.date}
+            {item.paymentMethod}
           </Text>
         </View>
-        <Text style={[statusStyles(item),styles.incomeExpencesText]}>
-          {item.price}
-        </Text>
-        <Text style={styles.currencyText}>
-          kr
+        <Text style={[statusStyles(item),styles.priceText]}>
+          {item.price} kr
         </Text>
       </View>  
     </Swipeout>
@@ -112,11 +103,8 @@ class EconomyList extends React.Component {
   }
 
 render(){
-const { listOfEconomy } = this.props;
-
- 
-  return (
-    
+const { listOfEconomy } = this.props; 
+  return (    
     <View style={styles.economyListsContainer}>
       { listOfEconomy ? (
         <FlatList 
@@ -129,8 +117,7 @@ const { listOfEconomy } = this.props;
       null
       )
     }    
-    </View>
-    
+    </View>    
   );  
 }
 }            
