@@ -4,7 +4,8 @@ import {
   StyleSheet, 
   Text,
   View,
-  TextInput 
+  TextInput,
+  CheckBox 
 } from 'react-native';
 
 import { editEconomyList } from '../../redux/store/actions/economyActions';
@@ -14,95 +15,225 @@ import { styles } from '../../../styles/AddScreenStyles';
 import CustomButton from '../../components/CustomButton';
 import AddHeader from '../../components/headers/AddHeader';
 import Calendar from '../../components/Calendar';
+import Colors from '../../constants/Colors';
+import Fonts from '../../constants/Fonts';
+import SelectDropdown from '../../components/SelectDropdown';
+import ImageBox from '../../components/ImageBox';
 
 class EditView extends React.Component {
   constructor(props){
     super(props)
     this.state = {
       uid: this.props.navigation.state.params.uid,
+      expence: this.props.navigation.state.params.expence,
+      income: this.props.navigation.state.params.income,
       date: this.props.navigation.state.params.date,
       category: this.props.navigation.state.params.category,
       paymentMethod: this.props.navigation.state.params.paymentMethod,
       description: this.props.navigation.state.params.description,
-      expences: this.props.navigation.state.params.expences
+      price: this.props.navigation.state.params.price
     }  
   }
 
   onEdit = () => {
     const { 
-      date, 
-      category, 
+      expence,
+      income,
+      date,                           
+      category,
       paymentMethod, 
-      description, 
-      expences,
+      description,
+      price,
       uid
       } = this.state;
 
     this.props.editEconomyList(
-      date, 
-      category, 
+      expence,
+      income,
+      date,                           
+      category,
       paymentMethod, 
       description,
-      expences,
+      price,
       uid, 
     )
 
     this.setState({      
-      date: '',
-      category: '',
-      paymentMethod: '',
+      expence: true,
+      income: false, 
+      date:'',
+      category:'',
+      paymentMethod:'',
       description: '',
-      expences: '',
+      price: 0, 
       uid: '',
     })
     this.props.navigation.navigate('Feed');
   }
 
   render(){
+    const {
+      expence,
+      income,
+      date,                           
+      category,
+      paymentMethod, 
+      description,
+      price
+    } = this.state;
+
+    const checkedIncomeStyle = () => {
+      if(income === true){
+        return{ color: Colors.highlightBlue }
+      }else if(income === false){
+        return{ color: Colors.subGrayColor }
+      }
+    }
+
+    const checkedExpenceStyle = () => {
+      if(expence === true){
+        return{ color: Colors.highlightBlue }
+      }else if(expence === false){
+        return{ color: Colors.subGrayColor }
+      }
+    }
+
     return (
-      <View style={styles.container}>
-      <ScrollView contentContainerStyle={styles.contentContainer}>
-        <View style={styles.titleHeaderContainer}>
-          <Text style={styles.expencesLabel}>EXPENCES</Text>
-          <Text style={styles.incomeLabel}>INCOME</Text> 
+      <View 
+      elevation={5} 
+      style={styles.container}
+    >
+      <ScrollView 
+        contentContainerStyle={styles.contentContainer}
+      >
+        <View style={styles.checkboxContainer}>
+          <CheckBox
+            value={this.state.expence}
+            onValueChange={
+            value => this.setState({
+                expence: !expence,
+                income: !this.state.income
+              })
+            }
+          />
+          <Text style={[
+              checkedExpenceStyle(), 
+              styles.expencesLabel
+            ]}
+          >
+            EXPENCES
+          </Text>
+          <CheckBox 
+            value={this.state.income}
+            onValueChange={
+            value => this.setState({
+                income: !income,
+                expence: !this.state.expence
+              })
+            }
+          />
+          <Text style={[
+            checkedIncomeStyle(),
+            styles.incomeLabel]}
+          >
+            INCOME
+          </Text> 
         </View>
-        <View style={styles.addInputListContainer}>
+        <View style={styles.addInputListContainer}>       
           <Calendar
+            placeHolder={'Select Date/'}            
             date={this.state.date}
-            onDateChange={date => this.setState({ date })}
+            onDateChange={ 
+              date => this.setState({ date })
+            }
+          />       
+        <View style={styles.dropDownContainer}>          
+          <SelectDropdown
+            placeHolder={'Select Category/'}  
+            defaultValue = {'Home   ▼'}
+            options={[
+              'Home',
+              'Salary',                  
+              'Transport',
+              'Travel', 
+              'Food & Dining', 
+              'Helth & Fitness', 
+              'Shopping'
+              ]}
+            onSelect={
+              (index, category) => this.setState({ index, category })
+            }
           />
-          <AddinputList 
-            icon={'folder'}
-            label={'category'}
-            value={this.state.category}
-            onChangeText={category => this.setState({ category })}
-          />
-          <AddinputList 
-            icon={'options'}
-            label={'paymentMethod'}
-            value={this.state.paymentMethod}
-            onChangeText={paymentMethod => this.setState({ paymentMethod })}
-          />
-          <AddinputList 
-            icon={'book'}
-            label={'description'}
-            value={this.state.description}
-            onChangeText={description => this.setState({ description })}
-          />
-          <AddinputList 
-            icon={'switch'}
-            label={'income/expences'}
-            value={this.state.expences}
-            onChangeText={expences => this.setState({ expences })}
-          />      
+          <SelectDropdown 
+            placeHolder={'Select Payment method/'}    
+            defaultValue = {'Swish   ▼'}
+            options={[
+              'Swish', 
+              'Cash',
+              'Credit', 
+              'Internet Banking'
+            ]}
+            onSelect={
+              (index, paymentMethod) => this.setState({ index, paymentMethod })
+            }
+          />          
+        </View>         
+        <AddinputList
+          keyboardType={'default'}          
+          placeHolder={'Write description/'}
+          label={'description'}
+          value={this.state.description}
+          onChangeText={
+            description => this.setState({
+              description 
+            })
+          }
+        />
+        <AddinputList
+          keyboardType={'numeric'}        
+          placeHolder={'How much did you get or spend?/'}
+          label={'income/expences'}
+          value={this.state.price}
+          onChangeText={ 
+            price => this.setState({
+              price 
+            })
+          }
+        />
+        <View style={styles.receiptCheckBoxContainer}>
+          <View style={styles.labelCheckBox}>
+            <Text style={styles.labelText}> 
+              Do you have a receipt?
+            </Text>
+            <CheckBox
+              style={styles.receiptCheckBox}
+              value={this.state.checkReceipt}
+              onValueChange={
+                () => this.setState({
+                  checkReceipt: !this.state.checkReceipt
+                })
+              }
+            /> 
+          </View>             
+          {/* { this.state.checkReceipt ? (
+            <View style={styles.imageBoxContainer}>
+              <ImageBox /> 
+            </View>
+            ):(
+              null
+            )
+          }  */}
+          </View>
           <CustomButton
+            buttonStatus={false} 
             color={'red'} 
-            title={'Edit'}
+            title={'EDIT'}
+            icon={'checkmark'}
             onPress={()=>this.onEdit()}
           />
         </View>       
       </ScrollView>
-      </View>
+    </View>
     );
   }
 }
