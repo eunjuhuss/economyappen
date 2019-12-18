@@ -2,37 +2,41 @@ import React from 'react';
 import {
   View,
   Text,
-  Platform
+  Platform,
+  TouchableOpacity
 } from 'react-native';
 import { styles } from '../../../styles/headers/BasicHeaderStyles';
 import BasicHeader from './BasicHeader';
 import HeaderLayout from './HeaderLayout';
 import { Ionicons } from '@expo/vector-icons';
+import { withNavigation } from 'react-navigation';
 
 
-export default class AddHeader extends React.Component{
+class AddHeader extends React.Component{
   constructor(props) {  
     super(props);
   }
 
+  onPressGoBack=()=>{
+    this.props.navigation.navigate('Feed');
+  }
 
-
-
-  render(){ 
-    // const value = this.props.value;
-
-    
+  render(){     
     return (
       <HeaderLayout>
         <BasicHeader
           leftComponent={
-            <Ionicons 
-              size={26} 
-              style={styles.headerIcon} 
-              name={Platform.OS === 'ios' ? 
-                'ios-arrow-back' : 
-                'md-arrow-back'}
-            />
+            <TouchableOpacity 
+              onPress={()=>this.onPressGoBack()}
+            >
+              <Ionicons 
+                size={26} 
+                style={styles.headerIcon} 
+                name={Platform.OS === 'ios' ? 
+                  'ios-arrow-back' : 
+                  'md-arrow-back'}
+              />
+            </TouchableOpacity>
           }
           middleComponent={
             <View style={styles.headerTextContainer}>
@@ -58,3 +62,4 @@ export default class AddHeader extends React.Component{
     );
   }
 }
+export default withNavigation(AddHeader);

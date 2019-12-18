@@ -33,7 +33,8 @@ export const styles = StyleSheet.create({
   //   alignItems: 'center',
   // },
   headerIcon: {
-    color: Colors.mainBlackColor
+    color: Colors.mainBlackColor,
+    padding: 10
   },
   headerTextContainer: {
     flexDirection: 'row'
