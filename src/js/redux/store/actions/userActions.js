@@ -55,5 +55,6 @@ export function logout() {
   return (dispatch) => Firebase.auth()
   .signOut().then(()=> {
     dispatch({ type: 'LOGOUT_SUCCESS'})
+    console.log('SUCCESS LOGOUT')
   });
 }

@@ -7,12 +7,17 @@ import {
 import { styles } from '../../styles/ProfileScreenStyles';
 import SettingList from '../components/SettingList';
 import { getEconomyList } from '../redux/store/actions/economyActions';
+import { logout } from '../redux/store/actions/userActions';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
 class ProfileScreen extends React.Component {
   componentDidMount(){
-    this.props.getEconomyList();    
+    this.props.getEconomyList();
+  }
+
+  logout=()=>{
+    this.props.logout();
   }
 
   render() {
@@ -66,7 +71,7 @@ class ProfileScreen extends React.Component {
               icon={'log-out'}
               color={'#F64336'}
               label={'Logout'}
-              onPress={()=>this.props.navigation.navigate('Feed')}
+              onPress={()=>this.logout()}
             />
             
           </View>
@@ -78,6 +83,13 @@ class ProfileScreen extends React.Component {
 ProfileScreen.navigationOptions = {
   header: null
 };
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getEconomyList: ()=>dispatch(getEconomyList()),
+    logout: () => dispatch(logout())
+  }
+}
 
 const mapStateToProps = (state) => {
   const economyList = _.map(state.economyList, (value, uid)=> {
@@ -92,4 +104,4 @@ const mapStateToProps = (state) => {
   } 
 }
 
-export default connect(mapStateToProps, {getEconomyList})(ProfileScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileScreen);
