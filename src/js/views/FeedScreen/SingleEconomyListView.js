@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 class SingleEconomyListView extends React.Component { 
-    constructor(props){
+  constructor(props){
     super(props)
     this.state = {
       uid: this.props.navigation.state.params.uid,
@@ -28,11 +28,10 @@ class SingleEconomyListView extends React.Component {
   }
 
   render(){
-    const {expence}= this.state;
     return(
-      <View>
-        <Text>
-          {expence}
+      <View style={{paddingTop: 50}}>
+        <Text style={{fontSize: 20, color:'black'}}>
+          {this.state.price}
         </Text>   
       </View>
     )
