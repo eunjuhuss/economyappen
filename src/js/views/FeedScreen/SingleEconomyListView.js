@@ -23,10 +23,6 @@ class SingleEconomyListView extends React.Component {
     }  
   }
 
-  componentDidMount(){
-    console.warn('price', this.state.price)    
-  }
-
   render(){
     return(
       <View style={{paddingTop: 50}}>
