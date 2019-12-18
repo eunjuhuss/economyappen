@@ -23,7 +23,7 @@ class EconomyList extends React.Component {
     const { navigation, deleteEconomyList } = this.props;
     const SwipeoutLeftButton = [
       {
-        text: 'Edit',
+        text: 'open',
         type: 'primary',
         onPress: () => { navigation.navigate('SingleEconomyList',{...item}) },
         component: (
@@ -31,8 +31,8 @@ class EconomyList extends React.Component {
             size={26}
             style={styles.icon}
             name={Platform.OS === 'ios' ?
-              `ios-create` : 
-              `md-create`}
+              `ios-open` : 
+              `md-open`}
           />
         )
       }
