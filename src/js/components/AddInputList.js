@@ -55,7 +55,7 @@ class AddInputList extends React.Component {
           style={styles.input}
           placeholder={label}
           onChangeText={onChangeText}
-          value={value}
+          value={`${value}`}
           multiline={true}
           underlineColorAndroid={
             isFocused ? MAIN_GREEN : LIGHT_GRAY
