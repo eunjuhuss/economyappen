@@ -35,7 +35,7 @@ class AddScreen extends React.Component {
       category: '',
       paymentMethod:'',
       description: '',
-      price: '',
+      price: 0,
       checkReceipt: false  
     }  
     this.dropDownRef = React.createRef();
@@ -249,12 +249,30 @@ AddScreen.navigationOptions = {
   header: <AddHeader />
 };
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     createEconomyList: (economyList) => dispatch(createEconomyList(economyList))
-//   }
-// }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createEconomyList: (
+      expence, 
+      income, 
+      date, 
+      category, 
+      paymentMethod, 
+      description, 
+      price
+    ) => dispatch(
+        createEconomyList(
+          expence,
+          income, 
+          date, 
+          category, 
+          paymentMethod, 
+          description, 
+          price
+        )
+      )
+  }
+}
 
-export default connect(null, {createEconomyList})(AddScreen)
+export default connect(null, mapDispatchToProps)(AddScreen)
 
 

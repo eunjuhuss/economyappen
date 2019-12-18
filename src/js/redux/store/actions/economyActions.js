@@ -52,11 +52,11 @@ export function deleteEconomyList(uid) {
   };
 };
 
-export function editEconomyList(  expence,income,date, category, paymentMethod, description, expences, uid) { 
+export function editEconomyList( expence, income, date, category, paymentMethod, description, price, uid) { 
   const { currentUser } = Firebase.auth(); 
   return (dispatch) => {
     Firebase.database().ref(`/users/${currentUser.uid}/economyLists/${uid}`)
-    .update({  expence, income,date, category, paymentMethod, description, price})
+    .update({ expence, income, date, category, paymentMethod, description, price})
     .then(() => {
       dispatch({ type: 'UPDATE_ECONOMY_LISTS' });
     })
