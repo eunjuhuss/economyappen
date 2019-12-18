@@ -8,7 +8,8 @@ import ProfileScreen from '../screens/ProfileScreen';
 import ChatScreen from '../screens/ChatScreen';
 import Fonts from '../constants/Fonts';
 import Colors from '../constants/Colors';
-import EditView from '../views/AddScreen/EditView';
+import EditView from '../views/FeedScreen/EditView';
+import SingleEconomyListView from '../views/FeedScreen/SingleEconomyListView';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -18,7 +19,8 @@ const config = Platform.select({
 const FeedStack = createStackNavigator(
   {
     Feed: FeedScreen,
-    Edit: EditView
+    Edit: EditView,
+    SingleEconomyList: SingleEconomyListView
   },
   config
 );

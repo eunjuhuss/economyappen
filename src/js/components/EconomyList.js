@@ -6,7 +6,8 @@ import {
   StyleSheet,
   Text,
   View,
-  FlatList
+  FlatList,
+  TouchableOpacity
 } from 'react-native';
 import { styles } from '../../styles/EconomyListsStyles';
 import LabelIcon from '../components/LabelIcon';
@@ -19,7 +20,24 @@ import Colors from '../constants/Colors';
 
 class EconomyList extends React.Component {
   renderItem = ({item}) => {
-    const {navigation, deleteEconomyList} = this.props;
+    const { navigation, deleteEconomyList } = this.props;
+    const SwipeoutLeftButton = [
+      {
+        text: 'open',
+        type: 'primary',
+        onPress: () => { navigation.navigate('SingleEconomyList',{...item}) },
+        component: (
+          <Ionicons
+            size={26}
+            style={styles.icon}
+            name={Platform.OS === 'ios' ?
+              `ios-open` : 
+              `md-open`}
+          />
+        )
+      }
+      ]
+
     const SwipeoutButton = [
       {
         text: 'Edit',
@@ -63,18 +81,23 @@ class EconomyList extends React.Component {
   }
 
   return(
+
     <Swipeout
       autoClose={true}
+      left={SwipeoutLeftButton}
       right={SwipeoutButton}
       style={styles.swipeout}
-    > 
+    >
+ 
       <View style={styles.itemContainer}>   
         <View 
           style={styles.dateAndverticalLineContainer}
         >
+         
           <Text style={styles.dateText}>
             {item.date}
           </Text>
+         
           <View style={styles.verticalLine} />
         </View>              
         {/* <ImageBox 
@@ -97,7 +120,7 @@ class EconomyList extends React.Component {
         <Text style={[statusStyles(item),styles.priceText]}>
           {item.price} kr
         </Text>
-      </View>  
+      </View>
     </Swipeout>
     )
   }
