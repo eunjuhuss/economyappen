@@ -1,12 +1,11 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
-
 import TabBarIcon from '../components/TabBarIcon';
 import FeedScreen from '../screens/FeedScreen';
 import AddScreen from '../screens/AddScreen';
 import ProfileScreen from '../screens/ProfileScreen';
-import CategoryScreen from '../screens/CategoryScreen';
+import ChatScreen from '../screens/ChatScreen';
 import Fonts from '../constants/Fonts';
 import Colors from '../constants/Colors';
 import EditView from '../views/AddScreen/EditView';
@@ -61,27 +60,27 @@ AddStack.navigationOptions = {
 
 AddStack.path = '';
 
-const CategoryStack = createStackNavigator(
+const ChatStack = createStackNavigator(
   {
-    Category: CategoryScreen,
+    Chat: ChatScreen,
   },
   config
 );
 
-CategoryStack.navigationOptions = {
-  tabBarLabel: 'Category',
+ChatStack.navigationOptions = {
+  tabBarLabel: 'Chat',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon 
       focused={focused} 
       name={Platform.OS === 'ios' 
-        ? 'ios-stats' 
-        : 'md-stats'
+        ? 'ios-chatbubbles' 
+        : 'md-chatbubbles'
       } 
     />
   ),
 };
 
-CategoryStack.path = '';
+ChatStack.path = '';
 
 const ProfileStack = createStackNavigator(
   {
@@ -108,7 +107,7 @@ ProfileStack.path = '';
 const tabNavigator = createBottomTabNavigator({
   FeedStack,
   AddStack,
-  CategoryStack,
+  ChatStack,
   ProfileStack,
 }, 
 {

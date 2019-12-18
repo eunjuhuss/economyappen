@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 
-export default function CategoryScreen() {
+export default function ChatScreen() {
   return (
     <ScrollView style={styles.container}>
 
@@ -9,8 +9,8 @@ export default function CategoryScreen() {
   );
 }
 
-CategoryScreen.navigationOptions = {
-  title: 'Category'
+ChatScreen.navigationOptions = {
+  title: 'Chat'
 };
 
 const styles = StyleSheet.create({
