@@ -51,7 +51,7 @@ class LoginScreen extends React.Component {
                 });
                 if(error.code === 'auth/email-already-in-use'){
                     this.setState({ 
-                        error: 'User already Exists. try Loggin' 
+                        error: 'User already Exists. Try loggin' 
                     });
                 }
             }
