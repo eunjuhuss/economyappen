@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
   dateAndverticalLineContainer: {
     height: '100%',
     alignItems: 'center',
-    width: Dimensions.wp(40),
+    width: Dimensions.wp(20),
   },
   economyListsContainer: {
     borderTopLeftRadius: 30,
@@ -33,6 +33,16 @@ export const styles = StyleSheet.create({
     height: '90%',
     borderColor: Colors.mainGreenColor,
   },
+  receiptImageContainer: {
+    width: 50,
+    height: 50,
+    borderRadius: 10, 
+  },
+  imageButton: {
+    width: Dimensions.wp(10),
+    borderRadius: 10, 
+
+  },
   dateText: {
     fontFamily: Fonts.headText,
     color: Colors.subGrayColor,
@@ -41,11 +51,10 @@ export const styles = StyleSheet.create({
   categoryText: {   
     fontFamily: Fonts.headText,
     color: Colors.mainBlackColor,
-    fontSize: 16,
-    paddingBottom: 10
+    fontSize: 16
   },
   categoryAndDateContainer: {
-    width: Dimensions.wp(40),
+    width: Dimensions.wp(25),
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'flex-start'

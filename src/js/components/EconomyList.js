@@ -81,28 +81,35 @@ class EconomyList extends React.Component {
   }
 
   return(
-
     <Swipeout
       autoClose={true}
       left={SwipeoutLeftButton}
       right={SwipeoutButton}
       style={styles.swipeout}
-    >
- 
+    > 
       <View style={styles.itemContainer}>   
         <View 
           style={styles.dateAndverticalLineContainer}
         >
-         
           <Text style={styles.dateText}>
             {item.date}
           </Text>
-         
           <View style={styles.verticalLine} />
-        </View>              
-        {/* <ImageBox 
-          userId={item.uid}
-        /> */}
+        </View>
+          { item.image ? 
+            (
+              <Image
+                style={styles.receiptImageContainer}
+                source={{uri: item.image}}
+              />
+              ):(
+              <View style={styles.imageButtonContainer}>
+                <ImageBox 
+                  userId={item.uid}            
+                />
+              </View>
+            )
+          }       
         <View style={styles.categoryAndDateContainer}>
           {
             item.category ?(
