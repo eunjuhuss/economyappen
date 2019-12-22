@@ -2,11 +2,15 @@ import React from 'react';
 import { 
   ScrollView, 
   StyleSheet, 
+  Platform,
   Text,
   View,
+  Image,
   TextInput,
   CheckBox 
 } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { styles } from '../../../styles/SingleEconomyListStyles';
 
 class SingleEconomyListView extends React.Component { 
   constructor(props){
@@ -25,21 +29,38 @@ class SingleEconomyListView extends React.Component {
   }
 
   render(){
-    console.log('image', this.state.image)
     return(
-      <View style={{paddingTop: 50, alignItems: 'center',
-    justifyContent: 'center'}}>
-        <Text style={{fontSize: 20, color:'black'}}>
-          SingleEconomyListView
-        </Text>
-        <Text style={{fontSize: 20, color:'black'}}> 
-          {this.state.date}
-          {this.state.category}
-          {this.state.paymentMethod}
-          {this.state.description}
-          {this.state.price}
-          {this.state.image}
-        </Text>   
+      <View style={styles.container}>
+        { this.state.image ? (
+          <Image
+            style={styles.receiptImageContainer}
+            source={{uri: this.state.image}}
+          /> 
+        ):(
+          <View style={styles.imageIconContainer}>
+            <Ionicons
+              size={60}
+              style={styles.imageIcon}
+              name={Platform.OS === 'ios' ?
+                `ios-image` : 
+                `md-image`}
+            />
+        </View>
+        )}
+        
+        <View style={styles.textContainer}>        
+          <View style={styles.leftContainer}>
+            <Text>
+              {this.state.date}
+            </Text>
+          </View>
+          <View style={styles.rightContainer}>
+            <Text>{this.state.category}</Text>
+            <Text>{this.state.paymentMethod}</Text>
+            <Text>{this.state.description}</Text>
+            <Text>{this.state.price}</Text>            
+          </View>
+        </View>
       </View>
     )
   } 
