@@ -30,7 +30,8 @@ class SingleEconomyListView extends React.Component {
 
   render(){
     return(
-      <View style={styles.container}>
+      <View 
+          style={styles.container}>
         { this.state.image ? (
           <Image
             style={styles.receiptImageContainer}
@@ -48,16 +49,23 @@ class SingleEconomyListView extends React.Component {
         </View>
         )}
         
-        <View style={styles.textContainer}>        
+        <View 
+          style={styles.textContainer}
+        >        
           <View style={styles.leftContainer}>
-            <Text>
+            <Text style={styles.dateText}>
               {this.state.date}
             </Text>
+            <View style={styles.verticalLine} />
           </View>
           <View style={styles.rightContainer}>
+            <Text>category</Text>
             <Text>{this.state.category}</Text>
+            <Text>paymentMethod</Text>
             <Text>{this.state.paymentMethod}</Text>
+            <Text>description</Text>
             <Text>{this.state.description}</Text>
+            <Text>price</Text>   
             <Text>{this.state.price}</Text>            
           </View>
         </View>

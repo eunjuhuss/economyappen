@@ -6,13 +6,7 @@ import Fonts from '../js/constants/Fonts';
 export const styles = StyleSheet.create({
   container: {
     backgroundColor:'#F4F7F9',
-    flex: 1,
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 3,
-      height: 0
-    },
-    shadowOpacity: 0.6  
+    flex: 1
   },
   receiptImageContainer: {
     height: Dimensions.hp(50)
@@ -21,15 +15,29 @@ export const styles = StyleSheet.create({
     width: Dimensions.wp(100),
     height: Dimensions.hp(50),
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.mainGreenColor
   },
   textContainer: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    padding: 20
   },
   leftContainer: {
-    width: Dimensions.wp(30)
+    width: Dimensions.wp(30),
+    alignItems: 'center',
   },
   rightContainer: {
     width: Dimensions.wp(70)
-  }  
+  },
+  dateText: {
+    fontFamily: Fonts.headText,
+    color: Colors.subGrayColor,
+    fontSize: 14
+  },
+    verticalLine: {
+    borderLeftWidth: 1,
+    height: '90%',
+    borderColor: Colors.mainGreenColor,
+  },  
 })
