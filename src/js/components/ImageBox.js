@@ -19,14 +19,14 @@ class ImageBox extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      picture: ''
+      receiptImage: ''
     }  
   }
 
 
   uploadImage = async (image, result) => {
     const { currentUser } = Firebase.auth(); 
-    const { picture } = this.state;
+    const { receiptImage } = this.state;
     const ref = Firebase.storage().ref('images/').child(result.uri)
     const { userId } = this.props;
 
@@ -52,10 +52,9 @@ class ImageBox extends React.Component {
       const downloadUrl = await this.uploadImage(result, source)
   
         this.setState({
-        picture: source
+        receiptImage: source
       })
     }
-    console.log('(result)', this.state.picture)
   }
 
   openCamera = async () => {
@@ -67,7 +66,7 @@ class ImageBox extends React.Component {
       const downloadUrl = await this.uploadImage(result, source)
     
         this.setState({
-        picture: source
+        receiptImage: source
       })
     }    
     }
@@ -93,7 +92,7 @@ class ImageBox extends React.Component {
   }
 
   render(){
-    const { picture }= this.state;
+    const { receiptImage }= this.state;
     return (
       <TouchableOpacity
         // disabled={!editable}
@@ -102,9 +101,9 @@ class ImageBox extends React.Component {
       >
         
         <View style={styles.imageAddButton}>
-          <Image
+          {/* <Image
             style={styles.recieptImage}
-            source={{uri: picture.uri}}/>
+            source={{uri: receiptImage.uri}}/> */}
           
             <Text style={styles.imageButtonText}>
               +

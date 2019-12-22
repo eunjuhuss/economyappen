@@ -5,15 +5,15 @@ import Fonts from '../js/constants/Fonts';
 
 export const styles = StyleSheet.create({
   recieptImage: {
-    width: 100, 
-    height: 100, 
+    width: 50, 
+    height: 50, 
     zIndex: 1,
     borderRadius: 10,
 
   },
   imageAddButton: {
-    width: 100,
-    height: 100,
+    width: 50,
+    height: 50,
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
@@ -25,6 +25,6 @@ export const styles = StyleSheet.create({
     fontSize: 30,
     color: Colors.subGrayColor,
     position: 'absolute',
-    bottom: 30
+    bottom: 10
   }
 })

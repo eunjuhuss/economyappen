@@ -19,11 +19,13 @@ class SingleEconomyListView extends React.Component {
       category: this.props.navigation.state.params.category,
       paymentMethod: this.props.navigation.state.params.paymentMethod,
       description: this.props.navigation.state.params.description,
-      price: this.props.navigation.state.params.price      
+      price: this.props.navigation.state.params.price,
+      image: this.props.navigation.state.params.image      
     }  
   }
 
   render(){
+    console.log('image', this.state.image)
     return(
       <View style={{paddingTop: 50, alignItems: 'center',
     justifyContent: 'center'}}>
@@ -36,6 +38,7 @@ class SingleEconomyListView extends React.Component {
           {this.state.paymentMethod}
           {this.state.description}
           {this.state.price}
+          {this.state.image}
         </Text>   
       </View>
     )

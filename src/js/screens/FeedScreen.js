@@ -17,7 +17,7 @@ import _ from 'lodash';
 import Colors from '../constants/Colors';
 
 class FeedScreen extends React.Component {
-   constructor(props){
+  constructor(props){
     super(props)
     this.state = {
       all: false,
