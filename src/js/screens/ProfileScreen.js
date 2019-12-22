@@ -40,7 +40,6 @@ class ProfileScreen extends React.Component {
 
   render() {
     const { economyList } = this.props;
-
     const filteredExpence = economyList.filter(
       list => list.expence === true
     );
@@ -99,8 +98,7 @@ class ProfileScreen extends React.Component {
               color={'#F64336'}
               label={'Logout'}
               onPress={()=>this.logout()}
-            />
-            
+            />            
           </View>
         </ScrollView>
       </View>
@@ -127,7 +125,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getEconomyList: ()=>dispatch(getEconomyList()),
-    getUser: () => dispatch(getUser()),
     logout: () => dispatch(logout())
   }
 }
