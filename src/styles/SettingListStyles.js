@@ -24,10 +24,11 @@ export const styles = StyleSheet.create({
     color: Colors.mainWhiteColor
   },
   labelText: {
-    flexGrow:1,
+    flexGrow: 1,
     paddingLeft: 10,
+    fontSize: 17,
     fontFamily: Fonts.subText,
-    color: Colors.mainBlackColor
+    color: Colors.subGrayColor
   },
   arrowForwardIcon: {
     color:Colors.mainGreenColor

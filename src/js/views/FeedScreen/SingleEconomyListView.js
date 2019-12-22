@@ -25,8 +25,16 @@ class SingleEconomyListView extends React.Component {
 
   render(){
     return(
-      <View style={{paddingTop: 50}}>
+      <View style={{paddingTop: 50, alignItems: 'center',
+    justifyContent: 'center'}}>
         <Text style={{fontSize: 20, color:'black'}}>
+          SingleEconomyListView
+        </Text>
+        <Text style={{fontSize: 20, color:'black'}}> 
+          {this.state.date}
+          {this.state.category}
+          {this.state.paymentMethod}
+          {this.state.description}
           {this.state.price}
         </Text>   
       </View>

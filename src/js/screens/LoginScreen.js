@@ -124,11 +124,10 @@ class LoginScreen extends React.Component {
 
         return (    
             <View style={styles.container}>
-                     
                 <View style={styles.topTriangle} />  
                     <ScrollView
-                        contentContainerStyle={styles.contentContainer}>
-                           
+                        contentContainerStyle={styles.contentContainer}
+                    >
                     <View style={styles.inputContainer}>
                         <View style={styles.welcomeTextContainer}>
                             <Text style={styles.helloText}>Hello</Text>
@@ -158,7 +157,6 @@ class LoginScreen extends React.Component {
                                 })
                             }
                         />
-                                     
                         { error ?  (   
                             <Text style={styles.errorText}>
                                 {error}

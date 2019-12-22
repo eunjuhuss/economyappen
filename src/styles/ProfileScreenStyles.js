@@ -5,8 +5,14 @@ import Fonts from '../js/constants/Fonts';
 
 export const styles = StyleSheet.create({
   container: {
+    backgroundColor:'#F4F7F9',
     flex: 1,
-    backgroundColor: Colors.mainWhiteColor, 
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 3,
+      height: 0
+    },
+    shadowOpacity: 0.6  
   },
   userNameContainer: {   
     paddingTop: Dimensions.hp(10), 
@@ -30,9 +36,9 @@ export const styles = StyleSheet.create({
     alignItems: 'center'
   },
   totalText: {
-    fontSize: 18,
+    fontSize: 20,
     fontFamily: Fonts.headText,
-    color: Colors.subGrayColor,
+    color: Colors.mainBlackColor,
     padding:5
   },
   labelText: {
@@ -40,5 +46,10 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.subText,
     color: Colors.subGrayColor,
     padding:5
+  },
+  imageBoxcontainer: {
+    flex:1,
+    justifyContent: 'center', 
+    alignItems: 'center'
   }
 })
