@@ -10,11 +10,29 @@ import { getEconomyList } from '../redux/store/actions/economyActions';
 import { logout } from '../redux/store/actions/userActions';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import ImageBox from '../components/ImageBox';
+import Firebase from '../constants/Firebase';
 
 class ProfileScreen extends React.Component {
-  componentDidMount(){
-    this.props.getEconomyList();
+  constructor(props){
+    super(props)
+    this.state = {
+      user: {}    
+    }  
   }
+
+  componentDidMount(){
+    this.props.getEconomyList(); 
+    this.checkUserId();
+  }
+
+  checkUserId=()=>{
+    Firebase.auth().onAuthStateChanged(user => {
+    this.setState({ 
+      user: user
+      });
+    });
+  }  
 
   logout=()=>{
     this.props.logout();
@@ -22,6 +40,7 @@ class ProfileScreen extends React.Component {
 
   render() {
     const { economyList } = this.props;
+
     const filteredExpence = economyList.filter(
       list => list.expence === true
     );
@@ -36,16 +55,24 @@ class ProfileScreen extends React.Component {
     );
 
     return (
-      <View style={styles.container}>
+      <View 
+        elevation={5} 
+        style={styles.container}
+      >
         <ScrollView
             contentContainerStyle={styles.contentContainer}>
           <View style={styles.userNameContainer}>
             <Text style={styles.userEmailText}>
-              user@email.com
+              {this.state.user.email}
             </Text>
+            <View style={styles.imageBoxcontainer}>
+              <ImageBox />
+            </View>
             <View style={styles.incomeAndExpenceContainer}>
               <View style={styles.totalAndLabelContainer}>
-                <Text style={styles.totalText}>{totalIcnomePrice}</Text>
+                <Text style={styles.totalText}>
+                  {totalIcnomePrice}
+                </Text>
                 <Text style={styles.labelText}>INCOMES</Text>
               </View>
               <View style={styles.totalAndLabelContainer}>
@@ -84,13 +111,6 @@ ProfileScreen.navigationOptions = {
   header: null
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getEconomyList: ()=>dispatch(getEconomyList()),
-    logout: () => dispatch(logout())
-  }
-}
-
 const mapStateToProps = (state) => {
   const economyList = _.map(state.economyList, (value, uid)=> {
     return { 
@@ -102,6 +122,14 @@ const mapStateToProps = (state) => {
     economyList,
     loadingReducer: state.loadingReducer.loadingReducer
   } 
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getEconomyList: ()=>dispatch(getEconomyList()),
+    getUser: () => dispatch(getUser()),
+    logout: () => dispatch(logout())
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileScreen);

@@ -6,37 +6,46 @@ import {
   StyleSheet,
   Text,
   View,
-  FlatList
+  FlatList,
+  TouchableOpacity
 } from 'react-native';
 import { styles } from '../../styles/SettingListStyles';
 import { Ionicons } from '@expo/vector-icons';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
-
-
-const SettingList = ({icon, label, onPress, color}) => {
+const SettingList = ({ 
+  icon, 
+  label, 
+  onPress, 
+  color
+}) => {
   return (
-    <View style={styles.singleListContainer}> 
-      <View style={[styles.iconContainer, {backgroundColor:color}]}>
-        <Ionicons
-          size={20}
-          style={styles.icon}
-          name={Platform.OS === 'ios' ?
-            `ios-${icon}` : 
-            `md-${icon}`}
-        />
+    <TouchableOpacity onPress={onPress}>
+      <View style={styles.singleListContainer}> 
+        <View style={[
+          styles.iconContainer, 
+          { backgroundColor:color }
+          ]}
+        >
+          <Ionicons
+            size={20}
+            style={styles.icon}
+            name={Platform.OS === 'ios' ?
+              `ios-${icon}` : 
+              `md-${icon}`}
+          />
+        </View>
+        <Text style={styles.labelText}>
+          {label}
+        </Text>      
+          <Ionicons
+            size={20}
+            style={styles.arrowForwardIcon}
+            name={Platform.OS === 'ios' ?
+              `ios-arrow-forward` : 
+              `md-arrow-forward`}
+          />        
       </View>
-      <Text style={styles.labelText}>{label}</Text>
-      <TouchableOpacity onPress={onPress}>
-        <Ionicons
-          size={20}
-          style={styles.arrowForwardIcon}
-          name={Platform.OS === 'ios' ?
-            `ios-arrow-forward` : 
-            `md-arrow-forward`}
-        />
-      </TouchableOpacity>
-    </View>
+    </TouchableOpacity>
   )
 }            
 export default SettingList;

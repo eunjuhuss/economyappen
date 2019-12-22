@@ -150,7 +150,7 @@ class EditView extends React.Component {
         <View style={styles.dropDownContainer}>          
           <SelectDropdown
             placeHolder={'Select Category/'}  
-            defaultValue = {'Home   ▼'}
+            defaultValue = {this.state.category}
             options={[
               'Home',
               'Salary',                  
@@ -166,7 +166,7 @@ class EditView extends React.Component {
           />
           <SelectDropdown 
             placeHolder={'Select Payment method/'}    
-            defaultValue = {'Swish   ▼'}
+            defaultValue = {this.state.paymentMethod}
             options={[
               'Swish', 
               'Cash',
@@ -201,7 +201,7 @@ class EditView extends React.Component {
           }
         />
         <View style={styles.receiptCheckBoxContainer}>
-          <View style={styles.labelCheckBox}>
+          {/* <View style={styles.labelCheckBox}>
             <Text style={styles.labelText}> 
               Do you have a receipt?
             </Text>
@@ -214,7 +214,7 @@ class EditView extends React.Component {
                 })
               }
             /> 
-          </View>             
+          </View>              */}
           {/* { this.state.checkReceipt ? (
             <View style={styles.imageBoxContainer}>
               <ImageBox /> 

@@ -4,7 +4,7 @@ export function getUser() {
   return (dispatch) => {
     Firebase.auth().onAuthStateChanged(user => {
       if(user !== null){
-        dispatch({type: 'GET_USER'})          
+        dispatch({type: 'GET_USER',  payload: user})          
       } else{
         console.log('not logged in')
       }
