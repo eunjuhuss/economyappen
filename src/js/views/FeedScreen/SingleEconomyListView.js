@@ -11,6 +11,33 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { styles } from '../../../styles/SingleEconomyListStyles';
+import Colors from '../../constants/Colors';
+
+const statusStyles = (type)=> {   
+  if(type === true){
+    return { 
+      color: Colors.highlightRed 
+    }
+  } 
+  else if(type === false){
+    return { 
+      color: Colors.mainBlackColor 
+    }
+  }
+}
+
+function LabelAndValue({type, label, value}){
+  return(
+    <View style={styles.labelValueContainer}>     
+      <Text style={styles.labelText}>
+        {label.toUpperCase()}
+      </Text>
+      <Text style={[statusStyles(type),styles.valueText]}>
+        {value.toUpperCase()}
+      </Text>
+    </View>
+  )
+}
 
 class SingleEconomyListView extends React.Component { 
   constructor(props){
@@ -60,14 +87,26 @@ class SingleEconomyListView extends React.Component {
             <View style={styles.verticalLine} />
           </View>
           <View style={styles.rightContainer}>
-            <Text style={styles.labelText}>category</Text>
-            <Text style={styles.valueText}>{this.state.category}</Text>
-            <Text style={styles.labelText}>paymentMethod</Text>
-            <Text style={styles.valueText}>{this.state.paymentMethod}</Text>
-            <Text style={styles.labelText}>description</Text>
-            <Text style={styles.valueText}>{this.state.description}</Text>
-            <Text style={styles.labelText}>price</Text>   
-            <Text style={styles.valueText}>{this.state.price}</Text>            
+            <LabelAndValue
+              type={this.state.expence}
+              label={'category'}
+              value={this.state.category}            
+            />
+            <LabelAndValue
+              type={this.state.expence}
+              label={'payment method'}
+              value={this.state.paymentMethod}            
+            />
+            <LabelAndValue
+              type={this.state.expence}
+              label={'description'}
+              value={this.state.description}            
+            />
+            <LabelAndValue
+              type={this.state.expence}
+              label={'price'}
+              value={this.state.price}            
+            />
           </View>
         </View>
       </View>

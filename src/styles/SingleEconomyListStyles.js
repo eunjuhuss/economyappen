@@ -40,16 +40,18 @@ export const styles = StyleSheet.create({
     height: '90%',
     borderColor: Colors.mainGreenColor,
   },
+  labelValueContainer: {
+    width: Dimensions.wp(70)
+  },
   labelText: {
     fontFamily: Fonts.subText,
     color: Colors.subGrayColor,
-    fontSize: 16,
-    padding: 5
+    fontSize: 14,
   },
   valueText: {
     fontFamily: Fonts.headText,
-    color: Colors.mainBlackColor,
     fontSize: 16,
-    padding: 5
+    paddingTop: 5,
+    paddingBottom: 5
   }
 })
