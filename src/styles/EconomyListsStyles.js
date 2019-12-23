@@ -59,7 +59,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-start'
 
-
   },
   categoryDateText: {
     fontFamily: Fonts.subText,
