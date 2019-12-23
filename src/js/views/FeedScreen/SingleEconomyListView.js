@@ -15,16 +15,17 @@ import { styles } from '../../../styles/SingleEconomyListStyles';
 class SingleEconomyListView extends React.Component { 
   constructor(props){
     super(props)
+    const navigationParams = this.props.navigation.state.params;
     this.state = {
-      uid: this.props.navigation.state.params.uid,
-      expence: this.props.navigation.state.params.expence,
-      income: this.props.navigation.state.params.income,
-      date: this.props.navigation.state.params.date,
-      category: this.props.navigation.state.params.category,
-      paymentMethod: this.props.navigation.state.params.paymentMethod,
-      description: this.props.navigation.state.params.description,
-      price: this.props.navigation.state.params.price,
-      image: this.props.navigation.state.params.image      
+      uid: navigationParams.uid,
+      expence: navigationParams.expence,
+      income: navigationParams.income,
+      date: navigationParams.date,
+      category: navigationParams.category,
+      paymentMethod: navigationParams.paymentMethod,
+      description: navigationParams.description,
+      price: navigationParams.price,
+      image: navigationParams.image      
     }  
   }
 
@@ -59,14 +60,14 @@ class SingleEconomyListView extends React.Component {
             <View style={styles.verticalLine} />
           </View>
           <View style={styles.rightContainer}>
-            <Text>category</Text>
-            <Text>{this.state.category}</Text>
-            <Text>paymentMethod</Text>
-            <Text>{this.state.paymentMethod}</Text>
-            <Text>description</Text>
-            <Text>{this.state.description}</Text>
-            <Text>price</Text>   
-            <Text>{this.state.price}</Text>            
+            <Text style={styles.labelText}>category</Text>
+            <Text style={styles.valueText}>{this.state.category}</Text>
+            <Text style={styles.labelText}>paymentMethod</Text>
+            <Text style={styles.valueText}>{this.state.paymentMethod}</Text>
+            <Text style={styles.labelText}>description</Text>
+            <Text style={styles.valueText}>{this.state.description}</Text>
+            <Text style={styles.labelText}>price</Text>   
+            <Text style={styles.valueText}>{this.state.price}</Text>            
           </View>
         </View>
       </View>

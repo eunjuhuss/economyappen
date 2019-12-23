@@ -33,11 +33,23 @@ export const styles = StyleSheet.create({
   dateText: {
     fontFamily: Fonts.headText,
     color: Colors.subGrayColor,
-    fontSize: 14
+    fontSize: 16
   },
-    verticalLine: {
+  verticalLine: {
     borderLeftWidth: 1,
     height: '90%',
     borderColor: Colors.mainGreenColor,
-  },  
+  },
+  labelText: {
+    fontFamily: Fonts.subText,
+    color: Colors.subGrayColor,
+    fontSize: 16,
+    padding: 5
+  },
+  valueText: {
+    fontFamily: Fonts.headText,
+    color: Colors.mainBlackColor,
+    fontSize: 16,
+    padding: 5
+  }
 })
