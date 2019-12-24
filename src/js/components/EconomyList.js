@@ -18,7 +18,60 @@ import ImageBox from '../components/ImageBox';
 import Colors from '../constants/Colors';
 
 
+
 class EconomyList extends React.Component {
+  // constructor(props){
+  //   super(props)
+  //   this.state = { 
+  //     filteredEconomyLists:[] 
+  //   }  
+  // }
+
+  // componentDidMount(){
+  //   this.filteredEconomyLists();
+  // }
+
+  // filteredEconomyLists=()=>{
+  //   const { 
+  //     listOfEconomy, 
+  //     filter,  
+  //     checkedExpence, 
+  //     checkedIncome 
+  //   } = this.props; 
+
+  //   console.log('filter', filter)
+
+
+  //   if(filter.expence===true){
+  //     const expenceResult = listOfEconomy.map(
+  //       item=>item.expence === true
+  //       )
+  //         this.setState(
+  //         {
+  //           filteredEconomyLists: expenceResult
+  //         }
+  //       )
+  //       console.log('expenceResult', expenceResult)
+  //     }
+  //     else if(filter.income===true){
+  //     const incomeResult = listOfEconomy.map(
+  //       item=>item.income === true
+  //       )
+  //         this.setState(
+  //         {
+  //           filteredEconomyLists: incomeResult
+  //         }
+  //       )
+  //     }      
+  //     else{   
+  //       this.setState(
+  //       {
+  //         filteredEconomyLists: listOfEconomy
+  //       }            
+  //     )
+  //   }
+  // }
+
   renderItem = ({item}) => {
     const { navigation, deleteEconomyList } = this.props;
     const SwipeoutLeftButton = [
@@ -133,22 +186,17 @@ class EconomyList extends React.Component {
   }
 
 render(){
-const { listOfEconomy } = this.props; 
-  return (    
-    <View style={styles.economyListsContainer}>
-      { listOfEconomy ? (
-        <FlatList 
-          data={listOfEconomy}
-          keyExtractor={(item) => item.uid}
-          showsVerticalScrollIndicator={false}
-          renderItem={this.renderItem.bind(this)} 
-        /> 
-      ):( 
-      null
-      )
-    }    
-    </View>    
-  );  
-}
+  const { listOfEconomy } = this.props;
+    return (    
+      <View style={styles.economyListsContainer}>
+          <FlatList 
+            data={listOfEconomy}
+            keyExtractor={(item) => item.uid}
+            showsVerticalScrollIndicator={false}
+            renderItem={this.renderItem.bind(this)} 
+          />   
+      </View>    
+    );  
+  }
 }            
 export default EconomyList;
