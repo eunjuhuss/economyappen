@@ -10,6 +10,7 @@ import {
 import { connect } from 'react-redux';
 import { styles } from '../../styles/ChatScreenStyles';
 import Firebase from '../constants/Firebase';
+import ChatHeader from '../components/headers/ChatHeader';
 
 
 const OPACITY_ENABLED = 1.0
@@ -23,14 +24,13 @@ class ChatScreen extends React.Component {
         }    
     }
 
-    componentWillMount(){
-      const allUsers = Firebase.database().ref('/users/');
-      allUsers.once('value').then(snapshot =>{
-          this.setState({ users: snapshot.val() })
-          console.log('users',this.state.users)
-      });
-    }
- 
+  componentWillMount(){
+    const allUsers = Firebase.database().ref('/users/');
+    allUsers.once('value').then(snapshot =>{
+        this.setState({ users: snapshot.val() })
+        console.log('users',this.state.users)
+    });
+  }
 
     // handleMessageChange = (message) => {
     //   this.props.updateMessage(message)
@@ -75,6 +75,10 @@ class ChatScreen extends React.Component {
 }
 ChatScreen.navigationOptions = {
   title: 'Chat'
+};
+
+ChatScreen.navigationOptions = {
+  header: <ChatHeader />
 };
 
 // const mapStateToProps =(state)=>{
