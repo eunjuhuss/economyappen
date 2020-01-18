@@ -8,7 +8,7 @@ import {
   TextInput,
   CheckBox,
 } from 'react-native';
-import { createEconomyList } from '../redux/store/actions/economyActions';
+import * as  economyActions from '../redux/store/actions/economyActions';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { connectActionSheet } from '@expo/react-native-action-sheet';
@@ -28,37 +28,28 @@ import ImageBox from '../components/ImageBox';
 class AddScreen extends React.Component {
   constructor(props){
     super(props)
-    this.state = {
-      expence: true,
-      income: false,
-      date: new Date().getDate(),
-      category: '',
-      paymentMethod:'',
-      description: '',
-      price: 0,
-      checkReceipt: false  
-    }  
+      this.state = {
+        expence: true,
+        income: false,
+        date: new Date().getDate(),
+        category: '',
+        paymentMethod:'',
+        description: '',
+        price: 0,
+        checkReceipt: false  
+      }  
     this.dropDownRef = React.createRef();
   }
 
   onsubmit = () => { 
-    const { 
-      expence,
-      income, 
-      date,
-      category, 
-      paymentMethod, 
-      description, 
-      price
-    } = this.state;
     this.props.createEconomyList(
-      expence,
-      income, 
-      date,
-      category,
-      paymentMethod,
-      description,
-      price
+      this.state.expence,
+      this.state.income, 
+      this.state.date,
+      this.state.category,
+      this.state.paymentMethod,
+      this.state.description,
+      this.state.price
     )
     this.setState({
       expence: true,
@@ -69,6 +60,7 @@ class AddScreen extends React.Component {
       description: '',
       price: 0      
     })
+    this.props.navigation.navigate('Feed');
   }
 
   render(){
@@ -221,15 +213,7 @@ class AddScreen extends React.Component {
                 })
               }
             /> 
-          </View>             
-          { this.state.checkReceipt ? (
-            <View style={styles.imageBoxContainer}>
-              <ImageBox /> 
-            </View>
-            ):(
-              null
-            )
-          } 
+          </View>              
           </View>
           <CustomButton
             buttonStatus={!isEnabled} 
@@ -249,28 +233,27 @@ AddScreen.navigationOptions = {
   header: <AddHeader />
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    createEconomyList: (
-      expence, 
-      income, 
-      date, 
-      category, 
-      paymentMethod, 
-      description, 
-      price
-    ) => dispatch(
-        createEconomyList(
-          expence,
-          income, 
-          date, 
-          category, 
-          paymentMethod, 
-          description, 
-          price
-        )
+const mapDispatchToProps = dispatch => ({
+  createEconomyList: (
+    expence, 
+    income, 
+    date, 
+    category, 
+    paymentMethod, 
+    description, 
+    price
+  ) => dispatch(
+      economyActions.createEconomyList(
+        expence,
+        income, 
+        date, 
+        category, 
+        paymentMethod, 
+        description, 
+        price
       )
-  }
-}
+    )
+});
+
 
 export default connect(null, mapDispatchToProps)(AddScreen)
