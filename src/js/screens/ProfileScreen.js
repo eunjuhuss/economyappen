@@ -64,7 +64,10 @@ class ProfileScreen extends React.Component {
   }
 
   resetPassword=()=>{
-    this.props.resetPassword(this.state.user.email);
+    const { user: { email }}= this.state
+    this.props.resetPassword(email);
+    alert(`Check your email then reset password!`);
+    this.props.navigation.navigate('Login');
   }
 
   render() {

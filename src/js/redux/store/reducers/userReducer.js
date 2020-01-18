@@ -5,8 +5,8 @@ function userReducer (state = initState, action) {
     switch (action.type) {
     case actionTypes.LOGOUT_SUCCESS: 
     return state;    
-    case actionTypes.RESET_SUCCESS: 
-    return action.payload;
+    case actionTypes.RESET_PASSWORD_SUCCESS: 
+    return state;
     default: 
     return state;
   }

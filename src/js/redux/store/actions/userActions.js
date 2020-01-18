@@ -18,8 +18,9 @@ export function resetPassword(email){
     .sendPasswordResetEmail(email)
     .then(() => {
       dispatch({
-        type: actionTypes.RESET_SUCCESS,
+        type: actionTypes.RESET_PASSWORD_SUCCESS,
         payload: 'Reset email sent. Go check your inbox.'
       })
+      console.log('RESET PASSWORD SUCCESS')
     });    
   }
