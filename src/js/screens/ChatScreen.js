@@ -16,19 +16,12 @@ import ChatHeader from '../components/headers/ChatHeader';
 import _ from 'lodash';
 
 
-const OPACITY_ENABLED = 1.0
-const OPACITY_DISABLED = 0.2
-
 class ChatScreen extends React.Component {
   constructor(props) {
     super(props);
   }
 
 
-  componentWillMount(){
-    this.props.getAllUsers();
-    console.log('this.props.getAllUsers()', this.props.users.users);
-  }
 
   // componentWillMount(){
   //   const allUsers = Firebase.database().ref('/users/');
@@ -63,9 +56,7 @@ class ChatScreen extends React.Component {
       style={styles.container}
     >
     <ScrollView >
-      <Text>
-        {this.props.users.email}
-      </Text>
+
         {/* <TextInput 
           style={styles.textInput}
           placeholder={'message'}
@@ -93,19 +84,6 @@ ChatScreen.navigationOptions = {
   header: <ChatHeader />
 };
 
-const mapStateToProps = (state) => {
-  const users = _.map(state.userReducer, value => {
-    return { 
-      ...value
-    };
-  });
-
-  return {
-    users
-  } 
-}
-
-
 // const mapStateToProps = (state) => {
 //   const users = _.map(state.users, (value)=> {
 //     return { 
@@ -119,7 +97,7 @@ const mapStateToProps = (state) => {
 //   } 
 // }
 
-export default connect(mapStateToProps, { getAllUsers })(ChatScreen);
+export default ChatScreen;
 
 
 // const mapStateToProps = (state) => {

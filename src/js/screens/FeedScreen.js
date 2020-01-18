@@ -18,7 +18,7 @@ import FeedHeader from '../components/headers/FeedHeader';
 import * as economyActions from '../redux/store/actions/economyActions';
 
 class FeedScreen extends React.Component {
-  constructor(props){
+  constructor(props){    
     super(props)
     this.state = {
       all: true,
@@ -106,9 +106,9 @@ class FeedScreen extends React.Component {
         }
         />
       <Text style={[
-          checkedAllStyle(), 
-          styles.expencesLabel
-        ]}
+        checkedAllStyle(), 
+        styles.expencesLabel
+      ]}
       >
         ALL
       </Text>
@@ -118,9 +118,8 @@ class FeedScreen extends React.Component {
         }
       />
       <Text style={[
-          checkedExpenceStyle(), 
-          styles.expencesLabel
-        ]}
+        checkedExpenceStyle(), 
+        styles.expencesLabel]}
       >
         EXPENCES
       </Text>
@@ -140,7 +139,7 @@ class FeedScreen extends React.Component {
   }  
 
   render() {
-    const { navigation } = this.props;    
+    const { navigation } = this.props;
     return (     
       <View 
         elevation={5} 
@@ -155,7 +154,7 @@ class FeedScreen extends React.Component {
             </Text>
           </View>
         </TouchableOpacity>  
-      { this.props.loadingReducer ? 
+      { !this.props.loadingReducer ? 
         <ActivityIndicator
           size='large' 
           style={styles.loading}
@@ -192,8 +191,7 @@ FeedScreen.navigationOptions = {
 };
 
 FeedScreen.propTypes = {
-  economyList: PropTypes.array,
-  loadingReducer: PropTypes.bool
+  economyList: PropTypes.array
 }
 
 const mapStateToProps = state => {

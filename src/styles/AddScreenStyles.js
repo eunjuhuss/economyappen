@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 import Colors from '../js/constants/Colors';
 import Dimensions from '../js/constants/Dimensions';
 import Fonts from '../js/constants/Fonts';
-import { red } from 'ansi-colors';
 
 export const styles = StyleSheet.create({
   container: {
@@ -20,13 +19,6 @@ export const styles = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
   },
-  // selectExpenceIncomeButtonContainer: {
-  //   width: Dimensions.wp(80),
-  //   flex: 1,
-  //   justifyContent: 'center',
-  //   alignItems: 'center'
-
-  // },
   swithSelector: {
     fontFamily: Fonts.headText,
   },
@@ -78,14 +70,6 @@ export const styles = StyleSheet.create({
   labelCheckBox: {
     flexDirection: 'row',
     alignItems: 'center'
- },
-
-  checkboxText: {
-    fontFamily: Fonts.headText,
-    color: Colors.subGrayColor
-  },
-  imageBoxContainer: {
-    justifyContent: 'flex-end',
   },
   labelText: {
     fontFamily: Fonts.subText,
@@ -98,8 +82,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   dropDownAndIconContainer: {
-    flexDirection: 'row',
-
+    flexDirection: 'row'
   },
   arrowDownIcon: {
     margin: 10,

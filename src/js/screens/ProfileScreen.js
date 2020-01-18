@@ -6,8 +6,8 @@ import {
 } from 'react-native';
 import { styles } from '../../styles/ProfileScreenStyles';
 import SettingList from '../components/SettingList';
-import { getEconomyList } from '../redux/store/actions/economyActions';
-import { logout } from '../redux/store/actions/userActions';
+import * as economyActions from '../redux/store/actions/economyActions';
+import * as userActions from '../redux/store/actions/userActions';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import ImageBox from '../components/ImageBox';
@@ -63,6 +63,10 @@ class ProfileScreen extends React.Component {
     this.props.logout();
   }
 
+  resetPassword=()=>{
+    this.props.resetPassword(this.state.user.email);
+  }
+
   render() {
     const { 
       user, 
@@ -103,13 +107,7 @@ class ProfileScreen extends React.Component {
               icon={'key'}
               color={'#E5E13C'}
               label={'Change Password'}
-              onPress={()=>this.props.navigation.navigate('Feed')}
-            />
-            <SettingList 
-              icon={'contacts'}
-              color={'#8CE1AD'}
-              label={'Invite friends'}
-              onPress={()=>this.props.navigation.navigate('Feed')}
+              onPress={()=>this.resetPassword()}
             />
             <SettingList 
               icon={'log-out'}
@@ -142,8 +140,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getEconomyList: ()=>dispatch(getEconomyList()),
-    logout: () => dispatch(logout())
+    getEconomyList: ()=>dispatch(economyActions.getEconomyList()),
+    logout: () => dispatch(userActions.logout()),
+    resetPassword: (email) => dispatch(userActions.resetPassword(email))
   }
 }
 

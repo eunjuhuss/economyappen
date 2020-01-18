@@ -7,7 +7,7 @@ import { combineReducers } from 'redux';
 const rootReducer = combineReducers({
   economyList: economyListReducer,
   loadingReducer: loadingReducer,
-  userReducer: userReducer,
+  user: userReducer,
   chatReducer: chatReducer
 })
 

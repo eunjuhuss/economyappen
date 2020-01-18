@@ -35,8 +35,7 @@ class AddScreen extends React.Component {
         category: '',
         paymentMethod:'',
         description: '',
-        price: 0,
-        checkReceipt: false  
+        price: 0
       }  
     this.dropDownRef = React.createRef();
   }
@@ -199,22 +198,6 @@ class AddScreen extends React.Component {
             })
           }
         />
-        <View style={styles.receiptCheckBoxContainer}>
-          <View style={styles.labelCheckBox}>
-            <Text style={styles.labelText}> 
-              Do you have a receipt?
-            </Text>
-            <CheckBox
-              style={styles.receiptCheckBox}
-              value={this.state.checkReceipt}
-              onValueChange={
-                () => this.setState({
-                  checkReceipt: !this.state.checkReceipt
-                })
-              }
-            /> 
-          </View>              
-          </View>
           <CustomButton
             buttonStatus={!isEnabled} 
             color={'red'} 

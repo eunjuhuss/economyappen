@@ -1,48 +1,14 @@
-const initState = {
-  // user: {},
-  // error: null,
-  // users: []
-}
+import * as actionTypes from '../../constants/action-types';
+const initState = { }
 
 function userReducer (state = initState, action) {
-  switch (action.type) {
-    case 'GET_ALL_USERS':
-    return action.payload
-      
-    case 'GET_USER':
-    return {
-      ...state,
-      error: null,
-      user:action.payload
-    }
-    case 'REGISTER_SUCCESS':
-    return {
-      ...state,
-      error: null
-    }
-    case 'REGISTER_ERROR':
-    return {
-      ...state,
-      error: action.error.message
-    }
-    case 'LOGIN_SUCCESS':
-    return {
-      ...state,
-      error: null,
-      user:action.payload
-    };
-    case 'LOGIN_ERROR':
-    return {
-      ...state, 
-      error:'Login failed',
-    };
-    case 'LOGOUT_SUCCESS':
-    return {
-      state
-    }    
-    default:
-    return state
+    switch (action.type) {
+    case actionTypes.LOGOUT_SUCCESS: 
+    return state;    
+    case actionTypes.RESET_SUCCESS: 
+    return action.payload;
+    default: 
+    return state;
   }
-}
-
+};
 export default userReducer;

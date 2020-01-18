@@ -1,21 +1,6 @@
 import * as actionTypes from '../../constants/action-types';
 const initState = { }
 
-// function economyListReducer (state = initState, action) {
-//   switch (action.type) {
-//     case 'FETCH_ECONOMY_LIST':
-//     return action.payload;
-//     case 'CREATE_ECONOMY_LISTS':
-//     return state;
-//     case 'REMOVE_ECONOMY_LISTS':
-//     return state;
-//     case 'UPDATE_ECONOMY_LISTS':
-//     return state;
-//     default:
-//     return state  
-//   }
-// }
-
 function economyListReducer (state = initState, action) {
   switch (action.type) {
     case actionTypes.GET_ECONOMY_LIST_START:

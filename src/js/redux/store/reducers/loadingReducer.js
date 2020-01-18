@@ -1,8 +1,9 @@
+import * as actionTypes from '../../constants/action-types';
 const initState = { }
 
 function loadingReducer(state = initState, action) {
   switch (action.type) {
-    case 'ECONOMY_LOADING_STATUS':
+    case actionTypes.GET_ECONOMY_LIST_SUCCESS:
     return {
       ...state,
       loadingReducer: action.payload
