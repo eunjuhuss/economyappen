@@ -17,13 +17,38 @@ class ProfileScreen extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      user: {}    
+      user: {},
+      totalExpencePrice: '',
+      totalIcnomePrice:''    
     }  
   }
 
   componentDidMount(){
     this.props.getEconomyList(); 
     this.checkUserId();
+    this.calculateIncomeAndExpence();
+  }
+
+  calculateIncomeAndExpence=()=>{
+    const { economyList } = this.props;
+    const filteredExpence = economyList.filter(
+      list => list.expence === true
+    );
+    const totalExpencePrice = filteredExpence.reduce(
+      (sum, item) => sum + parseInt(item.price, 10) ,0
+    );
+    this.setState({
+      totalExpencePrice: totalExpencePrice
+    })
+    const filteredIncome = economyList.filter(
+      list => list.income === true
+    );
+    const totalIcnomePrice = filteredIncome.reduce(
+      (sum, item) => sum + parseInt(item.price, 10) ,0
+    );
+    this.setState({
+      totalIcnomePrice: totalIcnomePrice
+    })
   }
 
   checkUserId=()=>{
@@ -39,19 +64,12 @@ class ProfileScreen extends React.Component {
   }
 
   render() {
-    const { economyList } = this.props;
-    const filteredExpence = economyList.filter(
-      list => list.expence === true
-    );
-    const totalExpencePrice = filteredExpence.reduce(
-      (sum, item) => sum + parseInt(item.price, 10) ,0
-    );
-    const filteredIncome = economyList.filter(
-      list => list.income === true
-    );
-    const totalIcnomePrice = filteredIncome.reduce(
-      (sum, item) => sum + parseInt(item.price, 10) ,0
-    );
+    const { 
+      user, 
+      totalExpencePrice,
+      totalIcnomePrice 
+      } 
+    = this.state;
 
     return (
       <View 
@@ -62,7 +80,7 @@ class ProfileScreen extends React.Component {
             contentContainerStyle={styles.contentContainer}>
           <View style={styles.userNameContainer}>
             <Text style={styles.userEmailText}>
-              {this.state.user.email}
+              {user.email}
             </Text>
             <View style={styles.imageBoxcontainer}>
               <ImageBox />

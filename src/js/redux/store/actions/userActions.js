@@ -1,5 +1,18 @@
 import Firebase from './../../../constants/Firebase';
 
+export function getAllUsers() {
+  return (dispatch) => {
+    Firebase.database().ref(`/users/`)
+    .on('value',(snapshot) => {
+      dispatch({ 
+        type: 'GET_ALL_USERS', 
+        payload: snapshot.val()
+        
+      }); 
+    });
+  };
+}
+
 export function getUser() {
   return (dispatch) => {
     Firebase.auth().onAuthStateChanged(user => {

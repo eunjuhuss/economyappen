@@ -4,11 +4,14 @@ import Dimensions from '../js/constants/Dimensions';
 import Fonts from '../js/constants/Fonts';
 
 export const styles = StyleSheet.create({
-  container: {    
+  container: {
+    backgroundColor:'#F4F7F9',
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: Colors.mainWhiteColor,    
-    width: Dimensions.wp(100)
-  }
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 3,
+      height: 0
+    },
+    shadowOpacity: 0.6  
+  },
 })

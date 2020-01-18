@@ -1,10 +1,14 @@
 const initState = {
-  user: {},
-  error: null
+  // user: {},
+  // error: null,
+  // users: []
 }
 
 function userReducer (state = initState, action) {
   switch (action.type) {
+    case 'GET_ALL_USERS':
+    return action.payload
+      
     case 'GET_USER':
     return {
       ...state,
