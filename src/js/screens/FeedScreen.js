@@ -68,10 +68,9 @@ class FeedScreen extends React.Component {
       income: true,
       expence: false
     })
-  }  
+  }
 
-  render() {
-    const { navigation } = this.props;
+  renderCheckBox =()=>{
     const { all, income, expence }= this.state;
     const checkedAllStyle = () => {     
       if(all === true){
@@ -95,6 +94,53 @@ class FeedScreen extends React.Component {
       }
     }
 
+    return(   
+      <View style={styles.checkboxContainer}>  
+        <CheckBox
+          value={this.state.all}          
+          onValueChange={value=>this.setState({
+            all: true,
+            income: false,
+            expence: false
+          })
+        }
+        />
+      <Text style={[
+          checkedAllStyle(), 
+          styles.expencesLabel
+        ]}
+      >
+        ALL
+      </Text>
+      <CheckBox
+        value={this.state.expence}
+        onValueChange={()=>this.checkedExpence()
+        }
+      />
+      <Text style={[
+          checkedExpenceStyle(), 
+          styles.expencesLabel
+        ]}
+      >
+        EXPENCES
+      </Text>
+      <CheckBox 
+        value={this.state.income}
+        onValueChange={()=>this.checkedIncome()
+        }
+      />
+      <Text style={[
+        checkedIncomeStyle(),
+        styles.incomeLabel]}
+      >
+        INCOME
+      </Text> 
+    </View>
+    )
+  }  
+
+  render() {
+    const { navigation } = this.props;    
     return (     
       <View 
         elevation={5} 
@@ -115,63 +161,25 @@ class FeedScreen extends React.Component {
           style={styles.loading}
         /> 
         :
-        <ScrollView>            
-          <View style={styles.checkboxContainer}>
-            <CheckBox
-              value={this.state.all}          
-              onValueChange={value=>this.setState({
-                all: true,
-                income: false,
-                expence: false
-              })
-            }
-            />
-          <Text style={[
-              checkedAllStyle(), 
-              styles.expencesLabel
-            ]}
-          >
-            ALL
-          </Text>
-          <CheckBox
-            value={this.state.expence}
-            onValueChange={()=>this.checkedExpence()
-            }
-          />
-          <Text style={[
-              checkedExpenceStyle(), 
-              styles.expencesLabel
-            ]}
-          >
-            EXPENCES
-          </Text>
-          <CheckBox 
-            value={this.state.income}
-            onValueChange={()=>this.checkedIncome()
-            }
-          />
-          <Text style={[
-            checkedIncomeStyle(),
-            styles.incomeLabel]}
-          >
-            INCOME
-          </Text> 
-        </View>
-        {
-          this.state.all === true ? (
-            <EconomyList
-            navigation={navigation}
-            listOfEconomy={this.props.economyList}
-            deleteEconomyList={this.props.deleteEconomyList}
-          />
-          ):(
+        <ScrollView> 
+          <View>
+            {this.renderCheckBox()}
+          </View>
+          {
+            this.state.all === true ? (
             <EconomyList
               navigation={navigation}
-              listOfEconomy={this.state.filteredEconomyLists}
+              listOfEconomy={this.props.economyList}
               deleteEconomyList={this.props.deleteEconomyList}
             />
-          )
-        }
+            ):(
+              <EconomyList
+                navigation={navigation}
+                listOfEconomy={this.state.filteredEconomyLists}
+                deleteEconomyList={this.props.deleteEconomyList}
+              />
+            )
+          }
         </ScrollView>
         }         
       </View>
