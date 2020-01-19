@@ -32,15 +32,11 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.headText,
     fontSize: 14
   },
-
-
-
   floatingTouchableButton: {
     position: 'absolute',
     bottom: 20,
     right: 20,
     zIndex: 1
-
   },
   floatingAddButton: {
     width: 50,

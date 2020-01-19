@@ -11,7 +11,6 @@ import HeaderLayout from './HeaderLayout';
 import { Ionicons } from '@expo/vector-icons';
 import { withNavigation } from 'react-navigation';
 
-
 class AddHeader extends React.Component{
   constructor(props) {  
     super(props);
@@ -48,15 +47,6 @@ class AddHeader extends React.Component{
               </Text>
             </View>  
           }
-          // rightComponent={
-          //     <Ionicons 
-          //     size={26} 
-          //     style={styles.headerIcon} 
-          //     name={Platform.OS === 'ios' ? 
-          //       'ios-search' : 
-          //       'md-search'}
-          //   />
-          // }
         />
       </HeaderLayout>
     );

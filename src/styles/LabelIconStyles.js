@@ -8,9 +8,7 @@ export const styles = StyleSheet.create({
   iconContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-
     backgroundColor: Colors.mainWhiteColor,
-    // padding: 10,
     width: 45,
     height: 45,
     borderRadius: 15,

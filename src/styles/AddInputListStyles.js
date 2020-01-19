@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import Colors from '../js/constants/Colors';
 import Dimensions from '../js/constants/Dimensions';
 import Fonts from '../js/constants/Fonts';
-                    
+
 export const styles = StyleSheet.create({
   singleInputContainer: {
     flex: 1,

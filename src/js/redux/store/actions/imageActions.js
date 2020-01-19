@@ -1,6 +1,5 @@
 import Firebase from './../../../constants/Firebase';
-import * as ImageHelpers from './../../../constants/ImageHelpers'
-
+import * as ImageHelpers from './../../../constants/ImageHelpers';
 
 export function uploadImage(image) {
   return (dispatch)=>{
@@ -15,4 +14,4 @@ export function uploadImage(image) {
     blob.close()
     return dowunloadUrl
   }    
- }
+}

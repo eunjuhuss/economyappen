@@ -10,20 +10,13 @@ import {
 } from 'react-native';
 import * as  economyActions from '../redux/store/actions/economyActions';
 import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { connectActionSheet } from '@expo/react-native-action-sheet';
-import Firebase from '../constants/Firebase';
-import Dimensions from '../constants/Dimensions';
-import * as ImageHelpers from '../constants/ImageHelpers'
 import AddinputList from '../components/AddInputList';
 import { styles } from '../../styles/AddScreenStyles';
 import CustomButton from '../components/CustomButton';
 import AddHeader from '../components/headers/AddHeader';
 import Calendar from '../components/Calendar';
 import Colors from '../constants/Colors';
-import Fonts from '../constants/Fonts';
 import SelectDropdown from '../components/SelectDropdown';
-import ImageBox from '../components/ImageBox';
 
 class AddScreen extends React.Component {
   constructor(props){
@@ -237,6 +230,5 @@ const mapDispatchToProps = dispatch => ({
       )
     )
 });
-
 
 export default connect(null, mapDispatchToProps)(AddScreen)

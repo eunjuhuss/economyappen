@@ -15,7 +15,7 @@ import Firebase from '../constants/Firebase';
 import ChatHeader from '../components/headers/ChatHeader';
 import _ from 'lodash';
 
-
+//TODO!
 class ChatScreen extends React.Component {
   constructor(props) {
     super(props);

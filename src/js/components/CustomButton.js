@@ -26,7 +26,7 @@ const CustomButton = ({onPress, title, icon, color, buttonStatus}) => {
         {title}
       </Text>
       {
-        buttonStatus === false ?     
+        buttonStatus === false &&     
         (
           <Ionicons
             size={22}
@@ -35,8 +35,6 @@ const CustomButton = ({onPress, title, icon, color, buttonStatus}) => {
               `ios-${icon}` : 
               `md-${icon}`}
           />
-        ):(
-        null
         )
       }
       </View>

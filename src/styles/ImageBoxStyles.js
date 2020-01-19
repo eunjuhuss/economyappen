@@ -8,8 +8,7 @@ export const styles = StyleSheet.create({
     width: 50, 
     height: 50, 
     zIndex: 1,
-    borderRadius: 10,
-
+    borderRadius: 10
   },
   imageAddButton: {
     width: 50,
