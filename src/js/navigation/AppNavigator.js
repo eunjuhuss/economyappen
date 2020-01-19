@@ -8,14 +8,12 @@ import {
 import MainTabNavigator from './MainTabNavigator';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import LoginScreen from '../screens/LoginScreen';
-import RegisterScreen from '../screens/RegisterScreen';
 import LoadingScreen from '../screens/LoadingScreen';
 
 const AuthNavigator = createStackNavigator (
   { 
     Welcome: { screen : WelcomeScreen },
     Login: { screen : LoginScreen },
-    Register: { screen : RegisterScreen },
     Loading: { screen : LoadingScreen },
   },
   {

@@ -11,17 +11,8 @@ import { Ionicons } from '@expo/vector-icons';
 import Colors from '../../constants/Colors';
 
 export default class FeedHeader extends React.Component{
-  constructor(props) {  
-    super(props); 
-    this.state={
-      selcet:''
-    }
 
-  }
-
-
-  render(){  
-
+  render(){ 
     return (
       <HeaderLayout>
         <BasicHeader
@@ -44,15 +35,6 @@ export default class FeedHeader extends React.Component{
               </Text>
             </View>  
           }
-          // rightComponent={
-            //   <Ionicons 
-            //   size={26} 
-            //   style={styles.headerIcon} 
-            //   name={Platform.OS === 'ios' ? 
-            //     'ios-search' : 
-            //     'md-search'}
-            // />
-          // }
         />
       </HeaderLayout>
     );

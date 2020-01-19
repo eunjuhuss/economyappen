@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 import Dimensions from '../../js/constants/Dimensions';
 import Colors from '../../js/constants/Colors';
 import Fonts from '../../js/constants/Fonts';
+
 export const styles = StyleSheet.create({
   container: {
     width: Dimensions.wp(100),
@@ -26,12 +27,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center'
   },
-  // rightContainer: {
-  //   width: Dimensions.wp(20),
-  //   height: '100%',
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  // },
   headerIcon: {
     color: Colors.mainBlackColor,
     padding: 10

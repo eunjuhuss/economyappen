@@ -2,9 +2,7 @@ import { StyleSheet } from 'react-native';
 import Colors from '../js/constants/Colors';
 import Dimensions from '../js/constants/Dimensions';
 import Fonts from '../js/constants/Fonts';
-import {  
-  Platform
-} from 'react-native';
+import { Platform } from 'react-native';
 
 export const styles = StyleSheet.create({
   itemContainer: {
@@ -13,10 +11,8 @@ export const styles = StyleSheet.create({
     height: 70,
     flexDirection: 'row',
     justifyContent: 'space-around',
-    // alignItems: 'center',
     borderBottomWidth: 3,
-    borderBottomColor: Colors.mainWhiteColor,
-
+    borderBottomColor: Colors.mainWhiteColor
   },
   dateAndverticalLineContainer: {
     height: '100%',
@@ -25,8 +21,7 @@ export const styles = StyleSheet.create({
   },
   economyListsContainer: {
     borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
-    // height: Dimensions.hp(100),
+    borderTopRightRadius: 30
   },
   verticalLine: {
     borderLeftWidth: 1,

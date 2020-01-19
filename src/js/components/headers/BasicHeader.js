@@ -8,11 +8,9 @@ const BasicHeader = ({leftComponent, middleComponent, rightComponent}) =>  {
         <View style={styles.leftContainer}>
           {leftComponent}
         </View>
-
         <View style={styles.middleContainer}>
           {middleComponent}
         </View>
-
         <View style={styles.rightContainer}>
           {rightComponent}
         </View>

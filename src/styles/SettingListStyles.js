@@ -8,8 +8,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems:'center',
-    padding: 15,
-
+    padding: 15
   },
   iconContainer: {
     width: 30,
@@ -18,7 +17,6 @@ export const styles = StyleSheet.create({
     borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center'
-
   },
   icon: { 
     color: Colors.mainWhiteColor

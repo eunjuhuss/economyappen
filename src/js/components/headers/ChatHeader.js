@@ -48,15 +48,6 @@ class ChatHeader extends React.Component{
               </Text>
             </View>  
           }
-          // rightComponent={
-          //     <Ionicons 
-          //     size={26} 
-          //     style={styles.headerIcon} 
-          //     name={Platform.OS === 'ios' ? 
-          //       'ios-search' : 
-          //       'md-search'}
-          //   />
-          // }
         />
       </HeaderLayout>
     );

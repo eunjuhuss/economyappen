@@ -39,7 +39,6 @@ export const openCamera = async() => {
       aspect: [4,3],
       base64: true
     })
-
     return !result.cancelled ? result : false;
   }
 
@@ -64,7 +63,5 @@ export const openCamera = async() => {
       //send the request
       xml.send()
     })
-
     return blob
-
   }
