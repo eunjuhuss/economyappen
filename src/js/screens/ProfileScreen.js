@@ -6,24 +6,48 @@ import {
 } from 'react-native';
 import { styles } from '../../styles/ProfileScreenStyles';
 import SettingList from '../components/SettingList';
-import { getEconomyList } from '../redux/store/actions/economyActions';
-import { logout } from '../redux/store/actions/userActions';
+import * as economyActions from '../redux/store/actions/economyActions';
+import * as userActions from '../redux/store/actions/userActions';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import ImageBox from '../components/ImageBox';
 import Firebase from '../constants/Firebase';
 
 class ProfileScreen extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      user: {}    
+      user: {},
+      totalExpencePrice: '',
+      totalIcnomePrice:''    
     }  
   }
 
   componentDidMount(){
     this.props.getEconomyList(); 
     this.checkUserId();
+    this.calculateIncomeAndExpence();
+  }
+
+  calculateIncomeAndExpence=()=>{
+    const { economyList } = this.props;
+    const filteredExpence = economyList.filter(
+      list => list.expence === true
+    );
+    const totalExpencePrice = filteredExpence.reduce(
+      (sum, item) => sum + parseInt(item.price, 10) ,0
+    );
+    this.setState({
+      totalExpencePrice: totalExpencePrice
+    })
+    const filteredIncome = economyList.filter(
+      list => list.income === true
+    );
+    const totalIcnomePrice = filteredIncome.reduce(
+      (sum, item) => sum + parseInt(item.price, 10) ,0
+    );
+    this.setState({
+      totalIcnomePrice: totalIcnomePrice
+    })
   }
 
   checkUserId=()=>{
@@ -38,20 +62,22 @@ class ProfileScreen extends React.Component {
     this.props.logout();
   }
 
+  resetPassword=()=>{
+    const { user: { email }}= this.state
+    this.props.resetPassword(email);
+    alert(`Check your email then reset password!`);
+    this.props.navigation.navigate('Login');
+  }
+
   render() {
-    const { economyList } = this.props;
-    const filteredExpence = economyList.filter(
-      list => list.expence === true
-    );
-    const totalExpencePrice = filteredExpence.reduce(
-      (sum, item) => sum + parseInt(item.price, 10) ,0
-    );
-    const filteredIncome = economyList.filter(
-      list => list.income === true
-    );
-    const totalIcnomePrice = filteredIncome.reduce(
-      (sum, item) => sum + parseInt(item.price, 10) ,0
-    );
+    const { 
+      user, 
+      totalExpencePrice,
+      totalIcnomePrice 
+      } 
+    = this.state;
+
+    const  email  = user.email;
 
     return (
       <View 
@@ -62,11 +88,8 @@ class ProfileScreen extends React.Component {
             contentContainerStyle={styles.contentContainer}>
           <View style={styles.userNameContainer}>
             <Text style={styles.userEmailText}>
-              {this.state.user.email}
+              {email}
             </Text>
-            <View style={styles.imageBoxcontainer}>
-              <ImageBox />
-            </View>
             <View style={styles.incomeAndExpenceContainer}>
               <View style={styles.totalAndLabelContainer}>
                 <Text style={styles.totalText}>
@@ -85,13 +108,7 @@ class ProfileScreen extends React.Component {
               icon={'key'}
               color={'#E5E13C'}
               label={'Change Password'}
-              onPress={()=>this.props.navigation.navigate('Feed')}
-            />
-            <SettingList 
-              icon={'contacts'}
-              color={'#8CE1AD'}
-              label={'Invite friends'}
-              onPress={()=>this.props.navigation.navigate('Feed')}
+              onPress={()=>this.resetPassword()}
             />
             <SettingList 
               icon={'log-out'}
@@ -124,8 +141,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getEconomyList: ()=>dispatch(getEconomyList()),
-    logout: () => dispatch(logout())
+    getEconomyList: ()=>dispatch(economyActions.getEconomyList()),
+    logout: () => dispatch(userActions.logout()),
+    resetPassword: (email) => dispatch(userActions.resetPassword(email))
   }
 }
 

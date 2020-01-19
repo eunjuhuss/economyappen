@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "economyappen",
-    "slug": "economyappen",
+    "name": "receiptsaver",
+    "slug": "receiptsaver",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [
@@ -25,6 +25,7 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "control own economy, easy to save receipt photos, see more details, delete and edit."
   }
 }

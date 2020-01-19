@@ -1,19 +1,15 @@
 import React from 'react';
 import { 
-  ScrollView, 
-  StyleSheet, 
   Platform,
   Text,
   View,
-  Image,
-  TextInput,
-  CheckBox 
+  Image
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { styles } from '../../../styles/SingleEconomyListStyles';
 import Colors from '../../constants/Colors';
 
-const statusStyles = (type)=> {   
+function statusStyles({type}){ 
   if(type === true){
     return { 
       color: Colors.highlightRed 

@@ -1,21 +1,20 @@
 import Firebase from './../../../constants/Firebase';
+import * as actionTypes from '../../constants/action-types';
 
 export function getEconomyList() {  
   return (dispatch, getState) => {
     const { currentUser } = Firebase.auth(); 
     dispatch({
-      type: 'ECONOMY_LOADING_STATUS',
-      payload: true
+      type: actionTypes.GET_ECONOMY_LIST_START
     })
     Firebase.database().ref(`/users/${currentUser.uid}/economyLists`)
-    .orderByChild("date")
     .on('value',(snapshot)=> {
       dispatch({ 
-        type: 'FETCH_ECONOMY_LIST', 
+        type: actionTypes.GET_ECONOMY_LIST_SUCCESS, 
         payload: snapshot.val()
       });      
       dispatch({
-        type: 'ECONOMY_LOADING_STATUS',
+        type: actionTypes.GET_ECONOMY_LOADING_FAIL,
         payload: false
       })     
     });
@@ -36,7 +35,7 @@ export function createEconomyList(expence, income, date, category, paymentMethod
       price
     })
     .then(()=>{
-      dispatch({ type: 'CREATE_ECONOMY_LISTS'});
+      dispatch({ type: actionTypes.CREATE_ECONOMY_LIST});
     })
   };
 };
@@ -47,7 +46,7 @@ export function deleteEconomyList(uid) {
     Firebase.database().ref(`/users/${currentUser.uid}/economyLists/${uid}`)
     .remove()
     .then(()=>{
-      dispatch({ type: 'REMOVE_ECONOMY_LISTS'})
+      dispatch({ type: actionTypes.REMOVE_ECONOMY_LIST})
     })
   };
 };
@@ -58,7 +57,7 @@ export function editEconomyList( expence, income, date, category, paymentMethod,
     Firebase.database().ref(`/users/${currentUser.uid}/economyLists/${uid}`)
     .update({ expence, income, date, category, paymentMethod, description, price})
     .then(() => {
-      dispatch({ type: 'UPDATE_ECONOMY_LISTS' });
+      dispatch({ type: actionTypes.UPDATE_ECONOMY_LIST });
     })
   };
 };

@@ -8,18 +8,18 @@ import {
   ActivityIndicator,
   TouchableOpacity
 } from 'react-native';
-import EconomyList from './../components/EconomyList';
-import { styles } from '../../styles/FeedScreenStyles';
-import { getEconomyList, deleteEconomyList } from '../redux/store/actions/economyActions';
-import FeedHeader from '../components/headers/FeedHeader';
-import { connect } from 'react-redux';
 import _ from 'lodash';
 import Colors from '../constants/Colors';
+import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
+import { styles } from '../../styles/FeedScreenStyles';
+import EconomyList from './../components/EconomyList';
+import FeedHeader from '../components/headers/FeedHeader';
+import * as economyActions from '../redux/store/actions/economyActions';
 
 class FeedScreen extends React.Component {
-  constructor(props){
+  constructor(props){    
     super(props)
-    const { economyList }= this.props;
     this.state = {
       all: true,
       expence: false,
@@ -32,50 +32,46 @@ class FeedScreen extends React.Component {
     this.props.getEconomyList();
   }
 
-  navigateToAddScreen=()=>{
+  navigateToAddScreen = () => {
     this.props.navigation.navigate('Add')
   }
 
-
-
-  checkedExpence=()=>{
-    const { economyList }= this.props;
+  checkedExpence = () => {
+    const { economyList } = this.props;
     const expenceResult = economyList.filter(
-        item=>item.expence === true
-        )
-          this.setState(
-          {
-            filteredEconomyLists: expenceResult
-          }
-        )
+      item=>item.expence === true
+      )
+      this.setState(
+      {
+        filteredEconomyLists: expenceResult
+      }
+    )
     this.setState({
       all: false,
       income: false,
       expence: true
     })
   }
+
   checkedIncome=()=>{
     const { economyList }= this.props;
     const incomeResult = economyList.filter(
-        item=>item.income === true
-        )
-          this.setState(
-          {
-            filteredEconomyLists: incomeResult
-          }
-        )
+    item=>item.income === true
+    )
+      this.setState(
+      {
+        filteredEconomyLists: incomeResult
+      }
+    )
     this.setState({
       all: false,
       income: true,
       expence: false
     })
   }
-  
 
-  render() {
-    const { navigation } = this.props;
+  renderCheckBox =()=>{
     const { all, income, expence }= this.state;
-
     const checkedAllStyle = () => {     
       if(all === true){
         return{ color: Colors.highlightBlue }
@@ -83,7 +79,6 @@ class FeedScreen extends React.Component {
         return{ color: Colors.subGrayColor }
       }
     }
-
     const checkedIncomeStyle = () => {     
       if(income === true){
         return{ color: Colors.highlightBlue }
@@ -91,7 +86,6 @@ class FeedScreen extends React.Component {
         return{ color: Colors.subGrayColor }
       }
     }
-
     const checkedExpenceStyle = () => {
       if(expence === true){
         return{ color: Colors.highlightBlue }
@@ -100,6 +94,52 @@ class FeedScreen extends React.Component {
       }
     }
 
+    return(   
+      <View style={styles.checkboxContainer}>  
+        <CheckBox
+          value={this.state.all}          
+          onValueChange={value=>this.setState({
+            all: true,
+            income: false,
+            expence: false
+          })
+        }
+        />
+      <Text style={[
+        checkedAllStyle(), 
+        styles.expencesLabel
+      ]}
+      >
+        ALL
+      </Text>
+      <CheckBox
+        value={this.state.expence}
+        onValueChange={()=>this.checkedExpence()
+        }
+      />
+      <Text style={[
+        checkedExpenceStyle(), 
+        styles.expencesLabel]}
+      >
+        EXPENCES
+      </Text>
+      <CheckBox 
+        value={this.state.income}
+        onValueChange={()=>this.checkedIncome()
+        }
+      />
+      <Text style={[
+        checkedIncomeStyle(),
+        styles.incomeLabel]}
+      >
+        INCOME
+      </Text> 
+    </View>
+    )
+  }  
+
+  render() {
+    const { navigation } = this.props;
     return (     
       <View 
         elevation={5} 
@@ -114,69 +154,31 @@ class FeedScreen extends React.Component {
             </Text>
           </View>
         </TouchableOpacity>  
-      { this.props.loadingReducer ? 
+      { !this.props.loadingReducer ? 
         <ActivityIndicator
           size='large' 
           style={styles.loading}
         /> 
         :
-        <ScrollView>            
-          <View style={styles.checkboxContainer}>
-            <CheckBox
-              value={this.state.all}          
-              onValueChange={value=>this.setState({
-                all: true,
-                income: false,
-                expence: false
-              })
-            }
-            />
-          <Text style={[
-              checkedAllStyle(), 
-              styles.expencesLabel
-            ]}
-          >
-            ALL
-          </Text>
-          <CheckBox
-            value={this.state.expence}
-            onValueChange={()=>this.checkedExpence()
-            }
-          />
-          <Text style={[
-              checkedExpenceStyle(), 
-              styles.expencesLabel
-            ]}
-          >
-            EXPENCES
-          </Text>
-          <CheckBox 
-            value={this.state.income}
-            onValueChange={()=>this.checkedIncome()
-            }
-          />
-          <Text style={[
-            checkedIncomeStyle(),
-            styles.incomeLabel]}
-          >
-            INCOME
-          </Text> 
-        </View>
-        {
-          this.state.all === true ? (
-            <EconomyList
-            navigation={navigation}
-            listOfEconomy={this.props.economyList}
-            deleteEconomyList={this.props.deleteEconomyList}
-          />
-          ):(
+        <ScrollView> 
+          <View>
+            {this.renderCheckBox()}
+          </View>
+          {
+            this.state.all === true ? (
             <EconomyList
               navigation={navigation}
-              listOfEconomy={this.state.filteredEconomyLists}
+              listOfEconomy={this.props.economyList}
               deleteEconomyList={this.props.deleteEconomyList}
             />
-          )
-        }
+            ):(
+              <EconomyList
+                navigation={navigation}
+                listOfEconomy={this.state.filteredEconomyLists}
+                deleteEconomyList={this.props.deleteEconomyList}
+              />
+            )
+          }
         </ScrollView>
         }         
       </View>
@@ -188,7 +190,11 @@ FeedScreen.navigationOptions = {
   header: <FeedHeader />
 };
 
-const mapStateToProps = (state) => {
+FeedScreen.propTypes = {
+  economyList: PropTypes.array
+}
+
+const mapStateToProps = state => {
   const economyList = _.map(state.economyList, (value, uid)=> {
     return { 
       ...value, 
@@ -201,4 +207,13 @@ const mapStateToProps = (state) => {
   } 
 }
 
-export default connect(mapStateToProps, {getEconomyList, deleteEconomyList})(FeedScreen);
+const mapDispatchToProps = dispatch => ({
+  getEconomyList: () => {
+    dispatch(economyActions.getEconomyList());
+  },
+  deleteEconomyList: uid => {
+    dispatch(economyActions.deleteEconomyList(uid));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(FeedScreen);

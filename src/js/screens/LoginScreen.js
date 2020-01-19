@@ -9,8 +9,6 @@ import {
     Keyboard
 } from 'react-native';
 import { styles } from '../../styles/LoginScreenStyles';
-import { login, getUser } from '../redux/store/actions/userActions';
-import { connect } from 'react-redux';
 import CustomButton from '../components/CustomButton';
 import Firebase from '../constants/Firebase';
 import AddinputList from '../components/AddInputList';
@@ -94,26 +92,9 @@ class LoginScreen extends React.Component {
                     }
                 }
 
-        // this.props.navigation.navigate('Feed');
-        //TODO  
 
-        // Firebase.auth().signInWithEmailAndPassword(
-        //     this.state.email, this.state.password
-        // )
-        // .then(() => {
-        //     this.props.navigation.navigate('Feed')    
-        // })
-        // .catch(error=> {
-        //     this.setState({
-        //     ...state,
-        //     error: error
-        //     })
-        // })
     }
 
-    // onPressSignup = () => {
-    //     this.props.navigation.navigate('Register');
-    // }
     render() {
         const { error } = this.state; 
         const { email, password } = this.state;
@@ -182,19 +163,6 @@ class LoginScreen extends React.Component {
                         />
                     </View>
                     
-{/* 
-                    <View style={styles.registerContainer}>
-                        <Text style={styles.registerInfoText}>
-                            Don't have an account yet?
-                        </Text>
-                        
-                        <TouchableOpacity
-                            disabled={!isEnabled}
-                            onPress={()=>this.onSignUp()}
-                        >
-                            <Text style={styles.signUpText}> SignUp</Text>
-                        </TouchableOpacity>                    
-                    </View> */}
 
                 </ScrollView>
                 <View style={styles.bottomTriangle}/>   
@@ -207,20 +175,3 @@ LoginScreen.navigationOptions = {
     header: null,
 };
 export default LoginScreen;
-
-// const mapStateToProps =(state)=>{
-//     return { 
-//         user: state.userReducer.user,
-//         error: state.userReducer.error
-//     }
-// }
-
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         login: (user) => dispatch(login(user)),
-//         getUser: () => dispatch(getUser())
-//     } 
-// }
-
-
-// export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);

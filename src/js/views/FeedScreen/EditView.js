@@ -200,30 +200,6 @@ class EditView extends React.Component {
             })
           }
         />
-        <View style={styles.receiptCheckBoxContainer}>
-          {/* <View style={styles.labelCheckBox}>
-            <Text style={styles.labelText}> 
-              Do you have a receipt?
-            </Text>
-            <CheckBox
-              style={styles.receiptCheckBox}
-              value={this.state.checkReceipt}
-              onValueChange={
-                () => this.setState({
-                  checkReceipt: !this.state.checkReceipt
-                })
-              }
-            /> 
-          </View>              */}
-          {/* { this.state.checkReceipt ? (
-            <View style={styles.imageBoxContainer}>
-              <ImageBox /> 
-            </View>
-            ):(
-              null
-            )
-          }  */}
-          </View>
           <CustomButton
             buttonStatus={false} 
             color={'red'} 
