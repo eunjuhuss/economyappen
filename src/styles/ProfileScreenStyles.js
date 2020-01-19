@@ -46,10 +46,5 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.subText,
     color: Colors.subGrayColor,
     padding:5
-  },
-  imageBoxcontainer: {
-    flex:1,
-    justifyContent: 'center', 
-    alignItems: 'center'
   }
 })

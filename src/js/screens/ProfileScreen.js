@@ -10,7 +10,6 @@ import * as economyActions from '../redux/store/actions/economyActions';
 import * as userActions from '../redux/store/actions/userActions';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import ImageBox from '../components/ImageBox';
 import Firebase from '../constants/Firebase';
 
 class ProfileScreen extends React.Component {
@@ -78,6 +77,8 @@ class ProfileScreen extends React.Component {
       } 
     = this.state;
 
+    const  email  = user.email;
+
     return (
       <View 
         elevation={5} 
@@ -87,11 +88,8 @@ class ProfileScreen extends React.Component {
             contentContainerStyle={styles.contentContainer}>
           <View style={styles.userNameContainer}>
             <Text style={styles.userEmailText}>
-              {user.email}
+              {email}
             </Text>
-            <View style={styles.imageBoxcontainer}>
-              <ImageBox />
-            </View>
             <View style={styles.incomeAndExpenceContainer}>
               <View style={styles.totalAndLabelContainer}>
                 <Text style={styles.totalText}>
